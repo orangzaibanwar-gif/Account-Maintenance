@@ -93,10 +93,14 @@
       </select>
     </div>
 
-    <div class="col-6 actions">
-      <button type="button" class="btn" onclick="biometric()">+ Biometric Verification</button>
-      <!-- Biometric Tray (hidden by default) -->
-<div id="biometricTray" class="biometric-tray">
+  <!-- Biometric button in your form -->
+<div class="col-6 actions">
+  <button type="button" class="btn" id="biometricBtn">+ Biometric Verification</button>
+  <button type="button" class="btn secondary" onclick="verisys()">+ Verisys (NRP/Foreign)</button>
+</div>
+
+<!-- Biometric Panel (initially hidden) -->
+<div id="biometricPanel" class="biometric-panel" style="display:none;">
   <h4>Biometric Verification</h4>
   <div class="two-col">
     <label><input type="checkbox" name="bioPurpose" value="NewCIF"> New CIF Creation</label>
@@ -104,66 +108,54 @@
     <label><input type="checkbox" name="bioPurpose" value="DormancyRemoval"> Dormancy Removal</label>
   </div>
   <div class="fingerprint-box">
-    <span>Place Finger Here</span>
+    Place Finger Here
   </div>
-  <button type="button" class="btn" onclick="closeBiometricTray()">Close</button>
 </div>
 
 <style>
-  .biometric-tray {
-    display: none;
-    position: fixed;
-    right: 20px;
-    top: 100px;
-    width: 280px;
+  .biometric-panel {
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid #0b4da2;
+    border-radius: 8px;
     background: #f3f6fb;
-    border: 2px solid #0b4da2;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 6px 18px rgba(12,30,64,0.2);
-    z-index: 9999;
+    box-shadow: 0 4px 10px rgba(12,30,64,0.1);
   }
-  .biometric-tray h4 {
-    margin-top: 0;
+  .biometric-panel h4 {
+    margin: 0 0 8px 0;
+    font-size: 15px;
     color: #0b4da2;
-    font-size: 16px;
   }
   .two-col {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 6px;
+    margin-bottom: 8px;
   }
   .fingerprint-box {
+    height: 60px;
     border: 2px dashed #0b4da2;
-    height: 80px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     font-size: 13px;
     color: #6b7280;
-    margin-bottom: 12px;
     border-radius: 6px;
-  }
-  .biometric-tray .btn {
-    width: 100%;
-    padding: 8px;
-    background: #0b4da2;
   }
 </style>
 
 <script>
-  // Show tray
-  function biometric() {
-    const tray = document.getElementById('biometricTray');
-    tray.style.display = 'block';
-  }
+  const biometricBtn = document.getElementById('biometricBtn');
+  const biometricPanel = document.getElementById('biometricPanel');
 
-  // Close tray
-  function closeBiometricTray() {
-    const tray = document.getElementById('biometricTray');
-    tray.style.display = 'none';
-  }
+  biometricBtn.addEventListener('click', () => {
+    // Toggle visibility
+    if(biometricPanel.style.display === 'none'){
+      biometricPanel.style.display = 'block';
+    } else {
+      biometricPanel.style.display = 'none';
+    }
+  });
 </script>
 
       <button type="button" class="btn secondary" onclick="verisys()">+ Verisys (NRP/Foreign)</button>
