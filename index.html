@@ -171,60 +171,45 @@
 </script>
 
 
-    <!-- SECTION 2: Customer Personal Information & Identity -->
+<!-- SECTION 2: Customer Personal Information & Identity -->
 <div class="section">
   <h2>2. Customer Personal Information & Identity</h2>
   <div class="grid">
 
-    <!-- ID Category -->
     <div class="col-3">
       <label>ID Category <span class="required">*</span></label>
-      <select id="idCategory" required>
+      <select id="idCategory2" required>
         <option value="">-- Select --</option>
-        <option>CNIC/NICOP</option>
+        <option>CNIC</option>
         <option>NICOP</option>
         <option>POC</option>
-        <option>PASSPORT</option>
+        <option>Passport</option>
       </select>
     </div>
 
-    <!-- ID Document Number -->
     <div class="col-4">
       <label>ID Document Number <span class="required">*</span></label>
-      <input id="idDocumentNumber" type="text" placeholder="xxxxx-xxxxxxx-x" required maxlength="15" />
+      <input id="idDocumentNumber2" type="text" required placeholder="xxxxx-xxxxxxx-x" />
     </div>
 
-    <!-- OR -->
-    <div class="col-1 inline" style="justify-content:center;align-items:center;">
-      <label style="margin-bottom:0">OR</label>
-    </div>
-
-    <!-- CIF Number -->
-    <div class="col-4">
-      <label>CIF Number <span class="required">*</span></label>
-      <input id="cifNumber2" type="text" required />
-    </div>
-
-    <!-- ID Issuance & Expiry Date -->
     <div class="col-3">
       <label>ID Issuance Date <span class="required">*</span></label>
-      <input id="idIssuanceDate" type="date" required />
+      <input id="idIssuanceDate2" type="date" required />
     </div>
+
     <div class="col-3">
       <label>ID Expiry Date <span class="required">*</span></label>
-      <input id="idExpiryDate" type="date" required />
+      <input id="idExpiryDate2" type="date" required />
     </div>
 
-    <!-- FBR Status -->
     <div class="col-3">
       <label>FBR Status</label>
-      <input id="fbrStatus" type="text" value="Filer" readonly />
+      <input id="fbrStatus2" type="text" value="Filer" readonly />
     </div>
 
-    <!-- Salutation on next row -->
     <div class="col-2">
       <label>Salutation</label>
-      <select id="salutation">
+      <select id="salutation2">
         <option>Mr</option>
         <option>Ms</option>
         <option>Mrs</option>
@@ -232,16 +217,14 @@
       </select>
     </div>
 
-    <!-- Full Name -->
     <div class="col-6">
       <label>Full Name (as per ID Document) <span class="required">*</span></label>
-      <input id="customerFullName" type="text" required />
+      <input id="customerFullName2" type="text" required />
     </div>
 
-    <!-- Gender -->
     <div class="col-4">
       <label>Gender <span class="required">*</span></label>
-      <select id="gender" required>
+      <select id="gender2" required>
         <option value="">-- Select --</option>
         <option value="M">Male</option>
         <option value="F">Female</option>
@@ -249,22 +232,19 @@
       </select>
     </div>
 
-    <!-- Mother Maiden Name -->
     <div class="col-6">
       <label>Mother Maiden Name</label>
-      <input type="text" id="motherMaiden" />
+      <input type="text" id="motherMaiden2" />
     </div>
 
-    <!-- Father/Spouse Name -->
     <div class="col-6">
       <label>Father's / Spouse's Name <span class="required">*</span></label>
-      <input id="parentSpouseName" type="text" required />
+      <input id="parentSpouseName2" type="text" required />
     </div>
 
-    <!-- Marital Status -->
     <div class="col-4">
       <label>Marital Status <span class="required">*</span></label>
-      <select id="maritalStatus" required>
+      <select id="maritalStatus2" required>
         <option>Single</option>
         <option>Married</option>
         <option>Divorced</option>
@@ -272,22 +252,19 @@
       </select>
     </div>
 
-    <!-- Date of Birth -->
     <div class="col-4">
       <label>Date of Birth <span class="required">*</span></label>
-      <input id="dateOfBirth" type="date" required />
+      <input id="dateOfBirth2" type="date" required />
     </div>
 
-    <!-- Place of Birth Country -->
     <div class="col-4">
       <label>Place of Birth (Country) <span class="required">*</span></label>
-      <select id="placeOfBirthCountry" required></select>
+      <select id="placeOfBirthCountry2" required></select>
     </div>
 
-    <!-- Qualification -->
     <div class="col-4">
       <label>Qualification <span class="required">*</span></label>
-      <select id="qualification" required>
+      <select id="qualification2" required>
         <option>Matric</option>
         <option>Intermediate</option>
         <option>Graduate</option>
@@ -297,34 +274,34 @@
       </select>
     </div>
 
-    <!-- Nationality -->
     <div class="col-4">
       <label>Nationality</label>
-      <select id="nationality"></select>
+      <select id="nationality2"></select>
     </div>
 
-    <!-- Other Nationality Checkbox -->
     <div class="col-4">
       <label>Other Nationality</label>
-      <input type="checkbox" id="otherNationality" />
+      <input type="checkbox" id="otherNationality2" />
     </div>
 
-    <!-- Non-Resident / Zakat / PEP -->
     <div class="col-3">
       <label>Non-Resident</label>
-      <input type="checkbox" id="nonResident" />
+      <input type="checkbox" id="nonResident2" />
     </div>
+
     <div class="col-3">
       <label>Zakat Exempt (CZ-50)</label>
-      <input type="checkbox" id="zakat" />
+      <input type="checkbox" id="zakat2" />
     </div>
+
     <div class="col-3">
       <label>PEP</label>
-      <input type="checkbox" id="pep" />
+      <input type="checkbox" id="pep2" />
     </div>
+
     <div class="col-3">
       <label>PEP Relation</label>
-      <select id="pepRelation">
+      <select id="pepRelation2">
         <option>Self</option>
         <option>Related to PEP</option>
       </select>
@@ -334,31 +311,44 @@
 </div>
 
 <script>
-  const idType2 = document.getElementById('idCategory');
-  const idNumber2 = document.getElementById('idDocumentNumber');
+  // Populate countries for Nationality and Place of Birth
+  const countries = [
+    "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua & Barbuda","Argentina","Armenia","Australia","Austria",
+    "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
+    "Bolivia","Bosnia & Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Côte d'Ivoire","Cabo Verde",
+    "Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo (Congo-Brazzaville)",
+    "Costa Rica","Croatia","Cuba","Cyprus","Czechia","Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic",
+    "Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland",
+    "France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea",
+    "Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq",
+    "Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait",
+    "Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg",
+    "Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico",
+    "Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru",
+    "Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman",
+    "Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar",
+    "Romania","Russia","Rwanda","St Kitts & Nevis","St Lucia","Saint Vincent","Samoa","San Marino","Sao Tome & Principe","Saudi Arabia",
+    "Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa",
+    "South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan",
+    "Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan",
+    "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
+  ];
 
-  // ID masking same as Section 1
-  idType2.addEventListener('change', ()=>{
-    idNumber2.value = '';
-    if(['CNIC/NICOP','POC','CNIC','NICOP','POR'].includes(idType2.value)){
-      idNumber2.placeholder = "xxxxx-xxxxxxx-x";
-      idNumber2.maxLength = 15;
-    } else {
-      idNumber2.placeholder = "Enter Document Number";
-      idNumber2.maxLength = 50;
-    }
-  });
+  function populateCountrySelect(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.innerHTML = '<option value="">-- Select Country --</option>' + countries.map(c=>'<option>'+c+'</option>').join('');
+  }
 
-  idNumber2.addEventListener('input', ()=>{
-    if(['CNIC/NICOP','POC','CNIC','NICOP','POR'].includes(idType2.value)){
-      let digits = idNumber2.value.replace(/\D/g,'').substring(0,13);
-      if(digits.length <= 5){
-        idNumber2.value = digits;
-      } else if(digits.length <= 12){
-        idNumber2.value = digits.substring(0,5)+'-'+digits.substring(5);
-      } else {
-        idNumber2.value = digits.substring(0,5)+'-'+digits.substring(5,12)+'-'+digits.substring(12);
-      }
+  ['nationality2','placeOfBirthCountry2'].forEach(populateCountrySelect);
+
+  // ID Document Number Masking for CNIC/NICOP/POC
+  const idInput2 = document.getElementById('idDocumentNumber2');
+  const idType2 = document.getElementById('idCategory2');
+
+  idInput2.addEventListener('input', function(){
+    if(['CNIC','NICOP','POC'].includes(idType2.value)){
+      this.value = this.value.replace(/\D/g,'').slice(0,15); // allow only digits, max 15
     }
   });
 </script>
