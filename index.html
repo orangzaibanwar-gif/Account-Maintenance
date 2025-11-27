@@ -43,56 +43,64 @@
 
     <form id="custForm" onsubmit="return handleSubmit(event)">
 
-      <!-- MAIN GROUP -->
-      <div class="section">
-        <h2>1. ID Information</h2>
-        <div class="grid">
+   <!-- MAIN GROUP -->
+<div class="section">
+  <h2>1. ID Information</h2>
+  <div class="grid">
 
-          <div class="col-4">
-            <label>ID Category <span class="required">*</span></label>
-            <select id="idCategoryTop" required>
-              <option value="">-- Select --</option>
-              <option>CNIC/NICOP</option>
-              <option>POC</option>
-              <option>POR</option>
-              <option>Passport</option>
-            </select>
-          </div>
+    <!-- ID Category -->
+    <div class="col-3">
+      <label>ID Category <span class="required">*</span></label>
+      <select id="idCategoryTop" required>
+        <option value="">-- Select --</option>
+        <option>CNIC/NICOP</option>
+        <option>POC</option>
+        <option>POR</option>
+        <option>Passport</option>
+      </select>
+    </div>
 
-          <div class="col-6">
-            <label>CNIC / ID Document No.</label>
-            <input id="idNumber" type="text" placeholder="xxxxx-xxxxxxx-x" />
-          </div>
+    <!-- CNIC / ID Number -->
+    <div class="col-3">
+      <label>CNIC / ID Document No.</label>
+      <input id="idNumber" type="text" placeholder="xxxxx-xxxxxxx-x" />
+    </div>
 
-          <div class="col-2 inline">
-            <label style="margin-bottom:0">OR</label>
-          </div>
+    <!-- CIF Number on same line -->
+    <div class="col-3">
+      <label>CIF Number <span class="required">*</span></label>
+      <input id="cifNumber" type="text" required />
+    </div>
 
-          <div class="col-4">
-            <label>CIF Number <span class="required">*</span></label>
-            <input id="cifNumber" type="text" required />
-          </div>
+    <div class="col-3 inline">
+      <label style="margin-bottom:0">OR</label>
+    </div>
 
-          <div class="col-12">
-            <label>Reason for Updation/Review <span class="required">*</span></label>
-            <select id="updateReason" required>
-              <option value="">-- Select Reason --</option>
-              <option value="PeriodicReview">Periodic/Annual CDD Review</option>
-              <option>Customer Identity, Address, and Contact Details</option>
-              <option>Change of Occupation</option>
-              <option>IDExpiry">ID Document Expiry/Renewal</option>
-              <option>Other</option>
-              <option>Next Of Kin Change/Update</option>
-            </select>
-          </div>
+    <!-- Reason for Updation/Review with full 9 sections -->
+    <div class="col-12">
+      <label>Reason for Updation/Review <span class="required">*</span></label>
+      <select id="updateReason" required>
+        <option value="">-- Select Reason --</option>
+        <option value="PersonalIdentity">Customer Personal Identity / Name</option>
+        <option value="AddressContact">Customer Address / Contact Information</option>
+        <option value="OccupationFinancial">Occupation & Financial Profile</option>
+        <option value="KYC">Know Your Customer (KYC) Updates</option>
+        <option value="NextOfKin">Next Of Kin / Nominee Changes</option>
+        <option value="Regulatory">Other Regulatory Items / Special Conditions</option>
+        <option value="StaffCertification">Staff Certification & Finalization</option>
+        <option value="DocumentUpload">Document Upload / Record Changes</option>
+        <option value="Other">Other / Miscellaneous Updates</option>
+      </select>
+    </div>
 
-          <div class="col-6 actions">
-            <button type="button" class="btn" onclick="biometric()">+ Biometric Verification</button>
-            <button type="button" class="btn secondary" onclick="verisys()">+ Verisys (NRP/Foreign)</button>
-          </div>
+    <div class="col-6 actions">
+      <button type="button" class="btn" onclick="biometric()">+ Biometric Verification</button>
+      <button type="button" class="btn secondary" onclick="verisys()">+ Verisys (NRP/Foreign)</button>
+    </div>
 
-        </div>
-      </div>
+  </div>
+</div>
+
 
       <!-- PERSONAL -->
       <div class="section">
