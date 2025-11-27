@@ -501,63 +501,147 @@ function validateSalutationGender() {
 }
 </script>
 
-      <!-- CONTACT -->
-      <div class="section">
-        <h2>3. Customer Contact & Address Information</h2>
-        <div class="grid">
-          <div class="col-6">
-            <label>Current Residential Address <span class="required">*</span></label>
-            <textarea id="residentialAddress" required></textarea>
-          </div>
+    <!-- ============================= -->
+<!-- SECTION 3: CONTACT INFORMATION -->
+<!-- ============================= -->
 
-          <div class="col-6">
-            <label>Permanent Address (as per ID) <span class="required">*</span></label>
-            <textarea id="permanentAddress" required></textarea>
-          </div>
+<section class="section">
+    <h2 class="section-title">3. Contact Information</h2>
 
-          <div class="col-4">
-            <label>Mobile Country</label>
-            <select id="mobileCountry"></select>
-          </div>
+    <div class="form-grid">
 
-          <div class="col-4">
-            <label>Telco Company</label>
-            <select id="telco">
-              <option>Mobilink</option><option>Telenor</option><option>Zong</option><option>Ufone</option><option>Onic</option><option>Warid</option>
-            </select>
-          </div>
-
-          <div class="col-4">
-            <label>Primary Contact Number (Mobile) <span class="required">*</span></label>
-            <input id="primaryContactNumber" type="text" required />
-          </div>
-
-          <div class="col-6">
-            <label>Self Registered</label>
-            <input type="checkbox" id="selfRegistered" />
-          </div>
-
-          <div class="col-6">
-            <label>Relation</label>
-            <select id="relation"><option>Father</option><option>Mother</option><option>Brother</option><option>Sister</option></select>
-          </div>
-
-          <div class="col-12">
-            <label>Email Address</label>
-            <input id="emailAddress" type="email" />
-          </div>
-
-          <div class="col-6">
-            <label>Tel Office Number</label>
-            <input type="text" id="telOffice" />
-          </div>
-
-          <div class="col-6">
-            <label>Home/Residence Number</label>
-            <input type="text" id="homeNumber" />
-          </div>
+        <!-- Row 1 -->
+        <div class="form-group">
+            <label>Mobile Number *</label>
+            <input type="text" maxlength="11" placeholder="03XXXXXXXXX">
         </div>
-      </div>
+
+        <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input type="text" maxlength="11" placeholder="03XXXXXXXXX">
+        </div>
+
+        <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" placeholder="example@email.com">
+        </div>
+
+        <div class="form-group">
+            <label>Residence Phone</label>
+            <input type="text" maxlength="11" placeholder="021XXXXXXX">
+        </div>
+
+        <!-- Row 2 -->
+        <div class="form-group">
+            <label>Office Phone</label>
+            <input type="text" maxlength="11" placeholder="021XXXXXXX">
+        </div>
+
+        <div class="form-group">
+            <label>Alternate Contact Number</label>
+            <input type="text" maxlength="11" placeholder="03XXXXXXXXX">
+        </div>
+
+        <div class="form-group">
+            <label>Preferred Contact Mode *</label>
+            <select>
+                <option value="">Select</option>
+                <option>Mobile</option>
+                <option>Email</option>
+                <option>SMS</option>
+                <option>WhatsApp</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>SIM Ownership *</label>
+            <select>
+                <option value="">Select</option>
+                <option>Self</option>
+                <option>Family Member</option>
+                <option>Employer</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="form-group">
+            <label>Emergency Contact Name *</label>
+            <input type="text" placeholder="Enter Name">
+        </div>
+
+        <div class="form-group">
+            <label>Relationship *</label>
+            <select>
+                <option value="">Select</option>
+                <option>Father</option>
+                <option>Mother</option>
+                <option>Spouse</option>
+                <option>Brother</option>
+                <option>Sister</option>
+                <option>Friend</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Emergency Contact Mobile *</label>
+            <input type="text" maxlength="11" placeholder="03XXXXXXXXX">
+        </div>
+
+        <div class="form-group">
+            <label>PO Box / Mailing Address</label>
+            <input type="text" placeholder="Enter PO Box">
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* Green theme and layout consistency */
+    .section {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        border-left: 6px solid #1b7d2b;
+    }
+
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 18px;
+        font-weight: bold;
+        color: #1b7d2b;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: block;
+        color: #1b7d2b;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #b5b5b5;
+        font-size: 14px;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+        border-color: #1b7d2b;
+        box-shadow: 0 0 5px rgba(27,125,43,0.4);
+    }
+</style>
 
       <!-- OCCUPATION -->
       <div class="section">
