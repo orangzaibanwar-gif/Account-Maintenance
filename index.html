@@ -171,138 +171,197 @@
 </script>
 
 
-      <!-- PERSONAL -->
-      <div class="section">
-        <h2>2. Customer Personal Information & Identity</h2>
-        <div class="grid">
+    <!-- SECTION 2: Customer Personal Information & Identity -->
+<div class="section">
+  <h2>2. Customer Personal Information & Identity</h2>
+  <div class="grid">
 
-          <div class="col-3">
-            <label>ID Category <span class="required">*</span></label>
-            <select id="idCategory" required>
-              <option value="">-- Select --</option>
-              <option>CNIC/NICOP</option>
-              <option>NICOP</option>
-              <option>POR</option>
-              <option>PASSPORT</option>
-            </select>
-          </div>
+    <!-- ID Category -->
+    <div class="col-3">
+      <label>ID Category <span class="required">*</span></label>
+      <select id="idCategory" required>
+        <option value="">-- Select --</option>
+        <option>CNIC/NICOP</option>
+        <option>NICOP</option>
+        <option>POC</option>
+        <option>PASSPORT</option>
+      </select>
+    </div>
 
-          <div class="col-4">
-            <label>ID Document Number <span class="required">*</span></label>
-            <input id="idDocumentNumber" type="text" required />
-          </div>
+    <!-- ID Document Number -->
+    <div class="col-4">
+      <label>ID Document Number <span class="required">*</span></label>
+      <input id="idDocumentNumber" type="text" placeholder="xxxxx-xxxxxxx-x" required maxlength="15" />
+    </div>
 
-          <div class="col-5">
-            <label>CIF Number <span class="required">*</span></label>
-            <input id="cifNumber2" type="text" required />
-          </div>
+    <!-- OR -->
+    <div class="col-1 inline" style="justify-content:center;align-items:center;">
+      <label style="margin-bottom:0">OR</label>
+    </div>
 
-          <div class="col-3">
-            <label>ID Issuance Date <span class="required">*</span></label>
-            <input id="idIssuanceDate" type="date" required />
-          </div>
+    <!-- CIF Number -->
+    <div class="col-4">
+      <label>CIF Number <span class="required">*</span></label>
+      <input id="cifNumber2" type="text" required />
+    </div>
 
-          <div class="col-3">
-            <label>ID Expiry Date <span class="required">*</span></label>
-            <input id="idExpiryDate" type="date" required />
-          </div>
+    <!-- ID Issuance & Expiry Date -->
+    <div class="col-3">
+      <label>ID Issuance Date <span class="required">*</span></label>
+      <input id="idIssuanceDate" type="date" required />
+    </div>
+    <div class="col-3">
+      <label>ID Expiry Date <span class="required">*</span></label>
+      <input id="idExpiryDate" type="date" required />
+    </div>
 
-          <div class="col-3">
-            <label>FBR Status</label>
-            <input id="fbrStatus" type="text" placeholder="Auto fetch if available" />
-          </div>
+    <!-- FBR Status -->
+    <div class="col-3">
+      <label>FBR Status</label>
+      <input id="fbrStatus" type="text" value="Filer" readonly />
+    </div>
 
-          <div class="col-3">
-            <label>Relationship Date <span class="required">*</span></label>
-            <input id="relationshipDate" type="date" required />
-          </div>
+    <!-- Salutation on next row -->
+    <div class="col-2">
+      <label>Salutation</label>
+      <select id="salutation">
+        <option>Mr</option>
+        <option>Ms</option>
+        <option>Mrs</option>
+        <option>Other</option>
+      </select>
+    </div>
 
-          <div class="col-2">
-            <label>Salutation</label>
-            <select id="salutation"><option>Mr</option><option>Ms</option><option>Mrs</option><option>Other</option></select>
-          </div>
+    <!-- Full Name -->
+    <div class="col-6">
+      <label>Full Name (as per ID Document) <span class="required">*</span></label>
+      <input id="customerFullName" type="text" required />
+    </div>
 
-          <div class="col-6">
-            <label>Full Name (as per ID Document) <span class="required">*</span></label>
-            <input id="customerFullName" type="text" required />
-          </div>
+    <!-- Gender -->
+    <div class="col-4">
+      <label>Gender <span class="required">*</span></label>
+      <select id="gender" required>
+        <option value="">-- Select --</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="O">Other</option>
+      </select>
+    </div>
 
-          <div class="col-4">
-            <label>Gender <span class="required">*</span></label>
-            <select id="gender" required>
-              <option value="">-- Select --</option>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
-              <option value="O">Other</option>
-            </select>
-          </div>
+    <!-- Mother Maiden Name -->
+    <div class="col-6">
+      <label>Mother Maiden Name</label>
+      <input type="text" id="motherMaiden" />
+    </div>
 
-          <div class="col-6">
-            <label>Mother Maiden Name</label>
-            <input type="text" id="motherMaiden" />
-          </div>
+    <!-- Father/Spouse Name -->
+    <div class="col-6">
+      <label>Father's / Spouse's Name <span class="required">*</span></label>
+      <input id="parentSpouseName" type="text" required />
+    </div>
 
-          <div class="col-6">
-            <label>Father's / Spouse's Name <span class="required">*</span></label>
-            <input id="parentSpouseName" type="text" required />
-          </div>
+    <!-- Marital Status -->
+    <div class="col-4">
+      <label>Marital Status <span class="required">*</span></label>
+      <select id="maritalStatus" required>
+        <option>Single</option>
+        <option>Married</option>
+        <option>Divorced</option>
+        <option>Widowed</option>
+      </select>
+    </div>
 
-          <div class="col-4">
-            <label>Marital Status <span class="required">*</span></label>
-            <select id="maritalStatus" required>
-              <option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option>
-            </select>
-          </div>
+    <!-- Date of Birth -->
+    <div class="col-4">
+      <label>Date of Birth <span class="required">*</span></label>
+      <input id="dateOfBirth" type="date" required />
+    </div>
 
-          <div class="col-4">
-            <label>Date of Birth <span class="required">*</span></label>
-            <input id="dateOfBirth" type="date" required />
-          </div>
+    <!-- Place of Birth Country -->
+    <div class="col-4">
+      <label>Place of Birth (Country) <span class="required">*</span></label>
+      <select id="placeOfBirthCountry" required></select>
+    </div>
 
-          <div class="col-4">
-            <label>Place of Birth (Country) <span class="required">*</span></label>
-            <select id="placeOfBirthCountry" required></select>
-          </div>
+    <!-- Qualification -->
+    <div class="col-4">
+      <label>Qualification <span class="required">*</span></label>
+      <select id="qualification" required>
+        <option>Matric</option>
+        <option>Intermediate</option>
+        <option>Graduate</option>
+        <option>Post-Graduate</option>
+        <option>Professional</option>
+        <option>Other</option>
+      </select>
+    </div>
 
-          <div class="col-4">
-            <label>Qualification <span class="required">*</span></label>
-            <select id="qualification" required>
-              <option>Matric</option><option>Intermediate</option><option>Graduate</option><option>Post-Graduate</option><option>Professional</option><option>Other</option>
-            </select>
-          </div>
+    <!-- Nationality -->
+    <div class="col-4">
+      <label>Nationality</label>
+      <select id="nationality"></select>
+    </div>
 
-          <div class="col-4">
-            <label>Nationality</label>
-            <select id="nationality"></select>
-          </div>
+    <!-- Other Nationality Checkbox -->
+    <div class="col-4">
+      <label>Other Nationality</label>
+      <input type="checkbox" id="otherNationality" />
+    </div>
 
-          <div class="col-4">
-            <label>Other Nationality</label>
-            <input type="checkbox" id="otherNationality" />
-          </div>
+    <!-- Non-Resident / Zakat / PEP -->
+    <div class="col-3">
+      <label>Non-Resident</label>
+      <input type="checkbox" id="nonResident" />
+    </div>
+    <div class="col-3">
+      <label>Zakat Exempt (CZ-50)</label>
+      <input type="checkbox" id="zakat" />
+    </div>
+    <div class="col-3">
+      <label>PEP</label>
+      <input type="checkbox" id="pep" />
+    </div>
+    <div class="col-3">
+      <label>PEP Relation</label>
+      <select id="pepRelation">
+        <option>Self</option>
+        <option>Related to PEP</option>
+      </select>
+    </div>
 
-          <div class="col-3">
-            <label>Non-Resident</label>
-            <input type="checkbox" id="nonResident" />
-          </div>
+  </div>
+</div>
 
-          <div class="col-3">
-            <label>Zakat Exempt (CZ-50)</label>
-            <input type="checkbox" id="zakat" />
-          </div>
+<script>
+  const idType2 = document.getElementById('idCategory');
+  const idNumber2 = document.getElementById('idDocumentNumber');
 
-          <div class="col-3">
-            <label>PEP</label>
-            <input type="checkbox" id="pep" />
-          </div>
+  // ID masking same as Section 1
+  idType2.addEventListener('change', ()=>{
+    idNumber2.value = '';
+    if(['CNIC/NICOP','POC','CNIC','NICOP','POR'].includes(idType2.value)){
+      idNumber2.placeholder = "xxxxx-xxxxxxx-x";
+      idNumber2.maxLength = 15;
+    } else {
+      idNumber2.placeholder = "Enter Document Number";
+      idNumber2.maxLength = 50;
+    }
+  });
 
-          <div class="col-3">
-            <label>PEP Relation</label>
-            <select id="pepRelation"><option>Self</option><option>Related to PEP</option></select>
-          </div>
-
-        </div>
-      </div>
+  idNumber2.addEventListener('input', ()=>{
+    if(['CNIC/NICOP','POC','CNIC','NICOP','POR'].includes(idType2.value)){
+      let digits = idNumber2.value.replace(/\D/g,'').substring(0,13);
+      if(digits.length <= 5){
+        idNumber2.value = digits;
+      } else if(digits.length <= 12){
+        idNumber2.value = digits.substring(0,5)+'-'+digits.substring(5);
+      } else {
+        idNumber2.value = digits.substring(0,5)+'-'+digits.substring(5,12)+'-'+digits.substring(12);
+      }
+    }
+  });
+</script>
 
       <!-- CONTACT -->
       <div class="section">
