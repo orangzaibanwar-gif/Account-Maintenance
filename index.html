@@ -505,7 +505,7 @@ function validateSalutationGender() {
 <div class="section">
   <h2>3. Customer Contact & Address Information</h2>
   <div class="grid">
-    
+
     <!-- Current Residential Address -->
     <div class="col-6">
       <label>Current Residential Address <span class="required">*</span></label>
@@ -519,13 +519,13 @@ function validateSalutationGender() {
     </div>
 
     <!-- Mobile Country -->
-    <div class="col-4">
+    <div class="col-3">
       <label>Mobile Country</label>
       <select id="mobileCountry"></select>
     </div>
 
     <!-- Telco -->
-    <div class="col-4">
+    <div class="col-3">
       <label>Telco Company</label>
       <select id="telco">
         <option>Mobilink</option>
@@ -538,18 +538,24 @@ function validateSalutationGender() {
     </div>
 
     <!-- Primary Mobile -->
-    <div class="col-4">
+    <div class="col-3">
       <label>Primary Contact Number (Mobile) <span class="required">*</span></label>
-      <input id="primaryContactNumber" type="text" placeholder="03xx-xxxxxxx" required />
+      <input id="primaryContactNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11" required />
+    </div>
+
+    <!-- WhatsApp Number -->
+    <div class="col-3">
+      <label>WhatsApp Number</label>
+      <input id="whatsappNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11" />
     </div>
 
     <!-- Self Registered -->
-    <div class="col-6 inline">
+    <div class="col-3 inline">
       <label><input type="checkbox" id="selfRegistered"> Self Registered</label>
     </div>
 
     <!-- Relation -->
-    <div class="col-6">
+    <div class="col-3">
       <label>Relation</label>
       <select id="relation">
         <option>Father</option>
@@ -560,21 +566,21 @@ function validateSalutationGender() {
     </div>
 
     <!-- Email Address -->
-    <div class="col-12">
+    <div class="col-6">
       <label>Email Address</label>
       <input id="emailAddress" type="email" placeholder="Enter email" />
     </div>
 
     <!-- Tel Office -->
-    <div class="col-6">
+    <div class="col-3">
       <label>Tel Office Number</label>
-      <input type="text" id="telOffice" placeholder="Enter office number" />
+      <input type="text" id="telOffice" placeholder="Enter office number" maxlength="15" />
     </div>
 
     <!-- Home Number -->
-    <div class="col-6">
+    <div class="col-3">
       <label>Home/Residence Number</label>
-      <input type="text" id="homeNumber" placeholder="Enter home number" />
+      <input type="text" id="homeNumber" placeholder="Enter home number" maxlength="15" />
     </div>
 
   </div>
