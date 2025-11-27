@@ -174,219 +174,231 @@
 <!-- ============================
  SECTION 2 – CUSTOMER PERSONAL INFORMATION & IDENTITY
 ===============================-->
-<section class="section">
-  <h2>2. Customer Personal Information & Identity</h2>
+<section class="section-box">
+    <h2>2. Customer Personal Information & Identity</h2>
 
-  <div class="form-grid">
+    <div class="form-grid">
 
-    <!-- ROW 1 (Four aligned fields) -->
-    <div class="row">
+        <!-- ROW 1 -->
+        <div class="form-group">
+            <label>ID Category *</label>
+            <select required>
+                <option value="">Select</option>
+                <option>CNIC</option>
+                <option>NICOP</option>
+                <option>POC</option>
+                <option>Passport</option>
+            </select>
+        </div>
 
-      <!-- ID Category -->
-      <div class="col-3">
-        <label>ID Category <span class="required">*</span></label>
-        <select id="idCategorySec2">
-          <option value="">-- Select --</option>
-          <option>CNIC</option>
-          <option>NICOP</option>
-          <option>POC</option>
-          <option>PASSPORT</option>
-        </select>
-      </div>
+        <div class="form-group">
+            <label>ID Document No *</label>
+            <input type="text" id="idDocNo2" maxlength="15" oninput="maskID2()" placeholder="Enter ID number" required>
+        </div>
 
-      <!-- ID Document Number -->
-      <div class="col-3">
-        <label>ID Document Number <span class="required">*</span></label>
-        <input id="idNumberSec2" type="text" placeholder="xxxxx-xxxxxxx-x" maxlength="15" required>
-      </div>
+        <div class="form-group">
+            <label>ID Issuance Date *</label>
+            <input type="date" required>
+        </div>
 
-      <!-- ID Issuance Date -->
-      <div class="col-3">
-        <label>ID Issuance Date <span class="required">*</span></label>
-        <input type="date" id="idIssuanceSec2">
-      </div>
+        <div class="form-group">
+            <label>ID Expiry Date *</label>
+            <input type="date" required>
+        </div>
 
-      <!-- ID Expiry Date -->
-      <div class="col-3">
-        <label>ID Expiry Date <span class="required">*</span></label>
-        <input type="date" id="idExpirySec2">
-      </div>
+        <!-- ROW 2 -->
+        <div class="form-group">
+            <label>Salutation *</label>
+            <select id="salutation" onchange="validateSalutationGender()" required>
+                <option value="">Select</option>
+                <option value="Mr">Mr</option>
+                <option value="Ms">Ms</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Mx">Mx</option>
+            </select>
+        </div>
 
-    </div><!-- END ROW 1 -->
+        <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" required>
+        </div>
 
+        <div class="form-group">
+            <label>Father / Spouse Name *</label>
+            <input type="text" required>
+        </div>
 
-    <!-- ROW 2 (Salutation, Full Name, Father/Spouse, Gender) -->
-    <div class="row">
+        <div class="form-group">
+            <label>Gender *</label>
+            <select id="gender" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
 
-      <!-- Salutation -->
-      <div class="col-3">
-        <label>Salutation <span class="required">*</span></label>
-        <select id="salutation">
-          <option>Mr.</option>
-          <option>Ms.</option>
-          <option>Mrs.</option>
-        </select>
-      </div>
+        <!-- ROW 3 -->
+        <div class="form-group">
+            <label>Mother's Maiden Name *</label>
+            <input type="text" required>
+        </div>
 
-      <!-- Full Name -->
-      <div class="col-3">
-        <label>Full Name <span class="required">*</span></label>
-        <input type="text" id="fullName">
-      </div>
+        <div class="form-group">
+            <label>Nationality *</label>
+            <select id="nationality" onchange="toggleBirthPlace()" required>
+                <option value="">Select Country</option>
+            </select>
+        </div>
 
-      <!-- Father/Spouse Name -->
-      <div class="col-3">
-        <label>Father / Spouse Name</label>
-        <input type="text" id="fatherName">
-      </div>
+        <div class="form-group">
+            <label>Place of Birth *</label>
+            <select id="birthPlaceLOV" style="display:none;"></select>
+            <input type="text" id="birthPlaceText" placeholder="Enter Place of Birth">
+        </div>
 
-      <!-- Gender -->
-      <div class="col-3">
-        <label>Gender <span class="required">*</span></label>
-        <select id="gender">
-          <option value="">-- Select --</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
-        </select>
-      </div>
+        <div class="form-group">
+            <label>FBR Status *</label>
+            <input type="text" value="Filer" readonly>
+        </div>
 
-    </div><!-- END ROW 2 -->
+        <!-- ROW 4 -->
+        <div class="form-group">
+            <label>Date of Birth *</label>
+            <input type="date" required>
+        </div>
 
+        <div class="form-group">
+            <label>Marital Status *</label>
+            <select>
+                <option value="">Select</option>
+                <option>Single</option>
+                <option>Married</option>
+                <option>Widowed</option>
+                <option>Divorced</option>
+            </select>
+        </div>
 
-    <!-- ROW 3 (Mother Name, FBR, Nationality, Place of Birth City) -->
-    <div class="row">
+        <div class="form-group">
+            <label>Religion *</label>
+            <select>
+                <option value="">Select</option>
+                <option>Islam</option>
+                <option>Christian</option>
+                <option>Hindu</option>
+                <option>Sikh</option>
+                <option>Other</option>
+            </select>
+        </div>
 
-      <!-- Mother Maiden Name -->
-      <div class="col-3">
-        <label>Mother Maiden Name <span class="required">*</span></label>
-        <input type="text" id="motherName">
-      </div>
+        <div class="form-group">
+            <label>Education *</label>
+            <select>
+                <option value="">Select</option>
+                <option>Primary</option>
+                <option>Matric</option>
+                <option>Intermediate</option>
+                <option>Bachelor</option>
+                <option>Master</option>
+                <option>PhD</option>
+            </select>
+        </div>
 
-      <!-- FBR Status -->
-      <div class="col-3">
-        <label>FBR Status</label>
-        <input type="text" id="fbrStatus" value="Filer" readonly>
-      </div>
-
-      <!-- Nationality -->
-      <div class="col-3">
-        <label>Nationality</label>
-        <select id="nationality"></select>
-      </div>
-
-      <!-- Place of Birth (City) -->
-      <div class="col-3">
-        <label>Place of Birth City</label>
-        <input type="text" id="birthCity">
-      </div>
-
-    </div><!-- END ROW 3 -->
-
-  </div><!-- END FORM GRID -->
+    </div>
 </section>
 
+<!-- STYLE -->
 <style>
-  .section {
-    padding: 20px;
-    border: 2px solid #009c3b;
-    border-radius: 12px;
-    background: #f6fff6;
-    margin-bottom: 25px;
-  }
-  
-  .section h2 {
-    color: #007a2b;
-    margin-bottom: 15px;
-    font-size: 20px;
-  }
-
-  .form-grid .row {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 15px;
-  }
-
-  .col-3 {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  label {
+.section-box {
+    border: 2px solid green;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #f4fff4;
+}
+h2 {
+    color: green;
     font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  input, select {
-    padding: 8px;
-    border: 1px solid #999;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.form-group label {
+    font-weight: bold;
+}
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #888;
     border-radius: 6px;
-  }
-
-  .required {
-    color: red;
-  }
+}
 </style>
 
-
-<!-- ============================
-  JAVASCRIPT: COUNTRY LIST + ID MASKING
-===============================-->
+<!-- COUNTRY LIST + CITY LIST + LOGIC -->
 <script>
+// ---------- COUNTRIES ----------
+const countryList = [
+"Pakistan","India","China","Saudi Arabia","UAE","Turkey","UK","USA","Canada","Australia",
+"Afghanistan","Bangladesh","Iran","Iraq","Nepal","Sri Lanka","Germany","France","Italy"
+];
 
-  /* ------------------------------
-     COUNTRY LIST POPULATION
-  ------------------------------ */
-  const countries = [
-    "Afghanistan","Albania","Algeria","Andorra","Angola","Argentina","Australia","Austria","Azerbaijan",
-    "Bahamas","Bahrain","Bangladesh","Belgium","Bhutan","Brazil","Bulgaria","Cambodia","Cameroon","Canada",
-    "China","Colombia","Denmark","Egypt","Finland","France","Germany","Ghana","Greece","Hong Kong",
-    "India","Indonesia","Iran","Iraq","Ireland","Italy","Japan","Jordan","Kazakhstan","Kenya",
-    "Kuwait","Lebanon","Libya","Malaysia","Maldives","Mexico","Morocco","Nepal","Netherlands",
-    "New Zealand","Nigeria","Norway","Oman","Pakistan","Philippines","Poland","Portugal","Qatar",
-    "Romania","Russia","Saudi Arabia","Singapore","South Africa","South Korea","Spain","Sri Lanka",
-    "Sweden","Switzerland","Turkey","UAE","UK","USA","Vietnam","Yemen","Zimbabwe"
-  ];
+// ---------- PAKISTANI CITIES ----------
+const pakCities = [
+"Karachi","Lahore","Islamabad","Rawalpindi","Peshawar","Quetta","Multan","Faisalabad",
+"Hyderabad","Sialkot","Sukkur","Gwadar","Bahawalpur"
+];
 
-  document.getElementById("nationality").innerHTML =
-    "<option value=''>-- Select Country --</option>" +
-    countries.map(c => `<option>${c}</option>`).join("");
+// Load Country List
+window.onload = () => {
+    let nat = document.getElementById("nationality");
+    countryList.forEach(c => {
+        let opt = document.createElement("option");
+        opt.textContent = c;
+        opt.value = c;
+        nat.appendChild(opt);
+    });
+};
 
+// ---------- ID MASKING ----------
+function maskID2() {
+    let input = document.getElementById("idDocNo2");
+    input.value = input.value.replace(/\D/g, '').substring(0,15);
+}
 
-  /* ------------------------------
-     CNIC / NICOP / POC MASKING
-  ------------------------------ */
-  const idTypeSec2 = document.getElementById("idCategorySec2");
-  const idNumSec2 = document.getElementById("idNumberSec2");
+// ---------- Nationality + Birth Place Logic ----------
+function toggleBirthPlace() {
+    let nationality = document.getElementById("nationality").value;
+    let lov = document.getElementById("birthPlaceLOV");
+    let txt = document.getElementById("birthPlaceText");
 
-  idNumSec2.addEventListener("input", () => {
-    const allowed = ["CNIC","NICOP","POC"];
-    if (!allowed.includes(idTypeSec2.value)) return;
-
-    let digits = idNumSec2.value.replace(/\D/g, "").substring(0,13);
-
-    if (digits.length <= 5) {
-      idNumSec2.value = digits;
-    } else if (digits.length <= 12) {
-      idNumSec2.value = digits.substring(0,5) + "-" + digits.substring(5);
+    if (nationality === "Pakistan") {
+        txt.style.display = "none";
+        lov.style.display = "block";
+        lov.innerHTML = "";
+        pakCities.forEach(c => {
+            let opt = document.createElement("option");
+            opt.value = c;
+            opt.textContent = c;
+            lov.appendChild(opt);
+        });
     } else {
-      idNumSec2.value =
-        digits.substring(0,5) + "-" + digits.substring(5,12) + "-" + digits.substring(12);
+        txt.style.display = "block";
+        lov.style.display = "none";
     }
-  });
+}
 
-  idTypeSec2.addEventListener("change", () => {
-    idNumSec2.value = "";
-    if (["CNIC", "NICOP", "POC"].includes(idTypeSec2.value)) {
-      idNumSec2.placeholder = "xxxxx-xxxxxxx-x";
-      idNumSec2.maxLength = 15;
-    } else {
-      idNumSec2.placeholder = "Enter Document Number";
-      idNumSec2.maxLength = 40;
-    }
-  });
+// ---------- Salutation & Gender Mapping ----------
+function validateSalutationGender() {
+    let sal = document.getElementById("salutation").value;
+    let gender = document.getElementById("gender");
 
+    if (sal === "Mr") gender.value = "Male";
+    else if (sal === "Ms" || sal === "Mrs") gender.value = "Female";
+    else if (sal === "Mx") gender.value = "Other";
+}
 </script>
 
       <!-- CONTACT -->
