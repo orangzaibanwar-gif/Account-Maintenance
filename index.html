@@ -43,131 +43,184 @@
 
     <form id="custForm" onsubmit="return handleSubmit(event)">
 
-<!-- SECTION 1: ID Information -->
-<div class="section">
-  <h2>1. ID Information</h2>
-  <div class="grid">
+<!-- SECTION 1 – ID Information -->
+<section class="section-box">
+    <h2>1. ID Information</h2>
 
-    <!-- ID Category -->
-    <div class="col-3">
-      <label>ID Category <span class="required">*</span></label>
-      <select id="idCategoryTop" required>
-        <option value="">-- Select --</option>
-        <option>CNIC/NICOP</option>
-        <option>POC</option>
-        <option>POR</option>
-        <option>Passport</option>
-      </select>
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>ID Type *</label>
+            <select id="idType1" onchange="applyMask1()" required>
+                <option value="">Select</option>
+                <option value="CNIC">CNIC</option>
+                <option value="NICOP">NICOP</option>
+                <option value="POC">POC</option>
+                <option value="Passport">Passport</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>ID Document Number *</label>
+            <input type="text" id="idDoc1" maxlength="15" oninput="maskID1()" placeholder="Enter ID No" required>
+        </div>
+
+        <div class="form-group">
+            <label>ID Issuance Date *</label>
+            <input type="date" required>
+        </div>
+
+        <div class="form-group">
+            <label>ID Expiry Date *</label>
+            <input type="date" required>
+        </div>
+
+        <!-- CIF Row -->
+        <div class="form-group">
+            <label>CIF Number</label>
+            <input type="text" placeholder="Enter CIF Number">
+        </div>
+
+        <div class="form-group"></div>
+        <div class="form-group"></div>
+        <div class="form-group"></div>
+
+        <!-- Biometric & Verysis Buttons -->
+        <div class="form-group">
+            <button type="button" class="green-btn" onclick="toggleBio()">Biometric Verification</button>
+        </div>
+
+        <div class="form-group">
+            <button type="button" class="green-btn" onclick="toggleVerysis()">Verisys Check</button>
+        </div>
+
     </div>
 
-    <!-- ID Document Number -->
-    <div class="col-4">
-      <label>ID Document Number <span class="required">*</span></label>
-      <input id="idDocumentNumberTop" type="text" placeholder="xxxxx-xxxxxxx-x" required maxlength="15" />
+    <!-- BIOMETRIC DRAWER -->
+    <div id="bioBox" class="drawer">
+        <h4>Biometric Verification</h4>
+
+        <label><input type="checkbox"> New CIF Creation</label><br>
+        <label><input type="checkbox"> Record Updation</label><br>
+        <label><input type="checkbox"> Dormancy Removal</label><br><br>
+
+        <div class="bio-space">Fingerprint Capture Area</div>
     </div>
 
-    <!-- OR -->
-    <div class="col-1 inline" style="justify-content:center;align-items:center;">
-      <label style="margin-bottom:0">OR</label>
+    <!-- VERISYS DRAWER -->
+    <div id="verysisBox" class="drawer">
+        <h4>Verisys Verification</h4>
+
+        <div class="form-grid-3">
+            <div class="form-group">
+                <label>ID Issuance Date *</label>
+                <input type="date">
+            </div>
+
+            <div class="form-group">
+                <label>OTP *</label>
+                <input type="text" maxlength="6" placeholder="Enter OTP">
+            </div>
+
+            <div class="form-group">
+                <button class="green-btn">Call Verisys</button>
+            </div>
+        </div>
     </div>
 
-    <!-- CIF Number -->
-    <div class="col-4">
-      <label>CIF Number <span class="required">*</span></label>
-      <input id="cifNumberTop" type="text" required />
-    </div>
+</section>
 
-    <!-- Reason for Updation -->
-    <div class="col-12">
-      <label>Reason for Updation/Review <span class="required">*</span></label>
-      <select id="updateReasonTop" required>
-        <option value="">-- Select Reason --</option>
-        <option>Periodic/Annual CDD Review</option>
-        <option>Customer Identity, Address, and Contact Details</option>
-        <option>Change of Occupation</option>
-        <option>ID Document Expiry/Renewal</option>
-        <option>Other</option>
-        <option>Next Of Kin Change/Update</option>
-        <option>Account Dormancy Removal</option>
-        <option>New CIF Creation</option>
-        <option>Other Regulatory Update</option>
-      </select>
-    </div>
+<!-- STYLES (same green theme as Section 2) -->
+<style>
+.section-box {
+    border: 2px solid green;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #f4fff4;
+}
+h2 {
+    color: green;
+    font-weight: bold;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.form-group label {
+    font-weight: bold;
+}
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #888;
+    border-radius: 6px;
+}
+.green-btn {
+    background: green;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.green-btn:hover {
+    opacity: 0.8;
+}
+.drawer {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    border-left: 4px solid green;
+    background: #eaffea;
+    border-radius: 8px;
+}
+.bio-space {
+    margin-top: 10px;
+    width: 180px;
+    height: 80px;
+    border: 2px dashed green;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+</style>
 
-    <!-- Biometric & Verisys Buttons -->
-    <div class="col-6 actions">
-      <button type="button" class="btn" onclick="toggleBiometric()">+ Biometric Verification</button>
-      <button type="button" class="btn secondary" onclick="toggleVerisys()">+ Verisys (NRP/Foreign)</button>
-    </div>
-
-    <!-- Biometric tray -->
-    <div id="biometricTray" class="col-12" style="display:none; margin-top:10px; padding:10px; border:1px dashed #0b4da2; border-radius:6px; background:#f0f7ff;">
-      <label><input type="checkbox"> New CIF Creation</label>
-      <label><input type="checkbox"> Record Updation</label>
-      <label><input type="checkbox"> Dormancy Removal</label>
-      <div style="margin-top:8px; padding:6px; border:1px solid #0b4da2; border-radius:4px; width:150px; text-align:center;">Capture Fingerprint</div>
-    </div>
-
-    <!-- Verisys tray -->
-    <div id="verisysTray" class="col-12" style="display:none; margin-top:10px; padding:10px; border:1px dashed #6b7280; border-radius:6px; background:#f7f7f7;">
-      <div class="col-4">
-        <label>ID Issuance Date</label>
-        <input type="date" id="verisysIdDate">
-      </div>
-      <div class="col-4">
-        <label>OTP</label>
-        <input type="text" id="verisysOTP">
-      </div>
-      <div class="col-4 actions" style="align-items:flex-end;">
-        <button type="button" class="btn secondary" onclick="callVerisys()">Call Verisys</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+<!-- SCRIPT -->
 <script>
-  const idTypeSelect = document.getElementById('idCategoryTop');
-  const idNumberInput = document.getElementById('idDocumentNumberTop');
+/* ---------- ID Masking Logic ---------- */
+function applyMask1() {
+    document.getElementById("idDoc1").value = "";
+}
+function maskID1() {
+    let input = document.getElementById("idDoc1");
+    let type = document.getElementById("idType1").value;
 
-  // CNIC/NICOP/POC masking
-  idTypeSelect.addEventListener('change', ()=>{
-    idNumberInput.value = '';
-    if(['CNIC/NICOP','POC','CNIC','NICOP','POR'].includes(idTypeSelect.value)){
-      idNumberInput.placeholder = "xxxxx-xxxxxxx-x";
-      idNumberInput.maxLength = 15;
-    } else {
-      idNumberInput.placeholder = "Enter Document Number";
-      idNumberInput.maxLength = 50;
+    if (type === "CNIC" || type === "NICOP" || type === "POC") {
+        input.value = input.value.replace(/\D/g, '').substring(0, 15);
     }
-  });
+}
 
-  idNumberInput.addEventListener('input', ()=>{
-    if(['CNIC/NICOP','POC','CNIC','NICOP','POR'].includes(idTypeSelect.value)){
-      let digits = idNumberInput.value.replace(/\D/g,'').substring(0,13);
-      if(digits.length <= 5){
-        idNumberInput.value = digits;
-      } else if(digits.length <= 12){
-        idNumberInput.value = digits.substring(0,5)+'-'+digits.substring(5);
-      } else {
-        idNumberInput.value = digits.substring(0,5)+'-'+digits.substring(5,12)+'-'+digits.substring(12);
-      }
-    }
-  });
+/* ---------- Toggle Drawers ---------- */
+function toggleBio() {
+    let box = document.getElementById("bioBox");
+    box.style.display = (box.style.display === "block") ? "none" : "block";
+}
 
-  // Biometric toggle
-  function toggleBiometric(){
-    const tray = document.getElementById('biometricTray');
-    tray.style.display = (tray.style.display==='none')?'block':'none';
-  }
-
-  // Verisys toggle
-  function toggleVerisys(){
-    const tray = document.getElementById('verisysTray');
-    tray.style.display = (tray.style.display==='none')?'block':'none';
-  }
-
-  function callVerisys(){ alert('Calling Verisys API (placeholder)'); }
+function toggleVerysis() {
+    let box = document.getElementById("verysisBox");
+    box.style.display = (box.style.display === "block") ? "none" : "block";
+}
 </script>
 
 
