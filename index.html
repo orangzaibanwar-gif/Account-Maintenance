@@ -43,13 +43,13 @@
 
     <form id="custForm" onsubmit="return handleSubmit(event)">
 
-   <!-- MAIN GROUP -->
+ <!-- SECTION 1: ID INFORMATION -->
 <div class="section">
   <h2>1. ID Information</h2>
   <div class="grid">
 
-    <!-- ID Category -->
-    <div class="col-3">
+    <!-- ID Category and CIF Number on the same row -->
+    <div class="col-4">
       <label>ID Category <span class="required">*</span></label>
       <select id="idCategoryTop" required>
         <option value="">-- Select --</option>
@@ -60,77 +60,62 @@
       </select>
     </div>
 
-    <!-- CNIC / ID Number -->
-    <div class="col-3">
-      <label>CNIC / ID Document No.</label>
-      <input id="idNumber" type="text" placeholder="xxxxx-xxxxxxx-x" />
-    </div>
-
-    <!-- CIF Number on same line -->
-    <div class="col-3">
+    <div class="col-6">
       <label>CIF Number <span class="required">*</span></label>
       <input id="cifNumber" type="text" required />
     </div>
 
-    <div class="col-3 inline">
-      <label style="margin-bottom:0">OR</label>
-    </div>
-
-    <!-- Reason for Updation/Review with full 9 sections -->
     <div class="col-12">
       <label>Reason for Updation/Review <span class="required">*</span></label>
       <select id="updateReason" required>
         <option value="">-- Select Reason --</option>
-        <option value="PersonalIdentity">Customer Personal Identity / Name</option>
-        <option value="AddressContact">Customer Address / Contact Information</option>
-        <option value="OccupationFinancial">Occupation & Financial Profile</option>
-        <option value="KYC">Know Your Customer (KYC) Updates</option>
-        <option value="NextOfKin">Next Of Kin / Nominee Changes</option>
-        <option value="Regulatory">Other Regulatory Items / Special Conditions</option>
-        <option value="StaffCertification">Staff Certification & Finalization</option>
-        <option value="DocumentUpload">Document Upload / Record Changes</option>
-        <option value="Other">Other / Miscellaneous Updates</option>
+        <option>Periodic/Annual CDD Review</option>
+        <option>Customer Identity, Address, and Contact Details</option>
+        <option>Change of Occupation</option>
+        <option>ID Document Expiry/Renewal</option>
+        <option>Other</option>
+        <option>Next Of Kin Change/Update</option>
+        <option>Financial Profile Update</option>
+        <option>Dormancy Removal</option>
+        <option>New CIF Creation</option>
       </select>
     </div>
 
-  <!-- Biometric button in your form -->
-<div class="col-6 actions">
-  <button type="button" class="btn" id="biometricBtn">+ Biometric Verification</button>
-  <button type="button" class="btn secondary" onclick="verisys()">+ Verisys (NRP/Foreign)</button>
-</div>
+    <!-- Biometric / Verisys Buttons -->
+    <div class="col-6 actions">
+      <button type="button" class="btn" id="biometricBtn">+ Biometric Verification</button>
+      <button type="button" class="btn secondary" onclick="verisys()">+ Verisys (NRP/Foreign)</button>
+    </div>
 
-<!-- Biometric Panel (initially hidden) -->
-<div id="biometricPanel" class="biometric-panel" style="display:none;">
-  <h4>Biometric Verification</h4>
-  <div class="two-col">
-    <label><input type="checkbox" name="bioPurpose" value="NewCIF"> New CIF Creation</label>
-    <label><input type="checkbox" name="bioPurpose" value="RecordUpdation"> Record Updation</label>
-    <label><input type="checkbox" name="bioPurpose" value="DormancyRemoval"> Dormancy Removal</label>
-  </div>
-  <div class="fingerprint-box">
-    Place Finger Here
+    <!-- Biometric Panel (toggle) -->
+    <div id="biometricPanel" class="biometric-panel col-12" style="display:none;">
+      <h4>Biometric Verification</h4>
+      <div class="two-col">
+        <label><input type="checkbox" name="bioPurpose" value="NewCIF"> New CIF Creation</label>
+        <label><input type="checkbox" name="bioPurpose" value="RecordUpdation"> Record Updation</label>
+        <label><input type="checkbox" name="bioPurpose" value="DormancyRemoval"> Dormancy Removal</label>
+      </div>
+      <div class="fingerprint-box">
+        Place Finger Here
+      </div>
+    </div>
+
   </div>
 </div>
 
 <style>
   .biometric-panel {
-    margin-top: 10px;
+    margin-top: 8px;
     padding: 12px;
     border: 1px solid #0b4da2;
     border-radius: 8px;
     background: #f3f6fb;
-    box-shadow: 0 4px 10px rgba(12,30,64,0.1);
+    box-shadow: 0 4px 8px rgba(12,30,64,0.08);
   }
   .biometric-panel h4 {
     margin: 0 0 8px 0;
     font-size: 15px;
     color: #0b4da2;
-  }
-  .two-col {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 8px;
   }
   .fingerprint-box {
     height: 60px;
@@ -141,6 +126,14 @@
     font-size: 13px;
     color: #6b7280;
     border-radius: 6px;
+    margin-top: 6px;
+  }
+  .two-col label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    margin-bottom: 4px;
   }
 </style>
 
@@ -149,20 +142,13 @@
   const biometricPanel = document.getElementById('biometricPanel');
 
   biometricBtn.addEventListener('click', () => {
-    // Toggle visibility
-    if(biometricPanel.style.display === 'none'){
-      biometricPanel.style.display = 'block';
-    } else {
-      biometricPanel.style.display = 'none';
-    }
+    biometricPanel.style.display = biometricPanel.style.display === 'none' ? 'block' : 'none';
   });
+
+  function verisys() {
+    alert('Trigger Verisys lookup (placeholder)');
+  }
 </script>
-
-      <button type="button" class="btn secondary" onclick="verisys()">+ Verisys (NRP/Foreign)</button>
-    </div>
-
-  </div>
-</div>
 
 
       <!-- PERSONAL -->
