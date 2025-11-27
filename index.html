@@ -43,7 +43,7 @@
 
     <form id="custForm" onsubmit="return handleSubmit(event)">
 
- <!-- SECTION 1: ID INFORMATION -->
+<!-- SECTION 1: ID INFORMATION -->
 <div class="section">
   <h2>1. ID Information</h2>
   <div class="grid">
@@ -84,7 +84,7 @@
     <!-- Biometric / Verisys Buttons -->
     <div class="col-6 actions">
       <button type="button" class="btn" id="biometricBtn">+ Biometric Verification</button>
-      <button type="button" class="btn secondary" onclick="verisys()">+ Verisys (NRP/Foreign)</button>
+      <button type="button" class="btn secondary" id="verisysBtn">+ Verisys (NRP/Foreign)</button>
     </div>
 
     <!-- Biometric Panel (toggle) -->
@@ -95,8 +95,22 @@
         <label><input type="checkbox" name="bioPurpose" value="RecordUpdation"> Record Updation</label>
         <label><input type="checkbox" name="bioPurpose" value="DormancyRemoval"> Dormancy Removal</label>
       </div>
-      <div class="fingerprint-box">
-        Place Finger Here
+      <div class="fingerprint-box">Place Finger Here</div>
+    </div>
+
+    <!-- Verisys Panel (toggle) -->
+    <div id="verisysPanel" class="biometric-panel col-12" style="display:none;">
+      <h4>Verisys Verification</h4>
+      <div class="col-4">
+        <label>ID Issuance Date <span class="required">*</span></label>
+        <input id="verisysIdIssuance" type="date" />
+      </div>
+      <div class="col-4">
+        <label>OTP <span class="required">*</span></label>
+        <input id="verisysOTP" type="text" placeholder="Enter OTP" />
+      </div>
+      <div class="col-4 actions" style="margin-top:22px;">
+        <button type="button" class="btn" onclick="callVerisys()">Call Verisys</button>
       </div>
     </div>
 
@@ -140,16 +154,26 @@
 <script>
   const biometricBtn = document.getElementById('biometricBtn');
   const biometricPanel = document.getElementById('biometricPanel');
-
   biometricBtn.addEventListener('click', () => {
     biometricPanel.style.display = biometricPanel.style.display === 'none' ? 'block' : 'none';
   });
 
-  function verisys() {
-    alert('Trigger Verisys lookup (placeholder)');
+  const verisysBtn = document.getElementById('verisysBtn');
+  const verisysPanel = document.getElementById('verisysPanel');
+  verisysBtn.addEventListener('click', () => {
+    verisysPanel.style.display = verisysPanel.style.display === 'none' ? 'block' : 'none';
+  });
+
+  function callVerisys() {
+    const idDate = document.getElementById('verisysIdIssuance').value;
+    const otp = document.getElementById('verisysOTP').value;
+    if(!idDate || !otp){
+      alert('Please enter both ID Issuance Date and OTP');
+      return;
+    }
+    alert(`Calling Verisys with ID Date: ${idDate} and OTP: ${otp} (placeholder)`);
   }
 </script>
-
 
       <!-- PERSONAL -->
       <div class="section">
