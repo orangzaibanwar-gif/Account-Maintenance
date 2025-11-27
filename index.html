@@ -43,12 +43,16 @@
 
     <form id="custForm" onsubmit="return handleSubmit(event)">
 
-<!-- SECTION 1 – ID Information -->
+<!-- ============================================================
+   SECTION 1 – ID INFORMATION (UPDATED)
+===============================================================-->
+
 <section class="section-box">
     <h2>1. ID Information</h2>
 
     <div class="form-grid">
 
+        <!-- ID Type -->
         <div class="form-group">
             <label>ID Type *</label>
             <select id="idType1" onchange="applyMask1()" required>
@@ -60,54 +64,71 @@
             </select>
         </div>
 
+        <!-- ID Document Number -->
         <div class="form-group">
             <label>ID Document Number *</label>
-            <input type="text" id="idDoc1" maxlength="15" oninput="maskID1()" placeholder="Enter ID No" required>
+            <input type="text" id="idDoc1" maxlength="15" oninput="maskID1()" placeholder="Enter ID No">
         </div>
 
+        <!-- OR -->
+        <div class="form-group or-box">
+            <span class="or-label">OR</span>
+        </div>
+
+        <!-- CIF Number -->
         <div class="form-group">
-            <label>ID Issuance Date *</label>
-            <input type="date" required>
+            <label>CIF Number *</label>
+            <input type="text" id="cifNumber1" placeholder="Enter CIF Number">
         </div>
 
-        <div class="form-group">
-            <label>ID Expiry Date *</label>
-            <input type="date" required>
+        <!-- Reason for Updation / Review -->
+        <div class="form-group" style="grid-column: span 4;">
+            <label>Reason for Updation / Review *</label>
+            <select required>
+                <option value="">-- Select Reason --</option>
+                <option>1. ID Information Update</option>
+                <option>2. Customer Personal Information Update</option>
+                <option>3. Contact Information Update</option>
+                <option>4. Employment Information Update</option>
+                <option>5. Address Update</option>
+                <option>6. FATCA / CRS Update</option>
+                <option>7. KYC Information Update</option>
+                <option>8. Account Related Change</option>
+                <option>9. Document Upload / Review Update</option>
+            </select>
         </div>
 
-        <!-- CIF Row -->
-        <div class="form-group">
-            <label>CIF Number</label>
-            <input type="text" placeholder="Enter CIF Number">
-        </div>
-
-        <div class="form-group"></div>
-        <div class="form-group"></div>
-        <div class="form-group"></div>
-
-        <!-- Biometric & Verysis Buttons -->
+        <!-- Biometric Button -->
         <div class="form-group">
             <button type="button" class="green-btn" onclick="toggleBio()">Biometric Verification</button>
         </div>
 
+        <!-- Verisys Button -->
         <div class="form-group">
             <button type="button" class="green-btn" onclick="toggleVerysis()">Verisys Check</button>
         </div>
 
+        <div class="form-group"></div>
+        <div class="form-group"></div>
+
     </div>
 
-    <!-- BIOMETRIC DRAWER -->
+    <!-- ======================================================
+       BIOMETRIC TOGGLE BOX
+    =======================================================-->
     <div id="bioBox" class="drawer">
         <h4>Biometric Verification</h4>
 
         <label><input type="checkbox"> New CIF Creation</label><br>
         <label><input type="checkbox"> Record Updation</label><br>
-        <label><input type="checkbox"> Dormancy Removal</label><br><br>
+        <label><input type="checkbox"> Dormancy Removal</label>
 
         <div class="bio-space">Fingerprint Capture Area</div>
     </div>
 
-    <!-- VERISYS DRAWER -->
+    <!-- ======================================================
+       VERISYS TOGGLE BOX
+    =======================================================-->
     <div id="verysisBox" class="drawer">
         <h4>Verisys Verification</h4>
 
@@ -127,10 +148,12 @@
             </div>
         </div>
     </div>
-
 </section>
 
-<!-- STYLES (same green theme as Section 2) -->
+
+<!-- ============================================================
+   STYLING (Same Theme as Section 2)
+===============================================================-->
 <style>
 .section-box {
     border: 2px solid green;
@@ -139,18 +162,22 @@
     border-radius: 10px;
     background: #f4fff4;
 }
+
 h2 {
     color: green;
     font-weight: bold;
 }
+
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 15px;
 }
+
 .form-group label {
     font-weight: bold;
 }
+
 .form-group input,
 .form-group select {
     width: 100%;
@@ -158,6 +185,19 @@ h2 {
     border: 1px solid #888;
     border-radius: 6px;
 }
+
+/* OR Box */
+.or-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.or-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+}
+
 .green-btn {
     background: green;
     color: white;
@@ -168,8 +208,9 @@ h2 {
     font-weight: bold;
 }
 .green-btn:hover {
-    opacity: 0.8;
+    opacity: 0.85;
 }
+
 .drawer {
     display: none;
     margin-top: 15px;
@@ -178,10 +219,11 @@ h2 {
     background: #eaffea;
     border-radius: 8px;
 }
+
 .bio-space {
-    margin-top: 10px;
-    width: 180px;
-    height: 80px;
+    margin-top: 15px;
+    width: 200px;
+    height: 90px;
     border: 2px dashed green;
     border-radius: 6px;
     display: flex;
@@ -189,6 +231,7 @@ h2 {
     justify-content: center;
     font-weight: bold;
 }
+
 .form-grid-3 {
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -196,33 +239,37 @@ h2 {
 }
 </style>
 
-<!-- SCRIPT -->
+<!-- ============================================================
+   SCRIPT
+===============================================================-->
 <script>
-/* ---------- ID Masking Logic ---------- */
+/* Apply Mask based on selection */
 function applyMask1() {
     document.getElementById("idDoc1").value = "";
 }
+
+/* 15-digit masking for CNIC / NICOP / POC */
 function maskID1() {
     let input = document.getElementById("idDoc1");
     let type = document.getElementById("idType1").value;
 
     if (type === "CNIC" || type === "NICOP" || type === "POC") {
-        input.value = input.value.replace(/\D/g, '').substring(0, 15);
+        input.value = input.value.replace(/\D/g, "").substring(0, 15);
     }
 }
 
-/* ---------- Toggle Drawers ---------- */
+/* Toggle Biometric */
 function toggleBio() {
     let box = document.getElementById("bioBox");
     box.style.display = (box.style.display === "block") ? "none" : "block";
 }
 
+/* Toggle Verisys */
 function toggleVerysis() {
     let box = document.getElementById("verysisBox");
     box.style.display = (box.style.display === "block") ? "none" : "block";
 }
 </script>
-
 
 <!-- ============================
  SECTION 2 – CUSTOMER PERSONAL INFORMATION & IDENTITY
