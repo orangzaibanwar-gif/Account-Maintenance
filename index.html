@@ -523,7 +523,7 @@ document.getElementById("otherNationality").addEventListener("change", function(
 });
 </script>
 
-<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme, Corrected Layout) -->
+<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme, Corrected Alignment) -->
 <div class="section-box">
   <h2>3. Customer Contact & Address Information</h2>
 
@@ -583,13 +583,7 @@ document.getElementById("otherNationality").addEventListener("change", function(
       </select>
     </div>
 
-    <!-- ROW 4: Email -->
-    <div class="form-group" style="grid-column: span 4;">
-      <label>Email Address</label>
-      <input id="emailAddress" type="email" placeholder="Enter email" />
-    </div>
-
-    <!-- ROW 5: Tel & Home -->
+    <!-- ROW 4: Tel & Home -->
     <div class="form-group">
       <label>Tel Office Number</label>
       <input type="text" id="telOffice" placeholder="Enter office number" maxlength="15" />
@@ -598,6 +592,12 @@ document.getElementById("otherNationality").addEventListener("change", function(
     <div class="form-group">
       <label>Home / Residence Number</label>
       <input type="text" id="homeNumber" placeholder="Enter home number" maxlength="15" />
+    </div>
+
+    <!-- ROW 5: Email -->
+    <div class="form-group" style="grid-column: span 4;">
+      <label>Email Address</label>
+      <input id="emailAddress" type="email" placeholder="Enter email address" style="width:100%; max-width:600px;" />
     </div>
   </div>
 </div>
@@ -632,6 +632,7 @@ document.getElementById("otherNationality").addEventListener("change", function(
   const relationGroup = document.getElementById('relationGroup');
 
   function toggleRelation() {
+    // Relation field visible ONLY when Self Registered is unchecked
     relationGroup.style.display = selfRegisteredCheckbox.checked ? 'none' : 'block';
   }
 
