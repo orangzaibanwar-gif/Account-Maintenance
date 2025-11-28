@@ -271,234 +271,183 @@ function toggleVerysis() {
 }
 </script>
 
-<!-- ============================
- SECTION 2 – CUSTOMER PERSONAL INFORMATION & IDENTITY
-===============================-->
-<section class="section-box">
-    <h2>2. Customer Personal Information & Identity</h2>
+<!-- SECTION 2 – CUSTOMER PERSONAL INFORMATION & IDENTITY -->
+<div class="section">
+  <h2>2. Customer Personal Information & Identity</h2>
+  <div class="grid">
 
-    <div class="form-grid">
+    <!-- ROW 1 -->
+    <div class="col-3">
+      <label>ID Category <span class="required">*</span></label>
+      <select id="idCategory" required>
+        <option value="">-- Select --</option>
+        <option>CNIC</option>
+        <option>NICOP</option>
+        <option>POC</option>
+        <option>Passport</option>
+      </select>
+    </div>
 
-        <!-- ROW 1 -->
-        <div class="form-group">
-            <label>ID Category *</label>
-            <select required>
-                <option value="">Select</option>
-                <option>CNIC</option>
-                <option>NICOP</option>
-                <option>POC</option>
-                <option>Passport</option>
-            </select>
-        </div>
+    <div class="col-3">
+      <label>ID Document Number <span class="required">*</span></label>
+      <input id="idDocumentNumber" type="text" maxlength="15" required placeholder="XXXXX-XXXXXXX-X" />
+    </div>
 
-        <div class="form-group">
-            <label>ID Document No *</label>
-            <input type="text" id="idDocNo2" maxlength="15" oninput="maskID2()" placeholder="Enter ID number" required>
-        </div>
+    <div class="col-3">
+      <label>ID Issuance Date</label>
+      <input type="date" id="idIssuanceDate" />
+    </div>
 
-        <div class="form-group">
-            <label>ID Issuance Date *</label>
-            <input type="date" required>
-        </div>
+    <div class="col-3">
+      <label>ID Expiry Date</label>
+      <input type="date" id="idExpiryDate" />
+    </div>
 
-        <div class="form-group">
-            <label>ID Expiry Date *</label>
-            <input type="date" required>
-        </div>
+    <!-- ROW 2 -->
+    <div class="col-3">
+      <label>Salutation <span class="required">*</span></label>
+      <select id="salutation" required>
+        <option value="">-- Select --</option>
+        <option>Mr</option>
+        <option>Ms</option>
+        <option>Mrs</option>
+        <option>Mx</option>
+      </select>
+    </div>
 
-        <!-- ROW 2 -->
-        <div class="form-group">
-            <label>Salutation *</label>
-            <select id="salutation" onchange="validateSalutationGender()" required>
-                <option value="">Select</option>
-                <option value="Mr">Mr</option>
-                <option value="Ms">Ms</option>
-                <option value="Mrs">Mrs</option>
-                <option value="Mx">Mx</option>
-            </select>
-        </div>
+    <div class="col-3">
+      <label>Full Name <span class="required">*</span></label>
+      <input id="fullName" type="text" required />
+    </div>
 
-        <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" required>
-        </div>
+    <div class="col-3">
+      <label>Father / Spouse Name</label>
+      <input id="fatherSpouseName" type="text" />
+    </div>
 
-        <div class="form-group">
-            <label>Father / Spouse Name *</label>
-            <input type="text" required>
-        </div>
+    <div class="col-3">
+      <label>Gender <span class="required">*</span></label>
+      <select id="gender" required>
+        <option value="">-- Select --</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+    </div>
 
-        <div class="form-group">
-            <label>Gender *</label>
-            <select id="gender" required>
-                <option value="">Select</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
+    <!-- ROW 3 -->
+    <div class="col-4">
+      <label>Mother Maiden Name</label>
+      <input id="motherMaiden" type="text" />
+    </div>
 
-        <!-- ROW 3 -->
-        <div class="form-group">
-            <label>Mother's Maiden Name *</label>
-            <input type="text" required>
-        </div>
+    <div class="col-4">
+      <label>Nationality <span class="required">*</span></label>
+      <select id="nationality" required></select>
+    </div>
 
-        <div class="form-group">
-            <label>Nationality *</label>
-            <select id="nationality" onchange="toggleBirthPlace()" required>
-                <option value="">Select Country</option>
-            </select>
-        </div>
+    <div class="col-4">
+      <label>FBR Status</label>
+      <input id="fbrStatus" type="text" value="Filer" readonly />
+    </div>
 
-        <div class="form-group">
-            <label>Place of Birth *</label>
-            <select id="birthPlaceLOV" style="display:none;"></select>
-            <input type="text" id="birthPlaceText" placeholder="Enter Place of Birth">
-        </div>
+    <!-- CHECKBOXES -->
+    <div class="col-3 inline">
+      <label><input type="checkbox" id="nonResident"> Non-Resident</label>
+    </div>
 
-        <div class="form-group">
-            <label>FBR Status *</label>
-            <input type="text" value="Filer" readonly>
-        </div>
+    <div class="col-3 inline">
+      <label><input type="checkbox" id="zakatExempt"> Zakat Exempt (CZ-50)</label>
+    </div>
 
-        <!-- ROW 4 -->
-        <div class="form-group">
-            <label>Date of Birth *</label>
-            <input type="date" required>
-        </div>
+    <div class="col-3 inline">
+      <label><input type="checkbox" id="otherNationality"> Other Nationality</label>
+    </div>
 
-        <div class="form-group">
-            <label>Marital Status *</label>
-            <select>
-                <option value="">Select</option>
-                <option>Single</option>
-                <option>Married</option>
-                <option>Widowed</option>
-                <option>Divorced</option>
-            </select>
-        </div>
+  </div>
 
-        <div class="form-group">
-            <label>Religion *</label>
-            <select>
-                <option value="">Select</option>
-                <option>Islam</option>
-                <option>Christian</option>
-                <option>Hindu</option>
-                <option>Sikh</option>
-                <option>Other</option>
-            </select>
-        </div>
+  <!-- SLIDER FOR OTHER NATIONALITY -->
+  <div id="otherNationalitySlider" class="slider hidden">
+    <h3>Additional Nationality Details</h3>
+    <div class="grid">
 
-        <div class="form-group">
-            <label>Education *</label>
-            <select>
-                <option value="">Select</option>
-                <option>Primary</option>
-                <option>Matric</option>
-                <option>Intermediate</option>
-                <option>Bachelor</option>
-                <option>Master</option>
-                <option>PhD</option>
-            </select>
-        </div>
+      <div class="col-3">
+        <label>Country</label>
+        <select id="otherCountry"></select>
+      </div>
+
+      <div class="col-3">
+        <label>ID Type</label>
+        <select id="otherIdType">
+          <option value="">-- Select --</option>
+          <option>Passport</option>
+          <option>National ID</option>
+          <option>Residence Permit</option>
+        </select>
+      </div>
+
+      <div class="col-3">
+        <label>ID Number</label>
+        <input id="otherIdNumber" type="text" maxlength="15" placeholder="Enter ID number" />
+      </div>
+
+      <div class="col-3">
+        <label>ID Expiry Date</label>
+        <input type="date" id="otherIdExpiry" />
+      </div>
 
     </div>
-</section>
+  </div>
+</div>
 
-<!-- STYLE -->
 <style>
-.section-box {
-    border: 2px solid green;
-    padding: 18px;
-    margin-top: 20px;
-    border-radius: 10px;
-    background: #f4fff4;
-}
-h2 {
-    color: green;
-    font-weight: bold;
-}
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-}
-.form-group label {
-    font-weight: bold;
-}
-.form-group input, 
-.form-group select {
-    width: 100%;
-    padding: 7px;
-    border: 1px solid #888;
+  .slider {
+    background: #e7f7ea;
+    border-left: 4px solid green;
+    padding: 15px;
+    margin-top: 10px;
     border-radius: 6px;
-}
+  }
+  .hidden { display: none; }
 </style>
 
-<!-- COUNTRY LIST + CITY LIST + LOGIC -->
 <script>
-// ---------- COUNTRIES ----------
-const countryList = [
-"Pakistan","India","China","Saudi Arabia","UAE","Turkey","UK","USA","Canada","Australia",
-"Afghanistan","Bangladesh","Iran","Iraq","Nepal","Sri Lanka","Germany","France","Italy"
-];
+/* COUNTRY LIST FOR NATIONALITY & OTHER NATIONALITY */
+const countries = [...(same country list as section 3)...];
 
-// ---------- PAKISTANI CITIES ----------
-const pakCities = [
-"Karachi","Lahore","Islamabad","Rawalpindi","Peshawar","Quetta","Multan","Faisalabad",
-"Hyderabad","Sialkot","Sukkur","Gwadar","Bahawalpur"
-];
-
-// Load Country List
-window.onload = () => {
-    let nat = document.getElementById("nationality");
-    countryList.forEach(c => {
-        let opt = document.createElement("option");
-        opt.textContent = c;
-        opt.value = c;
-        nat.appendChild(opt);
-    });
-};
-
-// ---------- ID MASKING ----------
-function maskID2() {
-    let input = document.getElementById("idDocNo2");
-    input.value = input.value.replace(/\D/g, '').substring(0,15);
+function populateCountryDropdown(id) {
+  const el = document.getElementById(id);
+  el.innerHTML = '<option value="">-- Select Country --</option>' +
+    countries.map(c => `<option>${c}</option>`).join('');
 }
+populateCountryDropdown("nationality");
+populateCountryDropdown("otherCountry");
 
-// ---------- Nationality + Birth Place Logic ----------
-function toggleBirthPlace() {
-    let nationality = document.getElementById("nationality").value;
-    let lov = document.getElementById("birthPlaceLOV");
-    let txt = document.getElementById("birthPlaceText");
+/* SALUTATION - GENDER VALIDATION */
+document.getElementById("salutation").addEventListener("change", function() {
+  const g = document.getElementById("gender");
 
-    if (nationality === "Pakistan") {
-        txt.style.display = "none";
-        lov.style.display = "block";
-        lov.innerHTML = "";
-        pakCities.forEach(c => {
-            let opt = document.createElement("option");
-            opt.value = c;
-            opt.textContent = c;
-            lov.appendChild(opt);
-        });
-    } else {
-        txt.style.display = "block";
-        lov.style.display = "none";
-    }
-}
+  if (this.value === "Mr") g.value = "Male";
+  else if (this.value === "Ms" || this.value === "Mrs") g.value = "Female";
+  else if (this.value === "Mx") g.value = "Other";
+});
 
-// ---------- Salutation & Gender Mapping ----------
-function validateSalutationGender() {
-    let sal = document.getElementById("salutation").value;
-    let gender = document.getElementById("gender");
+/* ID MASKING FOR CNIC/NICOP/POC */
+document.getElementById("idCategory").addEventListener("change", function() {
+  const idField = document.getElementById("idDocumentNumber");
+  if (["CNIC","NICOP","POC"].includes(this.value)) {
+    idField.setAttribute("maxlength", "15");
+    idField.placeholder = "XXXXX-XXXXXXX-X";
+  } else {
+    idField.setAttribute("maxlength", "20");
+    idField.placeholder = "Enter ID";
+  }
+});
 
-    if (sal === "Mr") gender.value = "Male";
-    else if (sal === "Ms" || sal === "Mrs") gender.value = "Female";
-    else if (sal === "Mx") gender.value = "Other";
-}
+/* SHOW / HIDE OTHER NATIONALITY SLIDER */
+document.getElementById("otherNationality").addEventListener("change", function() {
+  document.getElementById("otherNationalitySlider").classList.toggle("hidden", !this.checked);
+});
 </script>
 
 <!-- CONTACT INFORMATION -->
