@@ -523,123 +523,185 @@ document.getElementById("otherNationality").addEventListener("change", function(
 });
 </script>
 
-<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme, Corrected Alignment) -->
+<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme) -->
+<style>
+.section-box {
+    border: 2px solid green;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #f4fff4;
+}
+
+h2 {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.form-grid4 {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.full-row {
+    grid-column: span 4;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #888;
+    border-radius: 6px;
+}
+
+textarea {
+    height: 70px;
+    resize: none;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+
 <div class="section-box">
-  <h2>3. Customer Contact & Address Information</h2>
+    <h2>3. Customer Contact & Address Information</h2>
 
-  <div class="form-grid">
-    <!-- ROW 1: Addresses -->
-    <div class="form-group" style="grid-column: span 2;">
-      <label>Current Residential Address <span class="required">*</span></label>
-      <textarea id="residentialAddress" placeholder="Enter current address" required style="height:80px;"></textarea>
-    </div>
+    <div class="form-grid4">
 
-    <div class="form-group" style="grid-column: span 2;">
-      <label>Permanent Address (as per ID) <span class="required">*</span></label>
-      <textarea id="permanentAddress" placeholder="Enter permanent address" required style="height:80px;"></textarea>
-    </div>
+        <!-- ADDRESS ROWS -->
+        <div class="form-group full-row">
+            <label>Current Residential Address *</label>
+            <textarea id="residentialAddress" required placeholder="Enter current full address"></textarea>
+        </div>
 
-    <!-- ROW 2: Mobile Info -->
-    <div class="form-group">
-      <label>Mobile Country</label>
-      <select id="mobileCountry"></select>
-    </div>
+        <div class="form-group full-row">
+            <label>Permanent Address (as per ID) *</label>
+            <textarea id="permanentAddress" required placeholder="Enter permanent address"></textarea>
+        </div>
 
-    <div class="form-group">
-      <label>Telco Company</label>
-      <select id="telco">
-        <option>Mobilink</option>
-        <option>Telenor</option>
-        <option>Zong</option>
-        <option>Ufone</option>
-        <option>Onic</option>
-        <option>Warid</option>
-      </select>
-    </div>
+        <!-- CONTACT DETAILS ROW -->
+        <div class="form-group">
+            <label>Mobile Country *</label>
+            <select id="mobileCountry" required></select>
+        </div>
 
-    <div class="form-group">
-      <label>Primary Contact Number (Mobile) <span class="required">*</span></label>
-      <input id="primaryContactNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11" required />
-    </div>
+        <div class="form-group">
+            <label>Telco Company *</label>
+            <select id="telco" required>
+                <option value="">-- Select --</option>
+                <option>Jazz / Mobilink</option>
+                <option>Telenor</option>
+                <option>Zong</option>
+                <option>Ufone</option>
+                <option>Onic</option>
+            </select>
+        </div>
 
-    <div class="form-group">
-      <label>WhatsApp Number</label>
-      <input id="whatsappNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11" />
-    </div>
+        <div class="form-group">
+            <label>Primary Mobile Number *</label>
+            <input id="primaryContact" type="text" maxlength="11" placeholder="03XXXXXXXXX" required />
+        </div>
 
-    <!-- ROW 3: Self Registered Checkbox -->
-    <div class="form-group" style="display:flex; align-items:center;">
-      <label><input type="checkbox" id="selfRegistered"> Self Registered</label>
-    </div>
+        <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input id="whatsapp" type="text" maxlength="11" placeholder="03XXXXXXXXX" />
+        </div>
 
-    <!-- Conditional Relation Field -->
-    <div class="form-group" id="relationGroup">
-      <label>Relation</label>
-      <select id="relation">
-        <option>Father</option>
-        <option>Mother</option>
-        <option>Brother</option>
-        <option>Sister</option>
-      </select>
-    </div>
+        <!-- SELF REGISTERED -->
+        <div class="form-group">
+            <label><input type="checkbox" id="selfRegistered"> SIM Registered On Customer Name</label>
+        </div>
 
-    <!-- ROW 4: Tel & Home -->
-    <div class="form-group">
-      <label>Tel Office Number</label>
-      <input type="text" id="telOffice" placeholder="Enter office number" maxlength="15" />
-    </div>
+        <!-- RELATION (CONTROLLED BY CHECKBOX) -->
+        <div class="form-group" id="relationGroup">
+            <label>Relation with SIM Owner *</label>
+            <select id="relation">
+                <option value="">-- Select Relation --</option>
+                <option>Father</option>
+                <option>Mother</option>
+                <option>Brother</option>
+                <option>Sister</option>
+                <option>Spouse</option>
+                <option>Relative</option>
+            </select>
+        </div>
 
-    <div class="form-group">
-      <label>Home / Residence Number</label>
-      <input type="text" id="homeNumber" placeholder="Enter home number" maxlength="15" />
-    </div>
+        <!-- OFFICE & HOME NUMBERS -->
+        <div class="form-group">
+            <label>Office Number</label>
+            <input id="officeNumber" type="text" placeholder="Enter office number" maxlength="15" />
+        </div>
 
-    <!-- ROW 5: Email -->
-    <div class="form-group" style="grid-column: span 4;">
-      <label>Email Address</label>
-      <input id="emailAddress" type="email" placeholder="Enter email address" style="width:100%; max-width:600px;" />
+        <div class="form-group">
+            <label>Home / Residence Number</label>
+            <input id="homeNumber" type="text" placeholder="Enter home number" maxlength="15" />
+        </div>
+
+        <!-- EMAIL FIELD FULL ROW -->
+        <div class="form-group full-row">
+            <label>Email Address</label>
+            <input id="emailAddress" type="email" placeholder="yourname@example.com" />
+        </div>
+
     </div>
-  </div>
 </div>
 
 <script>
-  // Populate Mobile Country select with country list
-  const countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua & Barbuda","Argentina","Armenia","Australia","Austria",
-    "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
-    "Bolivia","Bosnia & Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Côte d'Ivoire","Cabo Verde",
-    "Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo (Congo-Brazzaville)",
-    "Costa Rica","Croatia","Cuba","Cyprus","Czechia","Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic",
-    "Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland",
-    "France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea",
-    "Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq",
-    "Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait",
-    "Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg",
-    "Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico",
-    "Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru",
-    "Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman",
-    "Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar",
-    "Romania","Russia","Rwanda","St Kitts & Nevis","St Lucia","Saint Vincent","Samoa","San Marino","Sao Tome & Principe","Saudi Arabia",
-    "Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa",
-    "South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan",
-    "Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan",
-    "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+/* COUNTRY LIST */
+const countries = [
+ "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua & Barbuda","Argentina","Armenia","Australia","Austria",
+ "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
+ "Bolivia","Bosnia & Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Côte d'Ivoire",
+ "Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Costa Rica",
+ "Croatia","Cuba","Cyprus","Czechia","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt",
+ "El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France",
+ "Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau",
+ "Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel",
+ "Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Laos",
+ "Latvia","Lebanon","Lesotho","Liberia","Libya","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia",
+ "Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco",
+ "Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand",
+ "Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Panama",
+ "Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda",
+ "Saint Kitts & Nevis","Saint Lucia","Saint Vincent","Samoa","San Marino","Saudi Arabia","Senegal","Serbia",
+ "Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea",
+ "South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan",
+ "Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu",
+ "Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu",
+ "Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
+];
 
-  const mobileCountrySelect = document.getElementById('mobileCountry');
-  mobileCountrySelect.innerHTML = '<option value="">-- Select Country --</option>' + countries.map(c => '<option>'+c+'</option>').join('');
+document.getElementById("mobileCountry").innerHTML =
+    '<option value="">-- Select Country --</option>' +
+    countries.map(c => `<option>${c}</option>`).join("");
 
-  // Show/Hide Relation based on Self Registered checkbox
-  const selfRegisteredCheckbox = document.getElementById('selfRegistered');
-  const relationGroup = document.getElementById('relationGroup');
+/* RELATION FIELD LOGIC */
+function updateRelationVisibility() {
+    const isSelf = document.getElementById("selfRegistered").checked;
+    const rel = document.getElementById("relationGroup");
 
-  function toggleRelation() {
-    // Relation field visible ONLY when Self Registered is unchecked
-    relationGroup.style.display = selfRegisteredCheckbox.checked ? 'none' : 'block';
-  }
+    if (isSelf) {
+        rel.classList.add("hidden");
+        document.getElementById("relation").value = "";
+    } else {
+        rel.classList.remove("hidden");
+    }
+}
 
-  selfRegisteredCheckbox.addEventListener('change', toggleRelation);
-  toggleRelation(); // initialize on load
+document.getElementById("selfRegistered").addEventListener("change", updateRelationVisibility);
+
+/* Initialize on page load */
+updateRelationVisibility();
 </script>
-
 
       <!-- OCCUPATION -->
       <div class="section">
