@@ -271,14 +271,77 @@ function toggleVerysis() {
 }
 </script>
 
-<!-- SECTION 2 – CUSTOMER PERSONAL INFORMATION & IDENTITY -->
-<div class="section">
-  <h2>2. Customer Personal Information & Identity</h2>
-  <div class="grid">
+<!-- SECTION 2 – CUSTOMER PERSONAL INFORMATION & IDENTITY (Green Theme, Optimized Alignment) -->
+<style>
+.section-box {
+    border: 2px solid green;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #f4fff4;
+}
 
+h2 {
+    color: green;
+    font-weight: bold;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #888;
+    border-radius: 6px;
+}
+
+.green-btn {
+    background: green;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.green-btn:hover {
+    opacity: 0.85;
+}
+
+.drawer {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    border-left: 4px solid green;
+    background: #eaffea;
+    border-radius: 8px;
+}
+
+.checkbox-row {
+    display: flex;
+    gap: 25px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+</style>
+
+<div class="section-box">
+  <h2>2. Customer Personal Information & Identity</h2>
+
+  <div class="form-grid">
     <!-- ROW 1 -->
-    <div class="col-3">
-      <label>ID Category <span class="required">*</span></label>
+    <div class="form-group">
+      <label>ID Category *</label>
       <select id="idCategory" required>
         <option value="">-- Select --</option>
         <option>CNIC</option>
@@ -288,24 +351,24 @@ function toggleVerysis() {
       </select>
     </div>
 
-    <div class="col-3">
-      <label>ID Document Number <span class="required">*</span></label>
+    <div class="form-group">
+      <label>ID Document Number *</label>
       <input id="idDocumentNumber" type="text" maxlength="15" required placeholder="XXXXX-XXXXXXX-X" />
     </div>
 
-    <div class="col-3">
+    <div class="form-group">
       <label>ID Issuance Date</label>
       <input type="date" id="idIssuanceDate" />
     </div>
 
-    <div class="col-3">
+    <div class="form-group">
       <label>ID Expiry Date</label>
       <input type="date" id="idExpiryDate" />
     </div>
 
     <!-- ROW 2 -->
-    <div class="col-3">
-      <label>Salutation <span class="required">*</span></label>
+    <div class="form-group">
+      <label>Salutation *</label>
       <select id="salutation" required>
         <option value="">-- Select --</option>
         <option>Mr</option>
@@ -315,18 +378,18 @@ function toggleVerysis() {
       </select>
     </div>
 
-    <div class="col-3">
-      <label>Full Name <span class="required">*</span></label>
+    <div class="form-group">
+      <label>Full Name *</label>
       <input id="fullName" type="text" required />
     </div>
 
-    <div class="col-3">
+    <div class="form-group">
       <label>Father / Spouse Name</label>
       <input id="fatherSpouseName" type="text" />
     </div>
 
-    <div class="col-3">
-      <label>Gender <span class="required">*</span></label>
+    <div class="form-group">
+      <label>Gender *</label>
       <select id="gender" required>
         <option value="">-- Select --</option>
         <option>Male</option>
@@ -336,48 +399,69 @@ function toggleVerysis() {
     </div>
 
     <!-- ROW 3 -->
-    <div class="col-4">
+    <div class="form-group">
+      <label>Marital Status *</label>
+      <select id="maritalStatus" required>
+        <option value="">-- Select --</option>
+        <option>Single</option>
+        <option>Married</option>
+        <option>Divorced</option>
+        <option>Widow / Widower</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Place of Birth *</label>
+      <input id="placeOfBirth" type="text" required />
+    </div>
+
+    <div class="form-group">
+      <label>Qualification *</label>
+      <select id="qualification" required>
+        <option value="">-- Select --</option>
+        <option>Matric</option>
+        <option>Intermediate</option>
+        <option>Bachelor</option>
+        <option>Master</option>
+        <option>Doctorate</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
       <label>Mother Maiden Name</label>
       <input id="motherMaiden" type="text" />
     </div>
 
-    <div class="col-4">
-      <label>Nationality <span class="required">*</span></label>
-      <select id="nationality" required></select>
+    <div class="form-group">
+      <label>Nationality *</label>
+      <select id="nationality"></select>
     </div>
 
-    <div class="col-4">
+    <div class="form-group">
       <label>FBR Status</label>
       <input id="fbrStatus" type="text" value="Filer" readonly />
     </div>
-
-    <!-- CHECKBOXES -->
-    <div class="col-3 inline">
-      <label><input type="checkbox" id="nonResident"> Non-Resident</label>
-    </div>
-
-    <div class="col-3 inline">
-      <label><input type="checkbox" id="zakatExempt"> Zakat Exempt (CZ-50)</label>
-    </div>
-
-    <div class="col-3 inline">
-      <label><input type="checkbox" id="otherNationality"> Other Nationality</label>
-    </div>
-
   </div>
 
-  <!-- SLIDER FOR OTHER NATIONALITY -->
-  <div id="otherNationalitySlider" class="slider hidden">
-    <h3>Additional Nationality Details</h3>
-    <div class="grid">
+  <!-- CHECKBOXES ALIGNED LAST ROW -->
+  <div class="checkbox-row">
+    <label><input type="checkbox" id="nonResident"> Non-Resident</label>
+    <label><input type="checkbox" id="zakatExempt"> Zakat Exempt (CZ-50)</label>
+    <label><input type="checkbox" id="otherNationality"> Other Nationality</label>
+  </div>
 
-      <div class="col-3">
-        <label>Country</label>
+  <!-- SLIDER -->
+  <div id="otherNationalitySlider" class="drawer">
+    <h3>Additional Nationality Details</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Country of Other Nationality</label>
         <select id="otherCountry"></select>
       </div>
 
-      <div class="col-3">
-        <label>ID Type</label>
+      <div class="form-group">
+        <label>ID Type of Other Nationality</label>
         <select id="otherIdType">
           <option value="">-- Select --</option>
           <option>Passport</option>
@@ -386,53 +470,42 @@ function toggleVerysis() {
         </select>
       </div>
 
-      <div class="col-3">
-        <label>ID Number</label>
+      <div class="form-group">
+        <label>ID Number of Other Nationality</label>
         <input id="otherIdNumber" type="text" maxlength="15" placeholder="Enter ID number" />
       </div>
 
-      <div class="col-3">
+      <div class="form-group">
         <label>ID Expiry Date</label>
         <input type="date" id="otherIdExpiry" />
       </div>
 
+      <div class="form-group">
+        <button type="button" class="green-btn" id="addRemoveOtherNationality">Add / Remove</button>
+      </div>
     </div>
   </div>
 </div>
 
-<style>
-  .slider {
-    background: #e7f7ea;
-    border-left: 4px solid green;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 6px;
-  }
-  .hidden { display: none; }
-</style>
-
 <script>
-/* COUNTRY LIST FOR NATIONALITY & OTHER NATIONALITY */
-const countries = [...(same country list as section 3)...];
-
+/* COUNTRY LIST */
+const countries = ["Pakistan","UAE","Saudi Arabia","Qatar","USA","UK","Canada","Australia","Turkey","Malaysia","China","Japan","Germany","France"];
 function populateCountryDropdown(id) {
   const el = document.getElementById(id);
-  el.innerHTML = '<option value="">-- Select Country --</option>' +
-    countries.map(c => `<option>${c}</option>`).join('');
+  el.innerHTML = '<option value="">-- Select Country --</option>' + countries.map(c => `<option>${c}</option>`).join('');
 }
 populateCountryDropdown("nationality");
 populateCountryDropdown("otherCountry");
 
-/* SALUTATION - GENDER VALIDATION */
+/* SALUTATION → GENDER MAPPING */
 document.getElementById("salutation").addEventListener("change", function() {
   const g = document.getElementById("gender");
-
   if (this.value === "Mr") g.value = "Male";
   else if (this.value === "Ms" || this.value === "Mrs") g.value = "Female";
   else if (this.value === "Mx") g.value = "Other";
 });
 
-/* ID MASKING FOR CNIC/NICOP/POC */
+/* CNIC MASKING */
 document.getElementById("idCategory").addEventListener("change", function() {
   const idField = document.getElementById("idDocumentNumber");
   if (["CNIC","NICOP","POC"].includes(this.value)) {
@@ -444,9 +517,9 @@ document.getElementById("idCategory").addEventListener("change", function() {
   }
 });
 
-/* SHOW / HIDE OTHER NATIONALITY SLIDER */
+/* SHOW / HIDE OTHER NATIONALITY SECTION */
 document.getElementById("otherNationality").addEventListener("change", function() {
-  document.getElementById("otherNationalitySlider").classList.toggle("hidden", !this.checked);
+  document.getElementById("otherNationalitySlider").style.display = this.checked ? "block" : "none";
 });
 </script>
 
