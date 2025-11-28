@@ -523,7 +523,7 @@ document.getElementById("otherNationality").addEventListener("change", function(
 });
 </script>
 
-<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme, Conditional Relation Field) -->
+<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme, Corrected Layout) -->
 <div class="section-box">
   <h2>3. Customer Contact & Address Information</h2>
 
@@ -573,7 +573,7 @@ document.getElementById("otherNationality").addEventListener("change", function(
     </div>
 
     <!-- Conditional Relation Field -->
-    <div class="form-group" id="relationGroup" style="display:none;">
+    <div class="form-group" id="relationGroup">
       <label>Relation</label>
       <select id="relation">
         <option>Father</option>
@@ -584,7 +584,7 @@ document.getElementById("otherNationality").addEventListener("change", function(
     </div>
 
     <!-- ROW 4: Email -->
-    <div class="form-group" style="grid-column: span 2;">
+    <div class="form-group" style="grid-column: span 4;">
       <label>Email Address</label>
       <input id="emailAddress" type="email" placeholder="Enter email" />
     </div>
@@ -636,9 +636,7 @@ document.getElementById("otherNationality").addEventListener("change", function(
   }
 
   selfRegisteredCheckbox.addEventListener('change', toggleRelation);
-
-  // Initialize
-  toggleRelation();
+  toggleRelation(); // initialize on load
 </script>
 
 
