@@ -523,7 +523,7 @@ document.getElementById("otherNationality").addEventListener("change", function(
 });
 </script>
 
-<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme) -->
+<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme, Conditional Relation Field) -->
 <div class="section-box">
   <h2>3. Customer Contact & Address Information</h2>
 
@@ -567,12 +567,13 @@ document.getElementById("otherNationality").addEventListener("change", function(
       <input id="whatsappNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11" />
     </div>
 
-    <!-- ROW 3: Self Registered / Relation -->
+    <!-- ROW 3: Self Registered Checkbox -->
     <div class="form-group" style="display:flex; align-items:center;">
       <label><input type="checkbox" id="selfRegistered"> Self Registered</label>
     </div>
 
-    <div class="form-group">
+    <!-- Conditional Relation Field -->
+    <div class="form-group" id="relationGroup" style="display:none;">
       <label>Relation</label>
       <select id="relation">
         <option>Father</option>
@@ -625,7 +626,21 @@ document.getElementById("otherNationality").addEventListener("change", function(
 
   const mobileCountrySelect = document.getElementById('mobileCountry');
   mobileCountrySelect.innerHTML = '<option value="">-- Select Country --</option>' + countries.map(c => '<option>'+c+'</option>').join('');
+
+  // Show/Hide Relation based on Self Registered checkbox
+  const selfRegisteredCheckbox = document.getElementById('selfRegistered');
+  const relationGroup = document.getElementById('relationGroup');
+
+  function toggleRelation() {
+    relationGroup.style.display = selfRegisteredCheckbox.checked ? 'none' : 'block';
+  }
+
+  selfRegisteredCheckbox.addEventListener('change', toggleRelation);
+
+  // Initialize
+  toggleRelation();
 </script>
+
 
       <!-- OCCUPATION -->
       <div class="section">
