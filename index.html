@@ -966,7 +966,7 @@ textarea {
 </div>
 
 <!-- SECTION 10: SUBMISSION & FINAL ACTIONS -->
-<div class="section-box">
+<div class="section-box" id="submissionSection">
   <h2>10. Submission & Final Actions</h2>
   <div class="form-grid">
 
@@ -996,9 +996,30 @@ textarea {
 </div>
 
 <script>
-  function printCIF(){
-    alert('Printing CIF Form (placeholder)');
-  }
+function printCIF() {
+  // Get the content of the form to print (you can also select specific section)
+  const formContent = document.body.innerHTML; // or select #submissionSection or full form div
+
+  // Open a new window
+  const printWindow = window.open('', '', 'height=800,width=1000');
+
+  // Add content to new window
+  printWindow.document.write('<html><head><title>CIF Form</title>');
+  // Optional: include your styles for print
+  printWindow.document.write('<style>');
+  printWindow.document.write('body{font-family:Arial,sans-serif; padding:20px;}');
+  printWindow.document.write('h2{color:green;}');
+  printWindow.document.write('label{font-weight:bold;}');
+  printWindow.document.write('input, select, textarea{width:100%; padding:5px; margin-bottom:10px; border:1px solid #888; border-radius:4px;}');
+  printWindow.document.write('</style>');
+  printWindow.document.write('</head><body>');
+  printWindow.document.write(formContent);
+  printWindow.document.write('</body></html>');
+
+  printWindow.document.close();
+  printWindow.focus();
+  printWindow.print();
+}
 </script>
 
 <style>
