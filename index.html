@@ -822,183 +822,211 @@ textarea {
   </div>
 </div>
 
-<!-- ============================================
-     SECTION 5 – KNOW YOUR CUSTOMER (KYC)
-     (MATCHED WITH SECTION 2 STYLE)
-=============================================== -->
-<section class="section-box-light">
-    <h2 class="section-title">5. Know Your Customer (KYC)</h2>
+<!-- SECTION 5: KNOW YOUR CUSTOMER (KYC) - REVISED BANKING PRACTICE ALIGNMENT -->
+<style>
+  .section-box {
+    border: 2px solid #2e7d32;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f1fff1;
+    margin-bottom: 25px;
+  }
+  .section-box h2 {
+    background: #2e7d32;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .form-group label {
+    font-weight: 600;
+  }
+  .checkbox-row {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    background: #e8f5e9;
+    border-radius: 10px;
+    padding: 14px 12px;
+    border: 1px solid #a5d6a7;
+  }
+  .sub-head {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1b5e20;
+  }
+  select, input[type="text"], input[type="number"] {
+    padding: 6px;
+    border-radius: 6px;
+    width: 100%;
+    border: 1px solid #81c784;
+  }
+</style>
 
-    <div class="form-grid">
+<div class="section-box">
+  <h2>5. Know Your Customer (KYC)</h2>
 
-        <!-- Occupation -->
-        <div class="form-group half-row">
-            <label>Occupation *</label>
-            <select>
-                <option value="">Select</option>
-                <option>Salaried</option>
-                <option>Business</option>
-                <option>Housewife</option>
-                <option>Student</option>
-                <option>Retired</option>
-                <option>Other</option>
-            </select>
-        </div>
-
-        <!-- Source of Income -->
-        <div class="form-group half-row">
-            <label>Source of Income *</label>
-            <select>
-                <option value="">Select</option>
-                <option>Salary</option>
-                <option>Business Income</option>
-                <option>Investment Income</option>
-                <option>Rental Income</option>
-                <option>Foreign Remittance</option>
-                <option>Other</option>
-            </select>
-        </div>
-
-        <!-- Annual Income -->
-        <div class="form-group half-row">
-            <label>Annual Income (PKR) *</label>
-            <select>
-                <option value="">Select Range</option>
-                <option>Up to 500,000</option>
-                <option>500,001 – 1,000,000</option>
-                <option>1,000,001 – 3,000,000</option>
-                <option>3,000,001 – 5,000,000</option>
-                <option>Above 5,000,000</option>
-            </select>
-        </div>
-
-        <!-- PEP -->
-        <div class="form-group half-row">
-            <label>PEP (Politically Exposed Person) *</label>
-            <select id="pepStatus" onchange="togglePEPRelation()">
-                <option value="">Select</option>
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-            </select>
-        </div>
-
-        <!-- PEP Classification -->
-        <div class="form-group half-row" id="pepRelationGroup" style="display:none;">
-            <label>PEP Classification *</label>
-            <select>
-                <option value="">Select</option>
-                <option value="self">Self</option>
-                <option value="related">Related to PEP</option>
-            </select>
-        </div>
-
-        <!-- Usual Mode of Transactions -->
-        <div class="form-group full-row">
-            <label class="checkbox-title">Usual Mode of Transactions</label>
-
-            <div class="checkbox-row">
-                <label><input type="checkbox"> Cash</label>
-                <label><input type="checkbox"> Cheque</label>
-                <label><input type="checkbox"> Online Transfer</label>
-                <label><input type="checkbox"> ATM</label>
-            </div>
-
-            <div class="checkbox-row">
-                <label><input type="checkbox"> Mobile App</label>
-                <label><input type="checkbox"> Remittances</label>
-                <label><input type="checkbox"> Foreign TT</label>
-            </div>
-        </div>
-
-        <!-- Expected Counter Parties -->
-        <div class="form-group full-row">
-            <label class="checkbox-title">Expected Type of Counter Parties</label>
-
-            <div class="checkbox-row">
-                <label><input type="checkbox"> Individuals</label>
-                <label><input type="checkbox"> Companies</label>
-                <label><input type="checkbox"> Overseas Entities</label>
-            </div>
-
-            <div class="checkbox-row">
-                <label><input type="checkbox"> NGOs</label>
-                <label><input type="checkbox"> Government Departments</label>
-            </div>
-        </div>
-
+  <!-- TOP RISK FIELDS -->
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Initial Risk Rating</label>
+      <select>
+        <option>Low</option><option>Medium</option><option>High</option>
+      </select>
     </div>
-</section>
+
+    <div class="form-group">
+      <label>Initial Risk Score</label>
+      <input type="number" />
+    </div>
+
+    <div class="form-group">
+      <label>Cash Based Business</label>
+      <select>
+        <option>No</option><option>Yes</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>PEP Status</label>
+      <select id="pepSelect" onchange="togglePEPDetails()">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="pepDetails" style="display:none;">
+      <label>If PEP, Relationship</label>
+      <select>
+        <option>Self</option>
+        <option>Related to PEP</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- USUAL MODE OF TRANSACTION -->
+  <div style="margin-top:20px;">
+    <div class="sub-head">Usual Mode of Transactions</div>
+    <div class="checkbox-row">
+      <label><input type="checkbox" /> Cash</label>
+      <label><input type="checkbox" /> Cheque</label>
+      <label><input type="checkbox" /> Online Transfer</label>
+      <label><input type="checkbox" /> Remittance</label>
+      <label><input type="checkbox" /> ATM</label>
+      <label><input type="checkbox" /> Mobile Banking</label>
+      <label><input type="checkbox" /> POS</label>
+    </div>
+  </div>
+
+  <!-- EXPECTED TYPE OF COUNTERPARTIES -->
+  <div style="margin-top:20px;">
+    <div class="sub-head">Expected Type of Counter Parties</div>
+    <div class="checkbox-row">
+      <label><input type="checkbox" /> Local Individuals</label>
+      <label><input type="checkbox" /> Local Businesses</label>
+      <label><input type="checkbox" /> Foreign Individuals</label>
+      <label><input type="checkbox" /> Foreign Businesses</label>
+      <label><input type="checkbox" /> Banks/Financial Institutions</label>
+      <label><input type="checkbox" /> NGOs / NPOs</label>
+    </div>
+  </div>
+
+  <!-- ADDITIONAL ECONOMIC DETAILS -->
+  <div class="form-grid" style="margin-top:20px;">
+
+    <div class="form-group">
+      <label>Source of Income</label>
+      <select>
+        <option>Salary</option><option>Business</option><option>Freelance</option>
+        <option>Overseas Remittance</option><option>Rental Income</option>
+        <option>Agriculture</option><option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Geographical Area of Activity Outside Pakistan</label>
+      <select>
+        <option>None</option><option>UAE</option><option>Saudi Arabia</option>
+        <option>UK</option><option>USA</option><option>Turkey</option>
+        <option>China</option><option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Monthly Credit Turnover (Amount)</label>
+      <input type="number" />
+    </div>
+
+    <div class="form-group">
+      <label>No. of Deposits (PM)</label>
+      <select>
+        <option>0-10</option><option>11-20</option><option>21-30</option><option>30+</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Monthly Debit Turnover (Amount)</label>
+      <input type="number" />
+    </div>
+
+    <div class="form-group">
+      <label>No. of Withdrawals (PM)</label>
+      <select>
+        <option>0-10</option><option>11-20</option><option>21-30</option><option>30+</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Highest Expected Annual Turnover</label>
+      <input type="number" />
+    </div>
+
+    <div class="form-group">
+      <label>Significant Cash Transactions</label>
+      <select>
+        <option>No</option><option>Yes</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Significant Foreign Remittances (In/Out)</label>
+      <select>
+        <option>No</option><option>Yes</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- FINAL RISK SUMMARY -->
+  <div class="form-grid" style="margin-top:20px;">
+    <div class="form-group">
+      <label>Final Risk Rating</label>
+      <select>
+        <option>Low</option><option>Medium</option><option>High</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Final Risk Score</label>
+      <input type="number" />
+    </div>
+  </div>
+
+</div>
 
 <script>
-function togglePEPRelation() {
-    const pep = document.getElementById("pepStatus").value;
-    document.getElementById("pepRelationGroup").style.display =
-        (pep === "yes") ? "block" : "none";
-}
+  function togglePEPDetails() {
+    const pep = document.getElementById("pepSelect").value;
+    document.getElementById("pepDetails").style.display = pep === "Yes" ? "block" : "none";
+  }
 </script>
-
-<style>
-/* MATCHED SECTION-2 THEME (SUBTLE, CLEAN, LIGHT-GREEN ACCENTS) */
-.section-box-light {
-    background: #ffffff;
-    border: 1px solid #d7ead7;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-left: 4px solid #198754;
-    border-radius: 6px;
-}
-
-.section-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #198754;
-    margin-bottom: 18px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px 22px;
-}
-
-.half-row { grid-column: span 2; }
-.full-row { grid-column: span 4; }
-
-.form-group label {
-    font-weight: 600;
-    color: #145a32;
-    margin-bottom: 4px;
-    display: block;
-}
-
-input, select, textarea {
-    width: 100%;
-    padding: 7px;
-    border-radius: 5px;
-    border: 1px solid #a8d0b1;
-    background: #fff;
-}
-
-.checkbox-title {
-    font-weight: 700;
-    color: #145a32;
-    margin-bottom: 6px;
-    display: block;
-}
-
-/* Checkbox rows aligned EXACTLY like earlier sections */
-.checkbox-row {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 6px;
-}
-
-.checkbox-row label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-</style>
 
    
 <!-- SECTION 6: NEXT OF KIN -->
