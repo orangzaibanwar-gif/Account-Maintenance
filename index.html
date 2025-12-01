@@ -964,6 +964,105 @@ textarea {
 
   </div>
 </div>
+<!-- SECTION 6: NEXT OF KIN -->
+<div class="section-box">
+  <h2>6. Next of Kin / Nominee Details</h2>
+  <div class="form-grid">
+
+    <div class="form-group half-row">
+      <label>Tag CIF</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-group half-row">
+      <label>Nominee's Full Name <span class="required">*</span></label>
+      <input id="nomineeFullName" type="text" required />
+    </div>
+
+    <div class="form-group half-row">
+      <label>Relationship with Nominee</label>
+      <select>
+        <option value="">Select</option>
+        <option>Father</option>
+        <option>Mother</option>
+        <option>Spouse</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-group half-row">
+      <label>Nominee's CNIC/ID Document No. <span class="required">*</span></label>
+      <input id="nomineeCNIC" type="text" required />
+    </div>
+
+    <div class="form-group half-row">
+      <label>Nominee's Contact Number</label>
+      <input id="nomineeContact" type="text" />
+    </div>
+
+    <div class="form-group full-row">
+      <label>Nominee's Address</label>
+      <textarea id="nomineeAddress"></textarea>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- SECTION 7: OTHER REGULATORY -->
+<div class="section-box">
+  <h2>7. Other Regulatory Items / Special Conditions</h2>
+  <div class="form-grid">
+
+    <div class="form-group quarter-row">
+      <label><input type="checkbox" id="fatca"> FATCA</label>
+    </div>
+
+    <div class="form-group quarter-row">
+      <label><input type="checkbox" id="crs"> CRS</label>
+    </div>
+
+    <div class="form-group full-row">
+      <label>Special Conditions (If Any)</label>
+      <div class="checkbox-grid">
+
+        <label><input type="checkbox"> Photo Holder</label>
+        <label><input type="checkbox"> Visually Impaired</label>
+        <label><input type="checkbox"> Deaf & Dumb</label>
+        <label><input type="checkbox"> Locker Holder</label>
+        <label><input type="checkbox"> Person with Disabilities (PWD)</label>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 8: STAFF CERTIFICATION -->
+<div class="section-box">
+  <h2>8. Staff Certification & Finalization (Audit Trail)</h2>
+  <div class="form-grid">
+
+    <div class="form-group half-row">
+      <button type="button" class="btn green-btn" onclick="openPrintableCIF()">Print CIF Form</button>
+    </div>
+
+    <div class="form-group half-row">
+      <label>
+        <input type="checkbox" required>
+        Yes, Customer has reviewed and confirmed all changes.
+      </label>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openPrintableCIF() {
+  window.open('cif_printable.html', '_blank');
+}
+</script>
 
 <!-- SECTION 10: SUBMISSION & FINAL ACTIONS -->
 <div class="section-box" id="submissionSection">
