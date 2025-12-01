@@ -970,22 +970,36 @@ textarea {
   <h2>10. Submission & Final Actions</h2>
   <div class="form-grid">
 
-    <div class="form-group third-row">
-      <button type="button" class="btn" onclick="submitForOTP()">Submit For OTAC/OTP</button>
+    <!-- Print CIF Form Button -->
+    <div class="form-group" style="grid-column: span 2;">
+      <button type="button" class="green-btn" onclick="printCIF()">Print CIF Form</button>
     </div>
 
-    <div class="form-group third-row">
+    <!-- Submit for OTAC/OTP Button -->
+    <div class="form-group" style="grid-column: span 2;">
+      <button type="button" class="green-btn" onclick="submitForOTP()">Submit For OTAC/OTP</button>
+    </div>
+
+    <!-- OTP Input Field -->
+    <div class="form-group" style="grid-column: span 2;">
       <label>OTP/OTAC</label>
       <input id="otpField" type="text" placeholder="Enter OTP" />
     </div>
 
-    <div class="form-group third-row">
-      <button type="button" class="btn secondary" onclick="submitForScreening()">Submit For Compliance Screening</button>
-      <button type="submit" class="btn">Save & Submit</button>
+    <!-- Submit for Compliance Screening & Save/Submit -->
+    <div class="form-group" style="grid-column: span 4; display:flex; gap:10px;">
+      <button type="button" class="green-btn" onclick="submitForScreening()">Submit For Compliance Screening</button>
+      <button type="submit" class="green-btn">Save & Submit</button>
     </div>
 
   </div>
 </div>
+
+<script>
+  function printCIF(){
+    alert('Printing CIF Form (placeholder)');
+  }
+</script>
 
 <style>
   .section-box {
