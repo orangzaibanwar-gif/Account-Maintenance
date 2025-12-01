@@ -523,6 +523,7 @@ document.getElementById("otherNationality").addEventListener("change", function(
 });
 </script>
 
+<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme) -->
 <style>
 .section-box {
     border: 2px solid green;
@@ -531,134 +532,132 @@ document.getElementById("otherNationality").addEventListener("change", function(
     border-radius: 10px;
     background: #f4fff4;
 }
-
-h2 {
-    color: green;
-    font-weight: bold;
-}
+.section-box h2 { color: green; font-weight: bold; margin:0 0 12px 0; }
 
 .form-grid {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 15px;
+    align-items: start;
 }
 
-.form-group label {
-    font-weight: bold;
-}
-
+.form-group label { font-weight: 700; display:block; margin-bottom:6px; }
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 7px;
+    padding: 8px;
     border: 1px solid #888;
     border-radius: 6px;
+    font-size: 14px;
 }
+textarea { min-height:78px; resize:vertical; }
 
-textarea {
-    height: 75px;
-}
+.full-row { grid-column: span 4; }
+.half-row { grid-column: span 2; }
 
-.full-row {
-    grid-column: span 4;
-}
+.note { font-size:13px; color:#444; margin-top:6px; }
 
-.half-row {
-    grid-column: span 2;
+/* responsive */
+@media (max-width:900px){
+  .form-grid { grid-template-columns: 1fr; }
+  .half-row { grid-column: span 1; }
 }
 </style>
 
+<div class="section-box" id="section3">
+  <h2>3. Customer Contact & Address Information</h2>
 
-<div class="section-box">
-    <h2>3. Customer Contact & Address Information</h2>
+  <div class="form-grid">
 
-    <div class="form-grid">
-
-        <!-- Current Address -->
-        <div class="form-group half-row">
-            <label>Current Residential Address <span style="color:red">*</span></label>
-            <textarea id="residentialAddress" placeholder="Enter current address"></textarea>
-        </div>
-
-        <!-- Permanent Address -->
-        <div class="form-group half-row">
-            <label>Permanent Address (as per ID) <span style="color:red">*</span></label>
-            <textarea id="permanentAddress" placeholder="Enter permanent address"></textarea>
-        </div>
-
-        <!-- Mobile Country -->
-        <div class="form-group">
-            <label>Mobile Country</label>
-            <select id="mobileCountry"></select>
-        </div>
-
-        <!-- Telco -->
-        <div class="form-group">
-            <label>Telco Company</label>
-            <select id="telco">
-                <option value="Mobilink">Mobilink</option>
-                <option value="Telenor">Telenor</option>
-                <option value="Zong">Zong</option>
-                <option value="Ufone">Ufone</option>
-                <option value="Onic">Onic</option>
-                <option value="Warid">Warid</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-
-        <!-- Primary Mobile -->
-        <div class="form-group">
-            <label>Primary Contact Number (Mobile) <span style="color:red">*</span></label>
-            <input id="primaryContactNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11">
-        </div>
-
-        <!-- WhatsApp -->
-        <div class="form-group">
-            <label>WhatsApp Number</label>
-            <input id="whatsappNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11">
-        </div>
-
-        <!-- SIM Ownership -->
-        <div class="form-group">
-            <label>SIM Registration Ownership</label>
-            <select id="simOwnership">
-                <option value="">Select</option>
-                <option value="Self">Self</option>
-                <option value="Father">Father</option>
-                <option value="Mother">Mother</option>
-                <option value="Brother">Brother</option>
-                <option value="Sister">Sister</option>
-                <option value="Spouse">Spouse</option>
-                <option value="Relative">Relative</option>
-                <option value="Friend">Friend</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-
-        <!-- Office Telephone -->
-        <div class="form-group">
-            <label>Office Telephone</label>
-            <input id="telOffice" type="text" maxlength="15">
-        </div>
-
-        <!-- Home Telephone -->
-        <div class="form-group">
-            <label>Home/Residence Number</label>
-            <input id="homeNumber" type="text" maxlength="15">
-        </div>
-
-        <!-- Email Address -->
-        <div class="form-group full-row">
-            <label>Email Address</label>
-            <input id="emailAddress" type="email" placeholder="Enter email address">
-        </div>
-
+    <!-- Addresses -->
+    <div class="form-group half-row">
+      <label>Current Residential Address <span style="color:#d01818">*</span></label>
+      <textarea id="residentialAddress" placeholder="Enter current address" required></textarea>
     </div>
+
+    <div class="form-group half-row">
+      <label>Permanent Address (as per ID) <span style="color:#d01818">*</span></label>
+      <textarea id="permanentAddress" placeholder="Enter permanent address" required></textarea>
+    </div>
+
+    <!-- Mobile Country -->
+    <div class="form-group">
+      <label>Mobile Country <span style="color:#d01818">*</span></label>
+      <select id="mobileCountry" aria-label="Mobile Country">
+        <!-- options will be populated by script -->
+      </select>
+    </div>
+
+    <!-- Telco -->
+    <div class="form-group">
+      <label>Telco Company <span style="color:#d01818">*</span></label>
+      <select id="telco" aria-label="Telco Company">
+        <option value="">-- Select Telco --</option>
+        <option value="Mobilink">Jazz / Mobilink</option>
+        <option value="Telenor">Telenor</option>
+        <option value="Zong">Zong</option>
+        <option value="Ufone">Ufone</option>
+        <option value="Onic">Onic</option>
+        <option value="Warid">Warid</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <!-- Primary Mobile -->
+    <div class="form-group">
+      <label>Primary Contact Number (Mobile) <span style="color:#d01818">*</span></label>
+      <input id="primaryContactNumber" type="text" maxlength="11" placeholder="03XXXXXXXXX" />
+      <div class="note">Enter mobile without country code. Example: 03XXXXXXXXX</div>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="form-group">
+      <label>WhatsApp Number</label>
+      <input id="whatsappNumber" type="text" maxlength="11" placeholder="03XXXXXXXXX" />
+    </div>
+
+    <!-- SIM Registration Ownership -->
+    <div class="form-group">
+      <label>SIM Registration Ownership</label>
+      <select id="simOwnership" aria-label="SIM Registration Ownership">
+        <option value="">Select</option>
+        <option value="Self">Self</option>
+        <option value="Father">Father</option>
+        <option value="Mother">Mother</option>
+        <option value="Brother">Brother</option>
+        <option value="Sister">Sister</option>
+        <option value="Spouse">Spouse</option>
+        <option value="Relative">Relative</option>
+        <option value="Friend">Friend</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <!-- Office and Home -->
+    <div class="form-group">
+      <label>Office Telephone</label>
+      <input id="telOffice" type="text" maxlength="15" placeholder="Enter office number" />
+    </div>
+
+    <div class="form-group">
+      <label>Home / Residence Number</label>
+      <input id="homeNumber" type="text" maxlength="15" placeholder="Enter home number" />
+    </div>
+
+    <!-- Email (full width last row) -->
+    <div class="form-group full-row">
+      <label>Email Address</label>
+      <input id="emailAddress" type="email" placeholder="name@example.com" />
+      <div class="note">Email field sized for readability; optional but recommended.</div>
+    </div>
+
+  </div>
 </div>
 
 <script>
-  // Country List
+document.addEventListener('DOMContentLoaded', function () {
+  // Full country list
   const countries = [
     "Pakistan","Afghanistan","Albania","Algeria","Andorra","Angola","Argentina","Armenia","Australia","Austria",
     "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
@@ -678,27 +677,42 @@ textarea {
     "Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
   ];
 
-  const mobileCountrySelect = document.getElementById('mobileCountry');
+  const mobileCountryEl = document.getElementById('mobileCountry');
+  const telcoEl = document.getElementById('telco');
 
-  // Load countries + set Pakistan as default
-  mobileCountrySelect.innerHTML = countries
-      .map(c => `<option value="${c}" ${c === "Pakistan" ? "selected" : ""}>${c}</option>`)
-      .join("");
+  // Build options and mark Pakistan selected by default
+  mobileCountryEl.innerHTML = '<option value="">-- Select Country --</option>' +
+    countries.map(c => `<option value="${c}" ${c === 'Pakistan' ? 'selected' : ''}>${c}</option>`).join('');
 
+  // helper to sync telco based on country
+  function syncTelcoWithCountry() {
+    const country = mobileCountryEl.value;
+    if (!country || country === 'Pakistan') {
+      // Reset telco to empty selection (if present)
+      if (telcoEl.querySelector('option[value=""]')) telcoEl.value = "";
+      else telcoEl.selectedIndex = 0;
+    } else {
+      // for any non-Pakistan country auto-select Other
+      const otherOpt = telcoEl.querySelector('option[value="Other"]');
+      if (otherOpt) telcoEl.value = 'Other';
+      else telcoEl.selectedIndex = telcoEl.options.length - 1;
+    }
+  }
 
-  const telcoSelect = document.getElementById('telco');
+  // initial sync (runs after options inserted)
+  syncTelcoWithCountry();
 
-  // On change of country → auto adjust Telco Company LOV
-  mobileCountrySelect.addEventListener('change', function () {
+  // change listener
+  mobileCountryEl.addEventListener('change', syncTelcoWithCountry);
 
-      const selectedCountry = this.value;
-
-      if (selectedCountry !== "Pakistan") {
-          telcoSelect.value = "Other";  // Auto-select Other
-      } else {
-          telcoSelect.value = "";       // Reset if Pakistan selected
-      }
+  // optional: prevent manual telco selection when country != Pakistan (keeps consistency)
+  telcoEl.addEventListener('change', function () {
+    if (mobileCountryEl.value && mobileCountryEl.value !== 'Pakistan') {
+      // keep Other for non-Pakistan countries
+      if (this.value !== 'Other') this.value = 'Other';
+    }
   });
+});
 </script>
 
 
