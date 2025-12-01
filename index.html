@@ -822,7 +822,7 @@ textarea {
   </div>
 </div>
 
-<!-- SECTION 5: KNOW YOUR CUSTOMER (KYC) - REVISED BANKING PRACTICE ALIGNMENT -->
+<!-- SECTION 5: KNOW YOUR CUSTOMER (KYC) - REVISED WITHOUT GREEN HEADER LINE -->
 <style>
   .section-box {
     border: 2px solid #2e7d32;
@@ -832,10 +832,8 @@ textarea {
     margin-bottom: 25px;
   }
   .section-box h2 {
-    background: #2e7d32;
-    color: white;
-    padding: 10px 14px;
-    border-radius: 8px;
+    color: #2e7d32;
+    font-weight: bold;
     font-size: 20px;
     margin-bottom: 18px;
   }
@@ -875,25 +873,6 @@ textarea {
 
   <!-- TOP RISK FIELDS -->
   <div class="form-grid">
-    <div class="form-group">
-      <label>Initial Risk Rating</label>
-      <select>
-        <option>Low</option><option>Medium</option><option>High</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Initial Risk Score</label>
-      <input type="number" />
-    </div>
-
-    <div class="form-group">
-      <label>Cash Based Business</label>
-      <select>
-        <option>No</option><option>Yes</option>
-      </select>
-    </div>
-
     <div class="form-group">
       <label>PEP Status</label>
       <select id="pepSelect" onchange="togglePEPDetails()">
@@ -960,7 +939,7 @@ textarea {
     </div>
 
     <div class="form-group">
-      <label>Monthly Credit Turnover (Amount)</label>
+      <label>Expected Monthly Credits (Amount)</label>
       <input type="number" />
     </div>
 
@@ -972,7 +951,7 @@ textarea {
     </div>
 
     <div class="form-group">
-      <label>Monthly Debit Turnover (Amount)</label>
+      <label>Expected Monthly Debits (Amount)</label>
       <input type="number" />
     </div>
 
@@ -986,6 +965,13 @@ textarea {
     <div class="form-group">
       <label>Highest Expected Annual Turnover</label>
       <input type="number" />
+    </div>
+
+    <div class="form-group">
+      <label>Cash Based Business</label>
+      <select>
+        <option>No</option><option>Yes</option>
+      </select>
     </div>
 
     <div class="form-group">
@@ -1028,7 +1014,6 @@ textarea {
   }
 </script>
 
-   
 <!-- SECTION 6: NEXT OF KIN -->
 <div class="section-box">
   <h2>6. Next of Kin / Nominee Details</h2>
