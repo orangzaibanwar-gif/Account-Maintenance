@@ -822,115 +822,179 @@ textarea {
   </div>
 </div>
 
-<!-- SECTION 5: KYC -->
-<div class="section-box">
-  <h2>5. Know Your Customer (KYC)</h2>
-  <div class="form-grid">
+<!-- ============================
+     SECTION 5 – KNOW YOUR CUSTOMER (KYC)
+============================ -->
+<section class="section-box">
+    <h2>5. Know Your Customer (KYC)</h2>
 
-    <!-- Text Inputs / LOVs -->
-    <div class="form-group half-row">
-      <label>Source of Income/Funds <span class="required">*</span></label>
-      <input id="sourceOfFundsDescription" type="text" placeholder="Enter source of funds" required />
+    <div class="form-grid">
+
+        <!-- Occupation -->
+        <div class="form-group half-row">
+            <label>Occupation *</label>
+            <select>
+                <option value="">Select</option>
+                <option>Salaried</option>
+                <option>Business</option>
+                <option>Housewife</option>
+                <option>Student</option>
+                <option>Retired</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <!-- Source of Income -->
+        <div class="form-group half-row">
+            <label>Source of Income *</label>
+            <select>
+                <option value="">Select</option>
+                <option>Salary</option>
+                <option>Business Income</option>
+                <option>Investment Income</option>
+                <option>Rental Income</option>
+                <option>Foreign Remittance</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <!-- Annual Income -->
+        <div class="form-group half-row">
+            <label>Annual Income (PKR) *</label>
+            <select>
+                <option value="">Select Range</option>
+                <option>Up to 500,000</option>
+                <option>500,001 – 1,000,000</option>
+                <option>1,000,001 – 3,000,000</option>
+                <option>3,000,001 – 5,000,000</option>
+                <option>Above 5,000,000</option>
+            </select>
+        </div>
+
+        <!-- PEP -->
+        <div class="form-group half-row">
+            <label>PEP (Politically Exposed Person)*</label>
+            <select id="pepStatus" onchange="togglePEPRelation()">
+                <option value="">Select</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+
+        <!-- PEP Classification (Conditional) -->
+        <div class="form-group half-row" id="pepRelationGroup" style="display:none;">
+            <label>PEP Classification</label>
+            <select>
+                <option value="">Select</option>
+                <option value="self">Self</option>
+                <option value="related">Related to PEP</option>
+            </select>
+        </div>
+
+        <!-- Usual Mode of Transactions -->
+        <div class="form-group full-row">
+            <label class="sub-header">Usual Mode of Transactions</label>
+            <div class="checkbox-grid">
+                <label><input type="checkbox"> Cash</label>
+                <label><input type="checkbox"> Cheque</label>
+                <label><input type="checkbox"> Online Transfer</label>
+                <label><input type="checkbox"> ATM</label>
+                <label><input type="checkbox"> Mobile App</label>
+                <label><input type="checkbox"> Remittances</label>
+                <label><input type="checkbox"> Foreign TT</label>
+            </div>
+        </div>
+
+        <!-- Expected Counter Parties -->
+        <div class="form-group full-row">
+            <label class="sub-header">Expected Type of Counter Parties</label>
+            <div class="checkbox-grid">
+                <label><input type="checkbox"> Individuals</label>
+                <label><input type="checkbox"> Companies</label>
+                <label><input type="checkbox"> Overseas Entities</label>
+                <label><input type="checkbox"> NGOs</label>
+                <label><input type="checkbox"> Gov. Departments</label>
+            </div>
+        </div>
+
     </div>
+</section>
 
-    <div class="form-group half-row">
-      <label>Main Geographical Area of Activity Outside Pakistan</label>
-      <select id="geoArea">
-        <option>UK</option>
-        <option>U.S.A</option>
-        <option>Saudi Arabia</option>
-      </select>
-    </div>
+<script>
+function togglePEPRelation() {
+    const pep = document.getElementById("pepStatus").value;
+    const rel = document.getElementById("pepRelationGroup");
+    rel.style.display = (pep === "yes") ? "block" : "none";
+}
+</script>
 
-    <div class="form-group">
-      <label>Monthly Credit Turnover (Amount) <span class="required">*</span></label>
-      <input id="expectedCreditAmount" type="number" min="0" required />
-    </div>
+<style>
+/* GREEN THEME STYLING */
+.section-box {
+    background: #f6fff6;
+    border: 1px solid #c6e7c6;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
 
-    <div class="form-group">
-      <label>No of Deposits</label>
-      <input type="number" />
-    </div>
+.section-box h2 {
+    background: #198754;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
 
-    <div class="form-group">
-      <label>Monthly Debit Turnover (Amount) <span class="required">*</span></label>
-      <input id="expectedDebitAmount" type="number" min="0" required />
-    </div>
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+}
 
-    <div class="form-group">
-      <label>No of Withdrawals</label>
-      <input type="number" />
-    </div>
+.half-row { grid-column: span 2; }
+.full-row { grid-column: span 4; }
 
-    <div class="form-group">
-      <label>Highest Expected Balance</label>
-      <input type="number" />
-    </div>
+.form-group label {
+    font-weight: 600;
+    color: #064f32;
+    display: block;
+    margin-bottom: 4px;
+}
 
-    <div class="form-group">
-      <label>Risk Rating Score</label>
-      <input id="riskScore" type="text" placeholder="Auto Calculated" />
-    </div>
+.sub-header {
+    font-weight: 700;
+    background: #e9f7ef;
+    padding: 6px 10px;
+    border-left: 4px solid #198754;
+    border-radius: 4px;
+}
 
-    <div class="form-group">
-      <label>Risk Rating (CRP) <span class="required">*</span></label>
-      <select id="riskRating" required>
-        <option>High</option>
-        <option>Medium</option>
-        <option>Low</option>
-      </select>
-    </div>
+/* Inputs & LOV styling */
+input, select, textarea {
+    width: 100%;
+    padding: 7px;
+    border-radius: 6px;
+    border: 1px solid #9dc8ac;
+}
 
-    <!-- Checkboxes Section: Usual Mode of Transaction -->
-    <div class="form-group full-row" style="border:1px solid green; padding:10px; border-radius:6px; background:#eaffea;">
-      <label style="font-weight:bold; font-size:16px; color:green;">Usual Mode of Transaction</label>
-      <div class="two-col">
-        <label><input type="checkbox"> Online Banking</label>
-        <label><input type="checkbox"> Local Wire Transfer</label>
-        <label><input type="checkbox"> ATM Debit Card</label>
-        <label><input type="checkbox"> Foreign Remittances</label>
-        <label><input type="checkbox"> Cheques</label>
-      </div>
-    </div>
+/* Checkbox grid */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 8px 20px;
+    padding-top: 6px;
+}
 
-    <!-- Checkboxes Section: Expected Type of Counter Parties -->
-    <div class="form-group full-row" style="border:1px solid green; padding:10px; border-radius:6px; background:#eaffea;">
-      <label style="font-weight:bold; font-size:16px; color:green;">Expected Type of Counter Parties</label>
-      <div class="two-col">
-        <label><input type="checkbox"> Financial Institution</label>
-        <label><input type="checkbox"> Business Firm</label>
-        <label><input type="checkbox"> Self Employed</label>
-        <label><input type="checkbox"> Govt/Semi-Gov Entities</label>
-        <label><input type="checkbox"> Non Profit Organization</label>
-      </div>
-    </div>
+.checkbox-grid label {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+</style>
 
-    <div class="form-group half-row">
-      <label>Significant Cash Transaction</label>
-      <select>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
-    </div>
-
-    <div class="form-group half-row">
-      <label>Significant Foreign Remittances</label>
-      <select>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
-    </div>
-
-    <div class="form-group half-row">
-      <label>Cash Based Business (Gold, Jewellery etc.)</label>
-      <select>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
-    </div>
-
-  </div>
-</div>
 
    
 <!-- SECTION 6: NEXT OF KIN -->
