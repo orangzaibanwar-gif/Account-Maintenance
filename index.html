@@ -924,136 +924,114 @@ textarea {
   </div>
 </div>
 
-      <!-- DOCUMENT UPLOAD -->
-      <div class="section">
-        <h2>9. Document Upload (Based on Record Changes)</h2>
-        <div class="grid">
-          <div class="col-6">
-            <label>ID Document (Front) <span class="required">*</span></label>
-            <input id="docRef_cnicFront" type="file" required />
-          </div>
-          <div class="col-6">
-            <label>ID Document (Back) <span class="required">*</span></label>
-            <input id="docRef_cnicBack" type="file" required />
-          </div>
-          <div class="col-6">
-            <label>Income Proof / Salary Slip Reference ID <span class="required">*</span></label>
-            <input id="docRef_incomeProof" type="text" required />
-          </div>
-          <div class="col-6">
-            <label>Utility Bill (Address Proof) Reference ID <span class="required">*</span></label>
-            <input id="docRef_utilityBill" type="text" required />
-          </div>
-          <div class="col-6">
-            <label>SS Card / Other Statutory Document Reference ID</label>
-            <input id="docRef_other" type="text" />
-          </div>
-        </div>
-      </div>
+    <!-- SECTION 9: DOCUMENT UPLOAD -->
+<div class="section-box">
+  <h2>9. Document Upload (Based on Record Changes)</h2>
+  <div class="form-grid">
 
-<!-- SUBMISSION ACTION -->
-<div class="section">
-  <h2>10. Submission & Final Actions</h2>
-  <div class="grid">
-    <div class="col-4">
-      <button type="button" class="btn" onclick="submitForOTP()">Submit For OTAC/OTP</button>
+    <div class="form-group half-row">
+      <label>ID Document (Front) <span class="required">*</span></label>
+      <input id="docRef_cnicFront" type="file" required />
     </div>
-    <div class="col-4">
-      <label>OTP/OTAC</label>
-      <input id="otpField" type="text" placeholder="Enter OTP" />
+
+    <div class="form-group half-row">
+      <label>ID Document (Back) <span class="required">*</span></label>
+      <input id="docRef_cnicBack" type="file" required />
     </div>
-    <div class="col-4 actions">
-      <button type="button" class="btn secondary" onclick="submitForScreening()">Submit For Compliance Screening</button>
-      <button type="submit" class="btn">Save & Submit</button>
+
+    <div class="form-group half-row">
+      <label>Income Proof / Salary Slip Reference ID <span class="required">*</span></label>
+      <input id="docRef_incomeProof" type="text" placeholder="Enter reference ID" required />
     </div>
+
+    <div class="form-group half-row">
+      <label>Utility Bill (Address Proof) Reference ID <span class="required">*</span></label>
+      <input id="docRef_utilityBill" type="text" placeholder="Enter reference ID" required />
+    </div>
+
+    <div class="form-group half-row">
+      <label>SS Card / Other Statutory Document Reference ID</label>
+      <input id="docRef_other" type="text" placeholder="Enter reference ID if any" />
+    </div>
+
   </div>
 </div>
 
-    </form>
+<!-- SECTION 10: SUBMISSION & FINAL ACTIONS -->
+<div class="section-box">
+  <h2>10. Submission & Final Actions</h2>
+  <div class="form-grid">
+
+    <div class="form-group third-row">
+      <button type="button" class="btn" onclick="submitForOTP()">Submit For OTAC/OTP</button>
+    </div>
+
+    <div class="form-group third-row">
+      <label>OTP/OTAC</label>
+      <input id="otpField" type="text" placeholder="Enter OTP" />
+    </div>
+
+    <div class="form-group third-row">
+      <button type="button" class="btn secondary" onclick="submitForScreening()">Submit For Compliance Screening</button>
+      <button type="submit" class="btn">Save & Submit</button>
+    </div>
+
   </div>
+</div>
 
-  <script>
-    // Full list of countries (shortened here for readability) - full list included in runtime array
-    const countries = [
-      "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua & Barbuda","Argentina","Armenia","Australia","Austria",
-      "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
-      "Bolivia","Bosnia & Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Côte d'Ivoire","Cabo Verde",
-      "Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo (Congo-Brazzaville)",
-      "Costa Rica","Croatia","Cuba","Cyprus","Czechia","Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic",
-      "Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland",
-      "France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea",
-      "Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq",
-      "Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait",
-      "Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg",
-      "Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico",
-      "Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru",
-      "Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman",
-      "Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar",
-      "Romania","Russia","Rwanda","St Kitts & Nevis","St Lucia","Saint Vincent","Samoa","San Marino","Sao Tome & Principe","Saudi Arabia",
-      "Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa",
-      "South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan",
-      "Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan",
-      "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
-    ];
+<style>
+  .section-box {
+      border: 2px solid green;
+      padding: 18px;
+      margin-top: 20px;
+      border-radius: 10px;
+      background: #f4fff4;
+  }
+  .section-box h2 {
+      color: green;
+      font-weight: bold;
+      margin-bottom: 15px;
+  }
+  .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+  }
+  .form-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+      width: 100%;
+      padding: 7px;
+      border: 1px solid #888;
+      border-radius: 6px;
+  }
+  textarea {
+      height: 70px;
+  }
+  .half-row {
+      grid-column: span 1;
+  }
+  .third-row {
+      grid-column: span 1;
+  }
+  .btn {
+      background: #0059b3;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      margin-top: 5px;
+      display: inline-block;
+  }
+  .secondary {
+      background: #777 !important;
+      margin-left: 5px;
+  }
+</style>
 
-    function populateCountrySelect(id){
-      const el = document.getElementById(id);
-      if(!el) return;
-      el.innerHTML = '<option value="">-- Select Country --</option>' + countries.map(c=>'
-<option>'+c+'</option>').join('');
-    }
-
-    // populate all country selects
-    ['nationality','placeOfBirthCountry','mobileCountry'].forEach(populateCountrySelect);
-
-    // Date constraints: set max/min where relevant
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('idIssuanceDate').setAttribute('max', today);
-    document.getElementById('relationshipDate').setAttribute('max', today);
-    document.getElementById('dateOfBirth').setAttribute('max', today);
-    document.getElementById('idExpiryDate').setAttribute('min', today);
-
-    // If passport expiry exists, ensure min is today when added (example)
-
-    // Basic CNIC simple validation on blur
-    document.getElementById('idNumber').addEventListener('blur', function(){
-      const v = this.value.replace(/[^0-9]/g,'');
-      if(v && v.length !== 13){
-        alert('CNIC should be 13 digits (numbers only)');
-      }
-    });
-
-    // Simple handlers for buttons
-    function biometric(){alert('Trigger Biometric flow (placeholder)')}
-    function verisys(){alert('Trigger Verisys lookup (placeholder)')}
-    function addOccupation(){alert('Add Occupation - placeholder for dynamic UI')}
-    function submitForOTP(){alert('OTP sent to customer (placeholder)')}
-    function submitForScreening(){alert('Submitted for compliance screening (placeholder)')}
-
-    // Form submit
-    function handleSubmit(e){
-      e.preventDefault();
-      // Simple validation example: ID expiry must be after issuance
-      const iss = document.getElementById('idIssuanceDate').value;
-      const exp = document.getElementById('idExpiryDate').value;
-      if(iss && exp && new Date(exp) < new Date(iss)){
-        alert('ID Expiry Date must be after Issuance Date');
-        return false;
-      }
-      // ensure coreSystemUpdated checked
-      if(!document.getElementById('coreSystemUpdated').checked){
-        alert('Please confirm customer has reviewed and confirmed changes.');
-        return false;
-      }
-      // gather form (example) — in real app send to backend
-      alert('Form validated and ready to be submitted. (This is a demo placeholder)');
-      return false;
-    }
-
-    // initial population
-    populateCountrySelect('nationality');
-    populateCountrySelect('placeOfBirthCountry');
-    populateCountrySelect('mobileCountry');
-  </script>
-</body>
-</html>
