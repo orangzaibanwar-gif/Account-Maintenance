@@ -523,7 +523,6 @@ document.getElementById("otherNationality").addEventListener("change", function(
 });
 </script>
 
-<!-- SECTION 3 – CUSTOMER CONTACT & ADDRESS INFORMATION (Green Theme) -->
 <style>
 .section-box {
     border: 2px solid green;
@@ -536,17 +535,12 @@ document.getElementById("otherNationality").addEventListener("change", function(
 h2 {
     color: green;
     font-weight: bold;
-    margin-bottom: 15px;
 }
 
-.form-grid4 {
+.form-grid {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 15px;
-}
-
-.full-row {
-    grid-column: span 4;
 }
 
 .form-group label {
@@ -563,145 +557,111 @@ h2 {
 }
 
 textarea {
-    height: 70px;
-    resize: none;
+    height: 75px;
 }
 
-.hidden {
-    display: none;
+.full-row {
+    grid-column: span 4;
+}
+
+.half-row {
+    grid-column: span 2;
+}
+
+.third-row {
+    grid-column: span 1;
 }
 </style>
+
 
 <div class="section-box">
     <h2>3. Customer Contact & Address Information</h2>
 
-    <div class="form-grid4">
+    <div class="form-grid">
 
-        <!-- ADDRESS ROWS -->
-        <div class="form-group full-row">
-            <label>Current Residential Address *</label>
-            <textarea id="residentialAddress" required placeholder="Enter current full address"></textarea>
+        <!-- Current Address -->
+        <div class="form-group half-row">
+            <label>Current Residential Address <span style="color:red">*</span></label>
+            <textarea id="residentialAddress" placeholder="Enter current address" required></textarea>
         </div>
 
-        <div class="form-group full-row">
-            <label>Permanent Address (as per ID) *</label>
-            <textarea id="permanentAddress" required placeholder="Enter permanent address"></textarea>
+        <!-- Permanent Address -->
+        <div class="form-group half-row">
+            <label>Permanent Address (as per ID) <span style="color:red">*</span></label>
+            <textarea id="permanentAddress" placeholder="Enter permanent address" required></textarea>
         </div>
 
-        <!-- CONTACT DETAILS ROW -->
+        <!-- Mobile Country -->
         <div class="form-group">
-            <label>Mobile Country *</label>
-            <select id="mobileCountry" required></select>
+            <label>Mobile Country</label>
+            <select id="mobileCountry"></select>
         </div>
 
+        <!-- Telco -->
         <div class="form-group">
-            <label>Telco Company *</label>
-            <select id="telco" required>
-                <option value="">-- Select --</option>
-                <option>Jazz / Mobilink</option>
+            <label>Telco Company</label>
+            <select id="telco">
+                <option>Mobilink</option>
                 <option>Telenor</option>
                 <option>Zong</option>
                 <option>Ufone</option>
                 <option>Onic</option>
+                <option>Warid</option>
             </select>
         </div>
 
+        <!-- Primary Mobile -->
         <div class="form-group">
-            <label>Primary Mobile Number *</label>
-            <input id="primaryContact" type="text" maxlength="11" placeholder="03XXXXXXXXX" required />
+            <label>Primary Contact Number (Mobile) <span style="color:red">*</span></label>
+            <input id="primaryContactNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11" required />
         </div>
 
+        <!-- WhatsApp -->
         <div class="form-group">
             <label>WhatsApp Number</label>
-            <input id="whatsapp" type="text" maxlength="11" placeholder="03XXXXXXXXX" />
+            <input id="whatsappNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11" />
         </div>
 
-        <!-- SELF REGISTERED -->
+        <!-- SIM Ownership -->
         <div class="form-group">
-            <label><input type="checkbox" id="selfRegistered"> SIM Registered On Customer Name</label>
-        </div>
-
-        <!-- RELATION (CONTROLLED BY CHECKBOX) -->
-        <div class="form-group" id="relationGroup">
-            <label>Relation with SIM Owner *</label>
-            <select id="relation">
-                <option value="">-- Select Relation --</option>
-                <option>Father</option>
-                <option>Mother</option>
-                <option>Brother</option>
-                <option>Sister</option>
-                <option>Spouse</option>
-                <option>Relative</option>
+            <label>SIM Registration Ownership</label>
+            <select id="simOwnership">
+                <option value="">Select</option>
+                <option value="Self">Self</option>
+                <option value="Father">Father</option>
+                <option value="Mother">Mother</option>
+                <option value="Brother">Brother</option>
+                <option value="Sister">Sister</option>
+                <option value="Spouse">Spouse</option>
+                <option value="Relative">Relative</option>
+                <option value="Friend">Friend</option>
+                <option value="Other">Other</option>
             </select>
         </div>
 
-        <!-- OFFICE & HOME NUMBERS -->
+        <!-- Office Telephone -->
         <div class="form-group">
-            <label>Office Number</label>
-            <input id="officeNumber" type="text" placeholder="Enter office number" maxlength="15" />
+            <label>Office Telephone</label>
+            <input id="telOffice" type="text" placeholder="Enter office number" maxlength="15">
         </div>
 
+        <!-- Home Telephone -->
         <div class="form-group">
-            <label>Home / Residence Number</label>
-            <input id="homeNumber" type="text" placeholder="Enter home number" maxlength="15" />
+            <label>Home/Residence Number</label>
+            <input id="homeNumber" type="text" placeholder="Enter home number" maxlength="15">
         </div>
 
-        <!-- EMAIL FIELD FULL ROW -->
+        <!-- Email - full row for better width -->
         <div class="form-group full-row">
             <label>Email Address</label>
-            <input id="emailAddress" type="email" placeholder="yourname@example.com" />
+            <input id="emailAddress" type="email" placeholder="Enter email address">
         </div>
 
     </div>
 </div>
 
 <script>
-/* COUNTRY LIST */
-const countries = [
- "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua & Barbuda","Argentina","Armenia","Australia","Austria",
- "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
- "Bolivia","Bosnia & Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Côte d'Ivoire",
- "Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Costa Rica",
- "Croatia","Cuba","Cyprus","Czechia","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt",
- "El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France",
- "Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau",
- "Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel",
- "Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Laos",
- "Latvia","Lebanon","Lesotho","Liberia","Libya","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia",
- "Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco",
- "Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand",
- "Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Panama",
- "Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda",
- "Saint Kitts & Nevis","Saint Lucia","Saint Vincent","Samoa","San Marino","Saudi Arabia","Senegal","Serbia",
- "Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea",
- "South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan",
- "Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu",
- "Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu",
- "Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
-];
 
-document.getElementById("mobileCountry").innerHTML =
-    '<option value="">-- Select Country --</option>' +
-    countries.map(c => `<option>${c}</option>`).join("");
-
-/* RELATION FIELD LOGIC */
-function updateRelationVisibility() {
-    const isSelf = document.getElementById("selfRegistered").checked;
-    const rel = document.getElementById("relationGroup");
-
-    if (isSelf) {
-        rel.classList.add("hidden");
-        document.getElementById("relation").value = "";
-    } else {
-        rel.classList.remove("hidden");
-    }
-}
-
-document.getElementById("selfRegistered").addEventListener("change", updateRelationVisibility);
-
-/* Initialize on page load */
-updateRelationVisibility();
-</script>
 
       <!-- OCCUPATION -->
       <div class="section">
