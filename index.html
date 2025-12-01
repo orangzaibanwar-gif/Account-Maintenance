@@ -567,10 +567,6 @@ textarea {
 .half-row {
     grid-column: span 2;
 }
-
-.third-row {
-    grid-column: span 1;
-}
 </style>
 
 
@@ -582,13 +578,13 @@ textarea {
         <!-- Current Address -->
         <div class="form-group half-row">
             <label>Current Residential Address <span style="color:red">*</span></label>
-            <textarea id="residentialAddress" placeholder="Enter current address" required></textarea>
+            <textarea id="residentialAddress" placeholder="Enter current address"></textarea>
         </div>
 
         <!-- Permanent Address -->
         <div class="form-group half-row">
             <label>Permanent Address (as per ID) <span style="color:red">*</span></label>
-            <textarea id="permanentAddress" placeholder="Enter permanent address" required></textarea>
+            <textarea id="permanentAddress" placeholder="Enter permanent address"></textarea>
         </div>
 
         <!-- Mobile Country -->
@@ -601,25 +597,26 @@ textarea {
         <div class="form-group">
             <label>Telco Company</label>
             <select id="telco">
-                <option>Mobilink</option>
-                <option>Telenor</option>
-                <option>Zong</option>
-                <option>Ufone</option>
-                <option>Onic</option>
-                <option>Warid</option>
+                <option value="Mobilink">Mobilink</option>
+                <option value="Telenor">Telenor</option>
+                <option value="Zong">Zong</option>
+                <option value="Ufone">Ufone</option>
+                <option value="Onic">Onic</option>
+                <option value="Warid">Warid</option>
+                <option value="Other">Other</option>
             </select>
         </div>
 
         <!-- Primary Mobile -->
         <div class="form-group">
             <label>Primary Contact Number (Mobile) <span style="color:red">*</span></label>
-            <input id="primaryContactNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11" required />
+            <input id="primaryContactNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11">
         </div>
 
         <!-- WhatsApp -->
         <div class="form-group">
             <label>WhatsApp Number</label>
-            <input id="whatsappNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11" />
+            <input id="whatsappNumber" type="text" placeholder="03xx-xxxxxxx" maxlength="11">
         </div>
 
         <!-- SIM Ownership -->
@@ -642,16 +639,16 @@ textarea {
         <!-- Office Telephone -->
         <div class="form-group">
             <label>Office Telephone</label>
-            <input id="telOffice" type="text" placeholder="Enter office number" maxlength="15">
+            <input id="telOffice" type="text" maxlength="15">
         </div>
 
         <!-- Home Telephone -->
         <div class="form-group">
             <label>Home/Residence Number</label>
-            <input id="homeNumber" type="text" placeholder="Enter home number" maxlength="15">
+            <input id="homeNumber" type="text" maxlength="15">
         </div>
 
-        <!-- Email - full row for better width -->
+        <!-- Email Address -->
         <div class="form-group full-row">
             <label>Email Address</label>
             <input id="emailAddress" type="email" placeholder="Enter email address">
@@ -661,6 +658,48 @@ textarea {
 </div>
 
 <script>
+  // Country List
+  const countries = [
+    "Pakistan","Afghanistan","Albania","Algeria","Andorra","Angola","Argentina","Armenia","Australia","Austria",
+    "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
+    "Bolivia","Bosnia & Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi",
+    "Cabo Verde","Cambodia","Cameroon","Canada","Chad","Chile","China","Colombia","Comoros","Costa Rica",
+    "Croatia","Cuba","Cyprus","Czechia","Denmark","Djibouti","Dominican Republic","Ecuador","Egypt","El Salvador",
+    "Estonia","Ethiopia","Fiji","Finland","France","Gambia","Georgia","Germany","Ghana","Greece",
+    "Guatemala","Guinea","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran",
+    "Iraq","Ireland","Israel","Italy","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyzstan",
+    "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Lithuania","Luxembourg","Madagascar","Malawi",
+    "Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Mongolia","Montenegro",
+    "Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria",
+    "Norway","Oman","Panama","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania",
+    "Russia","Rwanda","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia",
+    "Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland",
+    "Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tonga","Tunisia","Turkey","Turkmenistan",
+    "Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
+  ];
+
+  const mobileCountrySelect = document.getElementById('mobileCountry');
+
+  // Load countries + set Pakistan as default
+  mobileCountrySelect.innerHTML = countries
+      .map(c => `<option value="${c}" ${c === "Pakistan" ? "selected" : ""}>${c}</option>`)
+      .join("");
+
+
+  const telcoSelect = document.getElementById('telco');
+
+  // On change of country → auto adjust Telco Company LOV
+  mobileCountrySelect.addEventListener('change', function () {
+
+      const selectedCountry = this.value;
+
+      if (selectedCountry !== "Pakistan") {
+          telcoSelect.value = "Other";  // Auto-select Other
+      } else {
+          telcoSelect.value = "";       // Reset if Pakistan selected
+      }
+  });
+</script>
 
 
       <!-- OCCUPATION -->
