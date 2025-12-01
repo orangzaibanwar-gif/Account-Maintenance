@@ -716,189 +716,202 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-      <!-- OCCUPATION -->
-      <div class="section">
-        <h2>4. Occupation and Financial Profile Update (KYC)</h2>
-        <div class="grid">
-          <div class="col-4">
-            <label>Occupation/Profession <span class="required">*</span></label>
-            <select id="occupationType" required>
-              <option>Salaried</option><option>Self Employed</option><option>Other Profession</option>
-            </select>
-          </div>
+<style>
+.section-box {
+    border: 2px solid green;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #f4fff4;
+}
 
-          <div class="col-4">
-            <label>Job Title</label>
-            <input type="text" id="jobTitle" />
-          </div>
+h2 {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
 
-          <div class="col-4">
-            <label>Employer/Business/Institution Name</label>
-            <input type="text" id="employerBusinessName" />
-          </div>
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
 
-          <div class="col-12">
-            <label>Occupation/Business/Institution Address <span class="required">*</span></label>
-            <textarea id="occupationAddress" required></textarea>
-          </div>
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
 
-          <div class="col-12 actions">
-            <button type="button" class="btn secondary" onclick="addOccupation()">+ Add Another Occupation</button>
-          </div>
-        </div>
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #888;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 60px;
+}
+
+.full-row { grid-column: span 4; }
+.half-row { grid-column: span 2; }
+.one-third-row { grid-column: span 1; }
+.two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.green-btn {
+    background: green;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.green-btn:hover { opacity: 0.85; }
+.required { color: red; }
+</style>
+
+<!-- SECTION 4: OCCUPATION -->
+<div class="section-box">
+  <h2>4. Occupation and Financial Profile Update (KYC)</h2>
+  <div class="form-grid">
+
+    <div class="form-group one-third-row">
+      <label>Occupation/Profession <span class="required">*</span></label>
+      <select id="occupationType" required>
+        <option>Salaried</option>
+        <option>Self Employed</option>
+        <option>Other Profession</option>
+      </select>
+    </div>
+
+    <div class="form-group one-third-row">
+      <label>Job Title</label>
+      <input type="text" id="jobTitle" />
+    </div>
+
+    <div class="form-group one-third-row">
+      <label>Employer/Business/Institution Name</label>
+      <input type="text" id="employerBusinessName" />
+    </div>
+
+    <div class="form-group full-row">
+      <label>Occupation/Business/Institution Address <span class="required">*</span></label>
+      <textarea id="occupationAddress" required></textarea>
+    </div>
+
+    <div class="form-group full-row">
+      <button type="button" class="green-btn">+ Add Another Occupation</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 5: KYC -->
+<div class="section-box">
+  <h2>5. Know Your Customer (KYC)</h2>
+  <div class="form-grid">
+
+    <div class="form-group half-row">
+      <label>Source of Income/Funds <span class="required">*</span></label>
+      <input id="sourceOfFundsDescription" type="text" required />
+    </div>
+
+    <div class="form-group half-row">
+      <label>Main Geographical Area of Activity Outside Pakistan</label>
+      <select id="geoArea">
+        <option>UK</option>
+        <option>U.S.A</option>
+        <option>SAUDI ARABIA</option>
+      </select>
+    </div>
+
+    <div class="form-group one-third-row">
+      <label>Monthly Credit Turnover (Amount) <span class="required">*</span></label>
+      <input id="expectedCreditAmount" type="number" min="0" required />
+    </div>
+
+    <div class="form-group one-third-row">
+      <label>No of Deposit</label>
+      <input type="number" />
+    </div>
+
+    <div class="form-group one-third-row">
+      <label>Monthly Debit Turnover (Amount) <span class="required">*</span></label>
+      <input id="expectedDebitAmount" type="number" min="0" required />
+    </div>
+
+    <div class="form-group one-third-row">
+      <label>No of Withdrawal</label>
+      <input type="number" />
+    </div>
+
+    <div class="form-group one-third-row">
+      <label>Highest Expected Balance</label>
+      <input type="number" />
+    </div>
+
+    <div class="form-group full-row">
+      <label>Usual Mode of Transaction</label>
+      <div class="two-col">
+        <label><input type="checkbox"> Online Banking</label>
+        <label><input type="checkbox"> Local Wire Transfer</label>
+        <label><input type="checkbox"> ATM Debit Card</label>
+        <label><input type="checkbox"> Foreign Remittances</label>
+        <label><input type="checkbox"> Cheques</label>
       </div>
+    </div>
 
-      <!-- KYC -->
-      <div class="section">
-        <h2>5. Know Your Customer (KYC)</h2>
-        <div class="grid">
-          <div class="col-6">
-            <label>Source of Income/Funds <span class="required">*</span></label>
-            <input id="sourceOfFundsDescription" type="text" required />
-          </div>
-
-          <div class="col-6">
-            <label>Main Geographical Area of Activity Outside Pakistan</label>
-            <select id="geoArea"><option>UK</option><option>U.S.A</option><option>SAUDI ARABIA</option></select>
-          </div>
-
-          <div class="col-4">
-            <label>Monthly Credit Turnover (Amount) <span class="required">*</span></label>
-            <input id="expectedCreditAmount" type="number" required min="0" />
-          </div>
-
-          <div class="col-4">
-            <label>No of Deposit</label>
-            <input type="number" />
-          </div>
-
-          <div class="col-4">
-            <label>Monthly Debit Turnover (Amount) <span class="required">*</span></label>
-            <input id="expectedDebitAmount" type="number" required min="0" />
-          </div>
-
-          <div class="col-4">
-            <label>No of Withdrawal</label>
-            <input type="number" />
-          </div>
-
-          <div class="col-4">
-            <label>Highest Expected Balance</label>
-            <input type="number" />
-          </div>
-
-          <div class="col-12">
-            <label>Usual Mode of Transaction</label>
-            <div class="two-col">
-              <label><input type="checkbox" value="Online Banking"> Online Banking</label>
-              <label><input type="checkbox" value="Local Wire Transfer"> Local Wire Transfer</label>
-              <label><input type="checkbox" value="ATM Debit Card"> ATM Debit Card</label>
-              <label><input type="checkbox" value="Foreign Remittances"> Foreign Remittances</label>
-              <label><input type="checkbox" value="Cheques"> Cheques</label>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <label>Expected Type of Counter Parties</label>
-            <div class="two-col">
-              <label><input type="checkbox"> Financial Institution</label>
-              <label><input type="checkbox"> Business Firm</label>
-              <label><input type="checkbox"> Self Employed</label>
-              <label><input type="checkbox"> Govt/Semi Gov Entities</label>
-              <label><input type="checkbox"> Non Profit Organization</label>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <label>Significant Cash Transaction</label>
-            <select><option>Yes</option><option>No</option></select>
-          </div>
-
-          <div class="col-6">
-            <label>Significant Foreign Remittances</label>
-            <select><option>Yes</option><option>No</option></select>
-          </div>
-
-          <div class="col-6">
-            <label>Cash Based Business (Gold, Jewellery Etc)</label>
-            <select><option>Yes</option><option>No</option></select>
-          </div>
-
-          <div class="col-4">
-            <label>Risk Rating Score</label>
-            <input id="riskScore" type="text" placeholder="Auto Calculated" />
-          </div>
-
-          <div class="col-4">
-            <label>Risk Rating (CRP) <span class="required">*</span></label>
-            <select id="riskRating" required><option>High</option><option>Low</option><option>Medium</option></select>
-          </div>
-
-        </div>
+    <div class="form-group half-row">
+      <label>Expected Type of Counter Parties</label>
+      <div class="two-col">
+        <label><input type="checkbox"> Financial Institution</label>
+        <label><input type="checkbox"> Business Firm</label>
+        <label><input type="checkbox"> Self Employed</label>
+        <label><input type="checkbox"> Govt/Semi Gov Entities</label>
+        <label><input type="checkbox"> Non Profit Organization</label>
       </div>
+    </div>
 
-      <!-- NEXT OF KIN -->
-      <div class="section">
-        <h2>6. Next of Kin / Nominee Details</h2>
-        <div class="grid">
-          <div class="col-6">
-            <label>Tag CIF</label>
-            <input type="text" />
-          </div>
-          <div class="col-10">
-            <label>Nominee's Full Name <span class="required">*</span></label>
-            <input id="nomineeFullName" type="text" required />
-          </div>
-          <div class="col-2">
-            <label>Relationship with Nominee</label>
-            <select><option>Father</option><option>Mother</option><option>Spouse</option><option>Other</option></select>
-          </div>
-          <div class="col-6">
-            <label>Nominee's CNIC/ID Document No. <span class="required">*</span></label>
-            <input id="nomineeCNIC" type="text" required />
-          </div>
-          <div class="col-6">
-            <label>Nominee's Contact Number</label>
-            <input id="nomineeContact" type="text" />
-          </div>
-          <div class="col-12">
-            <label>Nominee's Address</label>
-            <textarea id="nomineeAddress"></textarea>
-          </div>
-        </div>
-      </div>
+    <div class="form-group one-third-row">
+      <label>Significant Cash Transaction</label>
+      <select><option>Yes</option><option>No</option></select>
+    </div>
 
-      <!-- OTHER REG -->
-      <div class="section">
-        <h2>7. Other Regulatory Items/ Special Conditions</h2>
-        <div class="grid">
-          <div class="col-4"><label><input type="checkbox" id="fatca"> FATCA</label></div>
-          <div class="col-4"><label><input type="checkbox" id="crs"> CRS</label></div>
-          <div class="col-12">
-            <label>Special Condition (If Any)</label>
-            <div class="two-col">
-              <label><input type="checkbox"> Photo Holder</label>
-              <label><input type="checkbox"> Visually Impaired</label>
-              <label><input type="checkbox"> Deaf & Dumb</label>
-              <label><input type="checkbox"> Locker Holder</label>
-              <label><input type="checkbox"> Person with Disabilities (PWD)</label>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="form-group one-third-row">
+      <label>Significant Foreign Remittances</label>
+      <select><option>Yes</option><option>No</option></select>
+    </div>
 
-      <!-- STAFF CERT -->
-      <div class="section">
-        <h2>8. Staff Certification and Finalization (Audit Trail)</h2>
-        <div class="grid">
-          <div class="col-6 file-row">
-            <button type="button" class="btn">Print CIF Form (Where Req.)</button>
-          </div>
-          <div class="col-6">
-            <label><input type="checkbox" id="coreSystemUpdated" required> Yes, Customer has reviewed and Confirm all changes.</label>
-          </div>
-        </div>
-      </div>
+    <div class="form-group one-third-row">
+      <label>Cash Based Business (Gold, Jewellery Etc)</label>
+      <select><option>Yes</option><option>No</option></select>
+    </div>
+
+    <div class="form-group one-third-row">
+      <label>Risk Rating Score</label>
+      <input id="riskScore" type="text" placeholder="Auto Calculated" />
+    </div>
+
+    <div class="form-group one-third-row">
+      <label>Risk Rating (CRP) <span class="required">*</span></label>
+      <select id="riskRating" required>
+        <option>High</option>
+        <option>Low</option>
+        <option>Medium</option>
+      </select>
+    </div>
+
+  </div>
+</div>
+
 
       <!-- DOCUMENT UPLOAD -->
       <div class="section">
