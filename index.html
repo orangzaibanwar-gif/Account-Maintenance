@@ -1315,38 +1315,84 @@ h2 {
 }
 </style>
 
-       <!-- SECTION 9: DOCUMENT UPLOAD -->
+<!-- SECTION 9: DOCUMENT UPLOAD -->
 <div class="section-box">
   <h2>9. Document Upload (Based on Record Changes)</h2>
+
   <div class="form-grid">
 
     <div class="form-group half-row">
-      <label>ID Document (Front) <span class="required">*</span></label>
+      <label for="docRef_cnicFront">ID Document (Front) <span class="required">*</span></label>
       <input id="docRef_cnicFront" type="file" required />
     </div>
 
     <div class="form-group half-row">
-      <label>ID Document (Back) <span class="required">*</span></label>
+      <label for="docRef_cnicBack">ID Document (Back) <span class="required">*</span></label>
       <input id="docRef_cnicBack" type="file" required />
     </div>
 
     <div class="form-group half-row">
-      <label>Income Proof / Salary Slip Reference ID <span class="required">*</span></label>
+      <label for="docRef_incomeProof">Income Proof / Salary Slip Reference ID <span class="required">*</span></label>
       <input id="docRef_incomeProof" type="text" placeholder="Enter reference ID" required />
     </div>
 
     <div class="form-group half-row">
-      <label>Utility Bill (Address Proof) Reference ID <span class="required">*</span></label>
+      <label for="docRef_utilityBill">Utility Bill (Address Proof) Reference ID <span class="required">*</span></label>
       <input id="docRef_utilityBill" type="text" placeholder="Enter reference ID" required />
     </div>
 
     <div class="form-group half-row">
-      <label>SS Card / Other Statutory Document Reference ID</label>
+      <label for="docRef_other">SS Card / Other Statutory Document Reference ID</label>
       <input id="docRef_other" type="text" placeholder="Enter reference ID if any" />
     </div>
 
   </div>
 </div>
+
+<style>
+.section-box {
+  border: 2px solid #4CAF50;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background: #f4fff4;
+}
+
+h2 {
+  color: #4CAF50;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.required {
+  color: red;
+}
+</style>
+
 
 <!-- SECTION 10: SUBMISSION & FINAL ACTIONS -->
 <div class="section-box" id="submissionSection">
