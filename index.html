@@ -1063,31 +1063,165 @@ textarea {
 <!-- SECTION 7: OTHER REGULATORY -->
 <div class="section-box">
   <h2>7. Other Regulatory Items / Special Conditions</h2>
-  <div class="form-grid">
 
-    <div class="form-group quarter-row">
-      <label><input type="checkbox" id="fatca"> FATCA</label>
+  <!-- SPECIAL CONDITIONS SECTION -->
+  <div style="margin-bottom:20px;">
+  <div class="form-group full-row">
+    <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Special Conditions (If Any)</label>
+    <div class="checkbox-grid">
+
+      <label>Photo Holder
+        <div class="switch">
+          <input type="checkbox" class="switch-input">
+          <span class="switch-slider"></span>
+        </div>
+      </label>
+
+      <label>Visually Impaired
+        <div class="switch">
+          <input type="checkbox" class="switch-input">
+          <span class="switch-slider"></span>
+        </div>
+      </label>
+
+      <label>Deaf & Dumb
+        <div class="switch">
+          <input type="checkbox" class="switch-input">
+          <span class="switch-slider"></span>
+        </div>
+      </label>
+
+      <label>Locker Holder
+        <div class="switch">
+          <input type="checkbox" class="switch-input">
+          <span class="switch-slider"></span>
+        </div>
+      </label>
+
+      <label>Person with Disabilities (PWD)
+        <div class="switch">
+          <input type="checkbox" class="switch-input">
+          <span class="switch-slider"></span>
+        </div>
+      </label>
+
+      <label>Debarred Condition
+        <div class="switch">
+          <input type="checkbox" class="switch-input">
+          <span class="switch-slider"></span>
+        </div>
+      </label>
+
+      <label>Mark Deceased
+        <div class="switch">
+          <input type="checkbox" class="switch-input">
+          <span class="switch-slider"></span>
+        </div>
+      </label>
+
     </div>
+  </div>
 
-    <div class="form-group quarter-row">
-      <label><input type="checkbox" id="crs"> CRS</label>
+  <!-- REGULATORY DECLARATIONS SECTION -->
+  <div style="margin-top:25px;">
+  <div class="form-group full-row">
+    <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Regulatory Declarations</label>
+    <div class="checkbox-grid">
+
+      <label>FATCA
+        <div class="switch">
+          <input type="checkbox" class="switch-input">
+          <span class="switch-slider"></span>
+        </div>
+      </label>
+
+      <label>CRS
+        <div class="switch">
+          <input type="checkbox" class="switch-input">
+          <span class="switch-slider"></span>
+        </div>
+      </label>
+
     </div>
-
-    <div class="form-group full-row">
-      <label>Special Conditions (If Any)</label>
-      <div class="checkbox-grid">
-
-        <label><input type="checkbox"> Photo Holder</label>
-        <label><input type="checkbox"> Visually Impaired</label>
-        <label><input type="checkbox"> Deaf & Dumb</label>
-        <label><input type="checkbox"> Locker Holder</label>
-        <label><input type="checkbox"> Person with Disabilities (PWD)</label>
-
-      </div>
-    </div>
-
   </div>
 </div>
+
+<style>
+.section-box {
+  border: 2px solid green;
+  padding: 18px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background: #f4fff4;
+}
+
+h2 {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-weight: normal;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #bfbfbf;
+  transition: 0.25s ease-in-out;
+  border-radius: 30px;
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  transition: 0.25s ease-in-out;
+  border-radius: 50%;
+}
+
+.switch-input:checked + .switch-slider {
+  background-color: green;
+}
+
+.switch-input:checked + .switch-slider:before {
+  transform: translateX(26px);
+}
+</style>
+
 
 <!-- SECTION 8: STAFF CERTIFICATION -->
 <div class="section-box">
