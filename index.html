@@ -968,9 +968,11 @@ textarea {
 </div>
 
 
+ <!-- SECTION 6: KNOW YOUR CUSTOMER (KYC) -->
+<div class="section-box">
   <h2>6. Know Your Customer (KYC)</h2>
 
-  <!-- TOP RISK FIELDS -->
+  <!-- PEP STATUS -->
   <div class="form-grid">
     <div class="form-group">
       <label>PEP Status</label>
@@ -983,8 +985,8 @@ textarea {
     <div class="form-group" id="pepDetails" style="display:none;">
       <label>If PEP, Relationship</label>
       <select>
-        <option>Self</option>
-        <option>Related to PEP</option>
+        <option value="Self">Self</option>
+        <option value="Related">Related to PEP</option>
       </select>
     </div>
   </div>
@@ -993,13 +995,13 @@ textarea {
   <div style="margin-top:20px;">
     <div class="sub-head">Usual Mode of Transactions</div>
     <div class="checkbox-row">
-      <label><input type="checkbox" /> Cash</label>
-      <label><input type="checkbox" /> Cheque</label>
-      <label><input type="checkbox" /> Online Transfer</label>
-      <label><input type="checkbox" /> Remittance</label>
-      <label><input type="checkbox" /> ATM</label>
-      <label><input type="checkbox" /> Mobile Banking</label>
-      <label><input type="checkbox" /> POS</label>
+      <label><input type="checkbox"> Cash</label>
+      <label><input type="checkbox"> Cheque</label>
+      <label><input type="checkbox"> Online Transfer</label>
+      <label><input type="checkbox"> Remittance</label>
+      <label><input type="checkbox"> ATM</label>
+      <label><input type="checkbox"> Mobile Banking</label>
+      <label><input type="checkbox"> POS</label>
     </div>
   </div>
 
@@ -1007,83 +1009,101 @@ textarea {
   <div style="margin-top:20px;">
     <div class="sub-head">Expected Type of Counter Parties</div>
     <div class="checkbox-row">
-      <label><input type="checkbox" /> Local Individuals</label>
-      <label><input type="checkbox" /> Local Businesses</label>
-      <label><input type="checkbox" /> Foreign Individuals</label>
-      <label><input type="checkbox" /> Foreign Businesses</label>
-      <label><input type="checkbox" /> Banks/Financial Institutions</label>
-      <label><input type="checkbox" /> NGOs / NPOs</label>
+      <label><input type="checkbox"> Local Individuals</label>
+      <label><input type="checkbox"> Local Businesses</label>
+      <label><input type="checkbox"> Foreign Individuals</label>
+      <label><input type="checkbox"> Foreign Businesses</label>
+      <label><input type="checkbox"> Banks / Financial Institutions</label>
+      <label><input type="checkbox"> NGOs / NPOs</label>
     </div>
   </div>
 
-  <!-- ADDITIONAL ECONOMIC DETAILS -->
+  <!-- ADDITIONAL ECONOMIC INFORMATION -->
   <div class="form-grid" style="margin-top:20px;">
 
     <div class="form-group">
       <label>Source of Income</label>
       <select>
-        <option>Salary</option><option>Business</option><option>Freelance</option>
-        <option>Overseas Remittance</option><option>Rental Income</option>
-        <option>Agriculture</option><option>Other</option>
+        <option>Salary</option>
+        <option>Business</option>
+        <option>Freelance</option>
+        <option>Overseas Remittance</option>
+        <option>Rental Income</option>
+        <option>Agriculture</option>
+        <option>Other</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>Geographical Area of Activity Outside Pakistan</label>
       <select>
-        <option>None</option><option>UAE</option><option>Saudi Arabia</option>
-        <option>UK</option><option>USA</option><option>Turkey</option>
-        <option>China</option><option>Other</option>
+        <option>None</option>
+        <option>UAE</option>
+        <option>Saudi Arabia</option>
+        <option>UK</option>
+        <option>USA</option>
+        <option>Turkey</option>
+        <option>China</option>
+        <option>Other</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>Expected Monthly Credits (Amount)</label>
-      <input type="number" />
+      <input type="number">
     </div>
 
     <div class="form-group">
       <label>No. of Deposits (PM)</label>
       <select>
-        <option>0-10</option><option>11-20</option><option>21-30</option><option>30+</option>
+        <option>0-10</option>
+        <option>11-20</option>
+        <option>21-30</option>
+        <option>30+</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>Expected Monthly Debits (Amount)</label>
-      <input type="number" />
+      <input type="number">
     </div>
 
     <div class="form-group">
       <label>No. of Withdrawals (PM)</label>
       <select>
-        <option>0-10</option><option>11-20</option><option>21-30</option><option>30+</option>
+        <option>0-10</option>
+        <option>11-20</option>
+        <option>21-30</option>
+        <option>30+</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>Highest Expected Annual Turnover</label>
-      <input type="number" />
+      <input type="number">
     </div>
 
     <div class="form-group">
       <label>Cash Based Business</label>
       <select>
-        <option>No</option><option>Yes</option>
+        <option>No</option>
+        <option>Yes</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>Significant Cash Transactions</label>
       <select>
-        <option>No</option><option>Yes</option>
+        <option>No</option>
+        <option>Yes</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>Significant Foreign Remittances (In/Out)</label>
       <select>
-        <option>No</option><option>Yes</option>
+        <option>No</option>
+        <option>Yes</option>
       </select>
     </div>
 
@@ -1094,24 +1114,69 @@ textarea {
     <div class="form-group">
       <label>Final Risk Rating</label>
       <select>
-        <option>Low</option><option>Medium</option><option>High</option>
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>Final Risk Score</label>
-      <input type="number" />
+      <input type="number">
     </div>
   </div>
 
 </div>
 
+
 <script>
   function togglePEPDetails() {
-    const pep = document.getElementById("pepSelect").value;
-    document.getElementById("pepDetails").style.display = pep === "Yes" ? "block" : "none";
+    const isPEP = document.getElementById("pepSelect").value;
+    document.getElementById("pepDetails").style.display = (isPEP === "Yes") ? "block" : "none";
   }
 </script>
+
+<style>
+  .section-box {
+      border: 2px solid #4CAF50;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      background: #f4fff4;
+  }
+  .section-box h2 {
+      color: #4CAF50;
+      font-weight: bold;
+      margin-bottom: 15px;
+  }
+  .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+  }
+  .form-group label {
+      font-weight: bold;
+      margin-bottom: 6px;
+  }
+  .form-group input,
+  .form-group select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #888;
+      border-radius: 6px;
+  }
+  .checkbox-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+  }
+  .sub-head {
+      font-weight: bold;
+      color: #2e7d32;
+      margin-bottom: 8px;
+  }
+</style>
 
 <!-- Section 7: Next of Kin -->
 <div class="section" style="border: 1px solid #4CAF50; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #e8f5e9; font-family: Arial, sans-serif;">
