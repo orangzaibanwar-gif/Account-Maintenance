@@ -1432,91 +1432,106 @@ h2 {
   transform: translateX(26px);
 }
 </style>
-<!-- SECTION 9: STAFF CERTIFICATION & FINALIZATION (AUDIT TRAIL) -->
+<!-- SECTION 9: STAFF CERTIFICATION (BUTTON ONLY USED FOR PRINT) -->
 <div class="section-box">
   <h2>9. Staff Certification & Finalization (Audit Trail)</h2>
-
-  <div style="margin-bottom:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-    <div class="form-group" style="flex:1; min-width:150px;">
-      <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Certified By</label>
-      <input id="certifiedBy" type="text" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;" disabled />
-    </div>
-
-    <div class="form-group" style="flex:1; min-width:150px;">
-      <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Designation</label>
-      <input id="designation" type="text" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;" disabled />
-    </div>
-
-    <div class="form-group" style="flex:1; min-width:200px;">
-      <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Date & Time</label>
-      <input id="dateTime" type="datetime-local" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;" disabled />
-    </div>
-  </div>
 
   <div style="margin-bottom:15px; display:flex; align-items:center; gap:8px;">
     <input type="checkbox" id="customerConfirmed" />
     <label for="customerConfirmed">Yes, Customer has reviewed and confirmed all changes.</label>
   </div>
 
-  <button id="printCIFBtn" style="margin-top:15px; padding:10px 20px; background:green; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Print CIF</button>
+  <button id="printCIFBtn" 
+    style="margin-top:15px; padding:10px 20px; background:green; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">
+    CIF Print Form
+  </button>
 </div>
 
+
 <script>
-// Auto-fill certified fields
-window.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('certifiedBy').value = 'Auto Staff Name';
-  document.getElementById('designation').value = 'Auto Designation';
-  const now = new Date();
-  document.getElementById('dateTime').value = now.toISOString().slice(0,16);
-});
+document.getElementById("printCIFBtn").addEventListener("click", function () {
 
-// Print CIF
-document.getElementById('printCIFBtn').addEventListener('click', function() {
-  const certifiedBy = document.getElementById('certifiedBy').value;
-  const designation = document.getElementById('designation').value;
-  const dateTime = document.getElementById('dateTime').value;
-  const customerConfirmed = document.getElementById('customerConfirmed').checked ? 'Yes' : 'No';
+  // EXTRACT ALL CUSTOMER DATA FROM PAGE
+  // ------------------------------------
+  const customerHTML = document.querySelector("#section1").outerHTML +
+                       document.querySelector("#section2").outerHTML +
+                       document.querySelector("#section3").outerHTML +
+                       document.querySelector("#section4").outerHTML +
+                       document.querySelector("#section7").outerHTML +
+                       document.querySelector("#section9_dormancy")?.outerHTML || "";
 
-  const content = `
-    <h2>Customer Information</h2>
-    <table style="width:100%; border-collapse:collapse; margin-bottom:10px;">
-      <tr>
-        <td><strong>Certified By:</strong> ${certifiedBy}</td>
-        <td><strong>Designation:</strong> ${designation}</td>
-        <td><strong>Date & Time:</strong> ${dateTime}</td>
-      </tr>
-    </table>
-    <p><strong>Customer Confirmed Changes:</strong> ${customerConfirmed}</p>
+  // SECTIONS EXCLUDED: 5, 6, 8 (KYC, Economic, Documents)
+  // STAFF CERTIFICATION also excluded
+
+  // BILINGUAL HEADERS (ENGLISH + URDU)
+  const header = `
+    <div style="text-align:center; margin-bottom:25px;">
+      <h1 style="margin:0; font-size:24px;">CUSTOMER INFORMATION FORM (CIF)</h1>
+      <h2 style="margin:5px 0; font-size:22px; font-family:'Noto Nastaliq Urdu', serif;">
+        صارف کی معلومات کا فارم
+      </h2>
+      <hr style="margin-top:15px;">
+    </div>
   `;
 
-  const printWindow = window.open('', '', 'height=600,width=800');
-  printWindow.document.write('<html><head><title>Print CIF</title></head><body>');
-  printWindow.document.write(content);
-  printWindow.document.write('</body></html>');
-  printWindow.document.close();
-  printWindow.print();
+  // BUILD PRINTABLE WINDOW
+  const win = window.open("", "", "width=900,height=1000");
+
+  win.document.write(`
+    <html>
+      <head>
+        <title>CIF Print</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: white;
+            color: #000;
+          }
+
+          h2 {
+            color: #2e7d32;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+          }
+
+          td, th {
+            border: 1px solid #777;
+            padding: 8px;
+            font-size: 14px;
+          }
+
+          .section-box-print {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #4CAF50;
+            border-radius: 6px;
+            background: #f4fff4;
+          }
+
+        </style>
+      </head>
+
+      <body>
+        ${header}
+
+        <!-- CUSTOMER INFORMATION SECTIONS INSERTED BELOW -->
+        ${customerHTML}
+
+      </body>
+    </html>
+  `);
+
+  win.document.close();
+  win.print();
 });
 </script>
-
-<style>
-.section-box {
-  border: 2px solid green;
-  padding: 18px;
-  margin-top: 20px;
-  border-radius: 10px;
-  background: #f4fff4;
-}
-
-h2 {
-  color: green;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.form-group input, .form-group textarea {
-  font-size: 14px;
-}
-</style>
 
 <!-- SECTION 10: DOCUMENT UPLOAD -->
 <div class="section-box">
