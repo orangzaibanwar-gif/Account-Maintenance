@@ -822,15 +822,15 @@ textarea {
   </div>
 </div>
 
-      <!-- Dormancy Removal Section -->
-   
-<div class="section" style="border: 1px solid #4CAF50; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #e8f5e9;">
-  <h2 style="color: #2e7d32; margin-bottom: 15px;">5. Dormancy Removal</h2>
+  <!-- Dormancy Removal Section -->
+<div class="section" style="border: 1px solid #4CAF50; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #e8f5e9; font-family: Arial, sans-serif;">
+  <h2 style="color: #2e7d32; font-size: 18px; font-weight: bold; margin-bottom: 15px;">5. Dormancy Removal</h2>
 
   <!-- Dormant Accounts Table -->
-  <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; font-family: Arial, sans-serif;">
     <thead>
-      <tr style="background-color: #a5d6a7; color: #1b5e20;">
+      <tr style="background-color: #a5d6a7; color: #1b5e20; font-weight: bold;">
+        <th style="padding: 10px; border: 1px solid #4CAF50;">S.No</th>
         <th style="padding: 10px; border: 1px solid #4CAF50;">Account Number</th>
         <th style="padding: 10px; border: 1px solid #4CAF50;">Account Title</th>
         <th style="padding: 10px; border: 1px solid #4CAF50;">Product Type</th>
@@ -840,8 +840,9 @@ textarea {
       </tr>
     </thead>
     <tbody id="dormantAccountsBody">
-      <!-- Example row; rows will be populated dynamically based on CNIC -->
+      <!-- Row 1 -->
       <tr>
+        <td style="padding: 10px; border: 1px solid #4CAF50; text-align: center;">1</td>
         <td style="padding: 10px; border: 1px solid #4CAF50;">1001-0095-174086-01-6</td>
         <td style="padding: 10px; border: 1px solid #4CAF50;">Orangzaib</td>
         <td style="padding: 10px; border: 1px solid #4CAF50;">Current</td>
@@ -851,11 +852,35 @@ textarea {
           <input type="checkbox" checked />
         </td>
       </tr>
+      <!-- Row 2 -->
+      <tr>
+        <td style="padding: 10px; border: 1px solid #4CAF50; text-align: center;">2</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">1042-0078-022590-01-7</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Orangzaib</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Saving</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">UP More Branch</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Dormant</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50; text-align: center;">
+          <input type="checkbox" checked />
+        </td>
+      </tr>
+      <!-- Row 3 (Dummy) -->
+      <tr>
+        <td style="padding: 10px; border: 1px solid #4CAF50; text-align: center;">3</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">1038-0081-174086-01-8</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Orangzaib</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Current</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Regal Chowk Karachi Branch</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Dormant</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50; text-align: center;">
+          <input type="checkbox" checked />
+        </td>
+      </tr>
     </tbody>
   </table>
 
   <!-- Submit Button -->
-  <button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"
+  <button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;"
           onclick="submitDormancyRemoval()">
     Submit
   </button>
@@ -871,7 +896,7 @@ textarea {
     rows.forEach(row => {
       const checkbox = row.querySelector('input[type="checkbox"]');
       if (checkbox.checked) {
-        const accountNumber = row.cells[0].innerText;
+        const accountNumber = row.cells[1].innerText; // Updated to account for Serial No
         removalList.push(accountNumber);
       }
     });
@@ -885,13 +910,8 @@ textarea {
     console.log('Dormancy removal submitted for accounts:', removalList);
     alert('Dormancy removal submitted successfully!');
   }
-
-  // Function to dynamically populate dormant accounts based on CNIC
-  function fetchDormantAccountsByCNIC(cnic) {
-    // Example: Fetch accounts via API and populate table
-    // This is a placeholder for actual API call
-  }
 </script>
+
 
 <!-- SECTION 5: KNOW YOUR CUSTOMER (KYC) - REVISED WITHOUT GREEN HEADER LINE -->
 <style>
