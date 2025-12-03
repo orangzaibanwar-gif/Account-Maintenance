@@ -47,25 +47,32 @@
    SECTION 1 – ID INFORMATION (UPDATED & CORRECTED)
 ===============================================================-->
 
-<section class="section-box">
-    <h2>1. ID Information</h2>
+<!-- Customer Type Radio Buttons -->
+<div class="form-group" style="grid-column: span 4;">
+    <label>Customer Type *</label>
 
-    <div class="form-grid">
+    <div style="
+        display:flex; 
+        justify-content:space-between; 
+        margin-top:5px; 
+        padding:5px 10px;
+    ">
 
-        <!-- Customer Type Radio Buttons -->
-        <div class="form-group" style="grid-column: span 4;">
-            <label>Customer Type *</label>
+        <!-- New Customer (Left) -->
+        <label style="font-weight:bold; display:flex; align-items:center; gap:5px;">
+            <input type="radio" name="customerType" value="New" checked onclick="toggleReasonBox()">
+            New Customer
+        </label>
 
-            <div style="display:flex; justify-content:space-between; margin-top:5px;">
-                <label style="font-weight:bold;">
-                    <input type="radio" name="customerType" value="Existing" onclick="toggleReasonBox()"> Existing Customer
-                </label>
+        <!-- Existing Customer (Right) -->
+        <label style="font-weight:bold; display:flex; align-items:center; gap:5px;">
+            <input type="radio" name="customerType" value="Existing" onclick="toggleReasonBox()">
+            Existing Customer
+        </label>
 
-                <label style="font-weight:bold;">
-                    <input type="radio" name="customerType" value="New" checked onclick="toggleReasonBox()"> New Customer
-                </label>
-            </div>
-        </div>
+    </div>
+</div>
+
 
         <!-- ID Type -->
         <div class="form-group">
