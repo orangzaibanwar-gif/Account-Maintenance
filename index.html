@@ -1105,47 +1105,40 @@ textarea {
   }
 </script>
 
-<!-- SECTION 6: NEXT OF KIN -->
-<div class="section-box">
-  <h2>7. Next of Kin / Nominee Details</h2>
-  <div class="form-grid">
+<!-- Section 7: Next of Kin -->
+<div class="section" style="border: 1px solid #4CAF50; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #e8f5e9; font-family: Arial, sans-serif;">
+  <h2 style="color: #2e7d32; font-size: 18px; font-weight: bold; margin-bottom: 15px;">7. Next of Kin</h2>
 
-    <div class="form-group half-row">
-      <label>Tag CIF</label>
-      <input type="text" />
+  <div style="display: flex; flex-direction: column; gap: 15px;">
+    <!-- Name -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <label style="width: 180px; font-weight: bold; color: #1b5e20;">Full Name:</label>
+      <input type="text" style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;" placeholder="Enter full name" />
     </div>
 
-    <div class="form-group half-row">
-      <label>Nominee's Full Name <span class="required">*</span></label>
-      <input id="nomineeFullName" type="text" required />
+    <!-- Relation -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <label style="width: 180px; font-weight: bold; color: #1b5e20;">Relation:</label>
+      <input type="text" style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;" placeholder="Enter relation" />
     </div>
 
-    <div class="form-group half-row">
-      <label>Relationship with Nominee</label>
-      <select>
-        <option value="">Select</option>
-        <option>Father</option>
-        <option>Mother</option>
-        <option>Spouse</option>
-        <option>Other</option>
-      </select>
+    <!-- Contact Number -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <label style="width: 180px; font-weight: bold; color: #1b5e20;">Contact Number:</label>
+      <input type="text" style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;" placeholder="Enter contact number" />
     </div>
 
-    <div class="form-group half-row">
-      <label>Nominee's CNIC/ID Document No. <span class="required">*</span></label>
-      <input id="nomineeCNIC" type="text" required />
+    <!-- CNIC Number -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <label style="width: 180px; font-weight: bold; color: #1b5e20;">CNIC Number:</label>
+      <input type="text" style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;" placeholder="Enter CNIC number" />
     </div>
 
-    <div class="form-group half-row">
-      <label>Nominee's Contact Number</label>
-      <input id="nomineeContact" type="text" />
+    <!-- Address -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <label style="width: 180px; font-weight: bold; color: #1b5e20;">Address:</label>
+      <textarea style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;" rows="3" placeholder="Enter address"></textarea>
     </div>
-
-    <div class="form-group full-row">
-      <label>Nominee's Address</label>
-      <textarea id="nomineeAddress"></textarea>
-    </div>
-
   </div>
 </div>
 
