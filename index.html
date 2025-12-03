@@ -1229,30 +1229,92 @@ h2 {
   transform: translateX(26px);
 }
 </style>
-<!-- SECTION 8: STAFF CERTIFICATION -->
+<!-- SECTION 8: STAFF CERTIFICATION & FINALIZATION (AUDIT TRAIL) -->
 <div class="section-box">
-  <h2>8. Staff Certification & Finalization (Audit Trail)</h2>
-  <div class="form-grid">
+  <h2>Staff Certification & Finalization (Audit Trail)</h2>
 
-    <div class="form-group half-row">
-      <button type="button" class="btn green-btn" onclick="openPrintableCIF()">Print CIF Form</button>
+  <div style="margin-bottom:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+    <div class="form-group" style="flex:1; min-width:150px;">
+      <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Certified By</label>
+      <input id="certifiedBy" type="text" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;" disabled />
     </div>
 
-    <div class="form-group half-row">
-      <label>
-        <input type="checkbox" required>
-        Yes, Customer has reviewed and confirmed all changes.
-      </label>
+    <div class="form-group" style="flex:1; min-width:150px;">
+      <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Designation</label>
+      <input id="designation" type="text" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;" disabled />
     </div>
 
+    <div class="form-group" style="flex:1; min-width:200px;">
+      <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Date & Time</label>
+      <input id="dateTime" type="datetime-local" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;" disabled />
+    </div>
   </div>
+
+  <div style="margin-bottom:15px; display:flex; align-items:center; gap:8px;">
+    <input type="checkbox" id="customerConfirmed" />
+    <label for="customerConfirmed">Yes, Customer has reviewed and confirmed all changes.</label>
+  </div>
+
+  <button id="printCIFBtn" style="margin-top:15px; padding:10px 20px; background:green; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Print CIF</button>
 </div>
 
 <script>
-function openPrintableCIF() {
-  window.open('cif_printable.html', '_blank');
-}
+// Auto-fill certified fields
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('certifiedBy').value = 'Auto Staff Name';
+  document.getElementById('designation').value = 'Auto Designation';
+  const now = new Date();
+  document.getElementById('dateTime').value = now.toISOString().slice(0,16);
+});
+
+// Print CIF
+document.getElementById('printCIFBtn').addEventListener('click', function() {
+  const certifiedBy = document.getElementById('certifiedBy').value;
+  const designation = document.getElementById('designation').value;
+  const dateTime = document.getElementById('dateTime').value;
+  const customerConfirmed = document.getElementById('customerConfirmed').checked ? 'Yes' : 'No';
+
+  const content = `
+    <h2>Customer Information</h2>
+    <table style="width:100%; border-collapse:collapse; margin-bottom:10px;">
+      <tr>
+        <td><strong>Certified By:</strong> ${certifiedBy}</td>
+        <td><strong>Designation:</strong> ${designation}</td>
+        <td><strong>Date & Time:</strong> ${dateTime}</td>
+      </tr>
+    </table>
+    <p><strong>Customer Confirmed Changes:</strong> ${customerConfirmed}</p>
+  `;
+
+  const printWindow = window.open('', '', 'height=600,width=800');
+  printWindow.document.write('<html><head><title>Print CIF</title></head><body>');
+  printWindow.document.write(content);
+  printWindow.document.write('</body></html>');
+  printWindow.document.close();
+  printWindow.print();
+});
 </script>
+
+<style>
+.section-box {
+  border: 2px solid green;
+  padding: 18px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background: #f4fff4;
+}
+
+h2 {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-group input, .form-group textarea {
+  font-size: 14px;
+}
+</style>
+
        <!-- SECTION 9: DOCUMENT UPLOAD -->
 <div class="section-box">
   <h2>9. Document Upload (Based on Record Changes)</h2>
