@@ -1475,10 +1475,9 @@ fileInputs.forEach(id => {
       <input id="otpField" type="text" placeholder="Enter OTP" />
     </div>
 
-    <!-- Submit for Compliance Screening & Save/Submit -->
-    <div class="form-group full-row action-buttons">
+    <!-- Submit for Compliance Screening -->
+    <div class="form-group full-row">
       <button type="button" class="green-btn" onclick="submitForScreening()">Submit For Compliance Screening</button>
-      <button type="submit" class="green-btn">Save & Submit</button>
     </div>
 
   </div>
@@ -1552,19 +1551,18 @@ textarea {
 
 .full-row {
   grid-column: span 3;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.action-buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* Buttons aligned to left, can use center or flex-end */
+.full-row button {
+  width: 250px; /* Uniform button width */
 }
 
 .green-btn {
   background-color: #4CAF50;
   color: white;
-  padding: 10px 18px;
+  padding: 10px 0;
   border-radius: 6px;
   border: none;
   cursor: pointer;
@@ -1572,9 +1570,9 @@ textarea {
   transition: transform 0.2s, background-color 0.2s;
 }
 
-/* Hover effect for buttons */
 .green-btn:hover {
   background-color: #45a049;
   transform: scale(1.05);
 }
 </style>
+
