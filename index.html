@@ -1323,27 +1323,32 @@ h2 {
 
     <div class="form-group half-row">
       <label for="docRef_cnicFront">ID Document (Front) <span class="required">*</span></label>
-      <input id="docRef_cnicFront" type="file" required />
+      <input id="docRef_cnicFront" type="file" accept="image/*,.pdf" required />
+      <div class="file-preview" id="preview_cnicFront"></div>
     </div>
 
     <div class="form-group half-row">
       <label for="docRef_cnicBack">ID Document (Back) <span class="required">*</span></label>
-      <input id="docRef_cnicBack" type="file" required />
+      <input id="docRef_cnicBack" type="file" accept="image/*,.pdf" required />
+      <div class="file-preview" id="preview_cnicBack"></div>
     </div>
 
     <div class="form-group half-row">
-      <label for="docRef_incomeProof">Income Proof / Salary Slip Reference ID <span class="required">*</span></label>
-      <input id="docRef_incomeProof" type="text" placeholder="Enter reference ID" required />
+      <label for="docRef_incomeProof">Income Proof / Salary Slip <span class="required">*</span></label>
+      <input id="docRef_incomeProof" type="file" accept="image/*,.pdf" required />
+      <div class="file-preview" id="preview_incomeProof"></div>
     </div>
 
     <div class="form-group half-row">
-      <label for="docRef_utilityBill">Utility Bill (Address Proof) Reference ID <span class="required">*</span></label>
-      <input id="docRef_utilityBill" type="text" placeholder="Enter reference ID" required />
+      <label for="docRef_utilityBill">Utility Bill (Address Proof) <span class="required">*</span></label>
+      <input id="docRef_utilityBill" type="file" accept="image/*,.pdf" required />
+      <div class="file-preview" id="preview_utilityBill"></div>
     </div>
 
     <div class="form-group half-row">
-      <label for="docRef_other">SS Card / Other Statutory Document Reference ID</label>
-      <input id="docRef_other" type="text" placeholder="Enter reference ID if any" />
+      <label for="docRef_other">CIF Upload / Signed</label>
+      <input id="docRef_other" type="file" accept="image/*,.pdf" />
+      <div class="file-preview" id="preview_other"></div>
     </div>
 
   </div>
@@ -1380,18 +1385,72 @@ h2 {
   margin-bottom: 6px;
 }
 
-.form-group input[type="text"],
 .form-group input[type="file"] {
-  padding: 8px;
+  padding: 6px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 14px;
+}
+
+.file-preview {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #333;
+}
+
+.file-preview img {
+  max-width: 100%;
+  max-height: 150px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .required {
   color: red;
 }
 </style>
+
+<script>
+function previewFile(input, previewId) {
+  const preview = document.getElementById(previewId);
+  preview.innerHTML = '';
+
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
+    const fileType = file.type;
+
+    if (fileType.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        preview.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      // For non-image files like PDF
+      preview.textContent = file.name;
+    }
+  }
+}
+
+// Add event listeners for all file inputs
+const fileInputs = [
+  'docRef_cnicFront',
+  'docRef_cnicBack',
+  'docRef_incomeProof',
+  'docRef_utilityBill',
+  'docRef_other'
+];
+
+fileInputs.forEach(id => {
+  document.getElementById(id).addEventListener('change', function() {
+    previewFile(this, 'preview_' + id.split('_')[1]);
+  });
+});
+</script>
+
 
 
 <!-- SECTION 10: SUBMISSION & FINAL ACTIONS -->
