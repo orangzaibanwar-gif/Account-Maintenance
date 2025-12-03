@@ -1123,7 +1123,7 @@ textarea {
   }
 </style>
 
-<!-- Section 7: Next of Kin -->
+<!-- Section 7: Next of Kin / Nominee -->
 <div class="section" 
      style="border: 1px solid #4CAF50; 
             border-radius: 8px; 
@@ -1133,19 +1133,24 @@ textarea {
             background-color: #e8f5e9; 
             font-family: Arial, sans-serif;">
 
-  <h2 style="color: #2e7d32; font-size: 18px; font-weight: bold; margin-bottom: 15px;">
-    7. Next of Kin
+  <h2 style="color: #2e7d32; 
+             font-size: 18px; 
+             font-weight: bold; 
+             margin-bottom: 15px;">
+    7. Next of Kin / Nominee
   </h2>
 
-  <div style="display: flex; flex-direction: column; gap: 15px;">
+  <!-- Tag CIF Field -->
+  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+    <label style="width: 180px; font-weight: bold; color: #1b5e20;">
+      Tag CIF (If any):
+    </label>
+    <input type="text" 
+           style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;" 
+           placeholder="Enter CIF / ID number" />
+  </div>
 
-    <!-- Tag CIF -->
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <label style="width: 180px; font-weight: bold; color: #1b5e20;">Tag CIF (If any):</label>
-      <input type="text" 
-             style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;" 
-             placeholder="Enter CIF / ID number" />
-    </div>
+  <div style="display: flex; flex-direction: column; gap: 15px;">
 
     <!-- Full Name -->
     <div style="display: flex; align-items: center; gap: 10px;">
@@ -1155,21 +1160,19 @@ textarea {
              placeholder="Enter full name" />
     </div>
 
-    <!-- Relation -->
+    <!-- Relation (LOV) -->
     <div style="display: flex; align-items: center; gap: 10px;">
       <label style="width: 180px; font-weight: bold; color: #1b5e20;">Relation:</label>
-
-      <!-- LOV field -->
-      <select style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;">
-        <option value="">Select relation</option>
+      <select 
+          style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;">
+        <option value="">Select Relation</option>
         <option value="Father">Father</option>
         <option value="Mother">Mother</option>
         <option value="Brother">Brother</option>
         <option value="Sister">Sister</option>
+        <option value="Spouse">Spouse</option>
         <option value="Son">Son</option>
         <option value="Daughter">Daughter</option>
-        <option value="Husband">Husband</option>
-        <option value="Wife">Wife</option>
         <option value="Uncle">Uncle</option>
         <option value="Aunt">Aunt</option>
         <option value="Cousin">Cousin</option>
@@ -1177,7 +1180,7 @@ textarea {
       </select>
     </div>
 
-    <!-- Contact Number -->
+    <!-- Contact -->
     <div style="display: flex; align-items: center; gap: 10px;">
       <label style="width: 180px; font-weight: bold; color: #1b5e20;">Contact Number:</label>
       <input type="text" 
@@ -1185,7 +1188,7 @@ textarea {
              placeholder="Enter contact number" />
     </div>
 
-    <!-- CNIC Number -->
+    <!-- CNIC -->
     <div style="display: flex; align-items: center; gap: 10px;">
       <label style="width: 180px; font-weight: bold; color: #1b5e20;">CNIC Number:</label>
       <input type="text" 
@@ -1196,15 +1199,12 @@ textarea {
     <!-- Address -->
     <div style="display: flex; align-items: center; gap: 10px;">
       <label style="width: 180px; font-weight: bold; color: #1b5e20;">Address:</label>
-      <textarea 
-        style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;" 
-        rows="3" 
-        placeholder="Enter address"></textarea>
+      <textarea style="flex: 1; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;" 
+                rows="3" placeholder="Enter address"></textarea>
     </div>
 
   </div>
 </div>
-
 
 
 <!-- SECTION 8: OTHER REGULATORY -->
