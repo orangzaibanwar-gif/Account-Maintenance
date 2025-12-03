@@ -913,53 +913,56 @@ textarea {
 </script>
 
 
-<!-- SECTION 5: KNOW YOUR CUSTOMER (KYC) - REVISED WITHOUT GREEN HEADER LINE -->
-<style>
-  .section-box {
-    border: 2px solid #2e7d32;
-    padding: 20px;
-    border-radius: 12px;
-    background: #f1fff1;
-    margin-bottom: 25px;
-  }
-  .section-box h2 {
-    color: #2e7d32;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 18px;
-  }
-  .form-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-  .form-group label {
-    font-weight: 600;
-  }
-  .checkbox-row {
-    display: flex;
-    gap: 22px;
-    flex-wrap: wrap;
-    background: #e8f5e9;
-    border-radius: 10px;
-    padding: 14px 12px;
-    border: 1px solid #a5d6a7;
-  }
-  .sub-head {
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #1b5e20;
-  }
-  select, input[type="text"], input[type="number"] {
-    padding: 6px;
-    border-radius: 6px;
-    width: 100%;
-    border: 1px solid #81c784;
-  }
-</style>
+<!-- Section 7: Next of Kin -->
+<div class="section" style="border: 1px solid #4CAF50; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #e8f5e9;">
+  <h2 style="color: #2e7d32; margin-bottom: 15px;">7. Next of Kin</h2>
 
-<div class="section-box">
+  <table style="width: 100%; border-collapse: collapse;">
+    <tbody>
+      <!-- Full Name -->
+      <tr>
+        <td style="padding: 10px; width: 180px; font-weight: bold; color: #1b5e20;">Full Name:</td>
+        <td style="padding: 10px;"><input type="text" style="width: 100%; padding: 6px; border: 1px solid #4CAF50; border-radius: 4px;" placeholder="Enter full name" /></td>
+      </tr>
+
+      <!-- Relation -->
+      <tr>
+        <td style="padding: 10px; font-weight: bold; color: #1b5e20;">Relation:</td>
+        <td style="padding: 10px;">
+          <select style="width: 100%; padding: 6px; border: 1px solid #4CAF50; border-radius: 4px;">
+            <option value="">Select Relation</option>
+            <option value="Spouse">Spouse</option>
+            <option value="Father">Father</option>
+            <option value="Mother">Mother</option>
+            <option value="Brother">Brother</option>
+            <option value="Sister">Sister</option>
+            <option value="Son">Son</option>
+            <option value="Daughter">Daughter</option>
+          </select>
+        </td>
+      </tr>
+
+      <!-- Contact Number -->
+      <tr>
+        <td style="padding: 10px; font-weight: bold; color: #1b5e20;">Contact Number:</td>
+        <td style="padding: 10px;"><input type="text" style="width: 100%; padding: 6px; border: 1px solid #4CAF50; border-radius: 4px;" placeholder="Enter contact number" /></td>
+      </tr>
+
+      <!-- CNIC Number -->
+      <tr>
+        <td style="padding: 10px; font-weight: bold; color: #1b5e20;">CNIC Number:</td>
+        <td style="padding: 10px;"><input type="text" style="width: 100%; padding: 6px; border: 1px solid #4CAF50; border-radius: 4px;" placeholder="Enter CNIC number" /></td>
+      </tr>
+
+      <!-- Address -->
+      <tr>
+        <td style="padding: 10px; font-weight: bold; color: #1b5e20;">Address:</td>
+        <td style="padding: 10px;"><textarea style="width: 100%; padding: 6px; border: 1px solid #4CAF50; border-radius: 4px;" rows="3" placeholder="Enter address"></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
   <h2>6. Know Your Customer (KYC)</h2>
 
   <!-- TOP RISK FIELDS -->
