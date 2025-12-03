@@ -47,32 +47,39 @@
    SECTION 1 – ID INFORMATION (UPDATED & CORRECTED)
 ===============================================================-->
 
-<!-- Customer Type Radio Buttons -->
-<div class="form-group" style="grid-column: span 4;">
-    <label>Customer Type *</label>
+<!-- ============================================================
+   SECTION 1 – ID INFORMATION (FINAL UPDATED VERSION)
+===============================================================-->
 
-    <div style="
-        display:flex; 
-        justify-content:space-between; 
-        margin-top:5px; 
-        padding:5px 10px;
-    ">
+<section class="section-box">
+    <h2>1. ID Information</h2>
 
-        <!-- New Customer (Left) -->
-        <label style="font-weight:bold; display:flex; align-items:center; gap:5px;">
-            <input type="radio" name="customerType" value="New" checked onclick="toggleReasonBox()">
-            New Customer
-        </label>
+    <div class="form-grid">
 
-        <!-- Existing Customer (Right) -->
-        <label style="font-weight:bold; display:flex; align-items:center; gap:5px;">
-            <input type="radio" name="customerType" value="Existing" onclick="toggleReasonBox()">
-            Existing Customer
-        </label>
+        <!-- Customer Type -->
+        <div class="form-group" style="grid-column: span 4;">
+            <label>Customer Type *</label>
 
-    </div>
-</div>
+            <div style="
+                display:flex; 
+                justify-content:space-between; 
+                align-items:center;
+                margin-top:5px; 
+                padding:5px 5px;
+            ">
+                <!-- New Customer - Left -->
+                <label style="font-weight:bold; display:flex; align-items:center; gap:6px;">
+                    <input type="radio" name="customerType" value="New" checked onclick="toggleReasonBox()">
+                    New Customer
+                </label>
 
+                <!-- Existing Customer - Right -->
+                <label style="font-weight:bold; display:flex; align-items:center; gap:6px;">
+                    <input type="radio" name="customerType" value="Existing" onclick="toggleReasonBox()">
+                    Existing Customer
+                </label>
+            </div>
+        </div>
 
         <!-- ID Type -->
         <div class="form-group">
@@ -103,10 +110,10 @@
             <input type="text" id="cifNumber1" placeholder="Enter CIF Number">
         </div>
 
-        <!-- Reason for Updation / Review (HIDDEN UNTIL Existing Customer SELECTED) -->
+        <!-- Reason for Updation / Review -->
         <div id="reasonBox" class="form-group" style="grid-column: span 4; display:none;">
             <label>Reason for Updation / Review *</label>
-            <select>
+            <select required>
                 <option value="">-- Select Reason --</option>
                 <option>1. ID Information Update</option>
                 <option>2. Customer Personal Information Update</option>
@@ -135,7 +142,9 @@
 
     </div>
 
-    <!-- BIOMETRIC TOGGLE BOX -->
+    <!-- ======================================================
+       BIOMETRIC TOGGLE BOX
+    =======================================================-->
     <div id="bioBox" class="drawer">
         <h4>Biometric Verification</h4>
 
@@ -146,7 +155,9 @@
         <div class="bio-space">Fingerprint Capture Area</div>
     </div>
 
-    <!-- VERISYS TOGGLE BOX -->
+    <!-- ======================================================
+       VERISYS TOGGLE BOX
+    =======================================================-->
     <div id="verysisBox" class="drawer">
         <h4>Verisys Verification</h4>
 
@@ -168,18 +179,112 @@
     </div>
 </section>
 
+<!-- ============================================================
+   STYLING (GREEN THEME)
+===============================================================-->
+<style>
+.section-box {
+    border: 2px solid green;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #f4fff4;
+}
+
+h2 {
+    color: green;
+    font-weight: bold;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #888;
+    border-radius: 6px;
+}
+
+/* OR Box */
+.or-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.or-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+}
+
+.green-btn {
+    background: green;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.green-btn:hover {
+    opacity: 0.85;
+}
+
+.drawer {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    border-left: 4px solid green;
+    background: #eaffea;
+    border-radius: 8px;
+}
+
+.bio-space {
+    margin-top: 15px;
+    width: 200px;
+    height: 90px;
+    border: 2px dashed green;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+</style>
+
 
 <!-- ============================================================
-   SCRIPT (UPDATED)
+   SCRIPT
 ===============================================================-->
 <script>
+/* Toggle Reason for Updation */
+function toggleReasonBox() {
+    let selected = document.querySelector('input[name="customerType"]:checked').value;
+    document.getElementById("reasonBox").style.display =
+        selected === "Existing" ? "block" : "none";
+}
 
-/* RESET MASK WHEN ID TYPE CHANGES */
+/* Apply Mask based on selection */
 function applyMask1() {
     document.getElementById("idDoc1").value = "";
 }
 
-/* CNIC / NICOP / POC 15-DIGIT MASKING */
+/* masking logic */
 function maskID1() {
     let input = document.getElementById("idDoc1");
     let type = document.getElementById("idType1").value;
@@ -189,21 +294,13 @@ function maskID1() {
     }
 }
 
-/* TOGGLE: SHOW/HIDE REASON BOX (ONLY FOR EXISTING CUSTOMER) */
-function toggleReasonBox() {
-    let selected = document.querySelector('input[name="customerType"]:checked').value;
-    let box = document.getElementById("reasonBox");
-
-    box.style.display = (selected === "Existing") ? "block" : "none";
-}
-
-/* Toggle Biometric Box */
+/* Toggle Biometric */
 function toggleBio() {
     let box = document.getElementById("bioBox");
     box.style.display = (box.style.display === "block") ? "none" : "block";
 }
 
-/* Toggle Verisys Box */
+/* Toggle Verisys */
 function toggleVerysis() {
     let box = document.getElementById("verysisBox");
     box.style.display = (box.style.display === "block") ? "none" : "block";
