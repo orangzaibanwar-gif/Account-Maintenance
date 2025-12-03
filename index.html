@@ -1069,54 +1069,61 @@ textarea {
       <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Special Conditions (If Any)</label>
       <div class="checkbox-grid">
 
-        <label style="font-weight:normal;">Photo Holder
+        <div class="checkbox-item">
+          <span>Photo Holder</span>
           <div class="switch">
             <input type="checkbox" class="switch-input">
             <span class="switch-slider"></span>
           </div>
-        </label>
+        </div>
 
-        <label style="font-weight:normal;">Visually Impaired
+        <div class="checkbox-item">
+          <span>Visually Impaired</span>
           <div class="switch">
             <input type="checkbox" class="switch-input">
             <span class="switch-slider"></span>
           </div>
-        </label>
+        </div>
 
-        <label style="font-weight:normal;">Deaf & Dumb
+        <div class="checkbox-item">
+          <span>Deaf & Dumb</span>
           <div class="switch">
             <input type="checkbox" class="switch-input">
             <span class="switch-slider"></span>
           </div>
-        </label>
+        </div>
 
-        <label style="font-weight:normal;">Locker Holder
+        <div class="checkbox-item">
+          <span>Locker Holder</span>
           <div class="switch">
             <input type="checkbox" class="switch-input">
             <span class="switch-slider"></span>
           </div>
-        </label>
+        </div>
 
-        <label style="font-weight:normal;">Person with Disabilities (PWD)
+        <div class="checkbox-item">
+          <span>Person with Disabilities (PWD)</span>
           <div class="switch">
             <input type="checkbox" class="switch-input">
             <span class="switch-slider"></span>
           </div>
-        </label>
+        </div>
 
-        <label style="font-weight:normal;">Debarred Condition
+        <div class="checkbox-item">
+          <span>Debarred Condition</span>
           <div class="switch">
             <input type="checkbox" class="switch-input">
             <span class="switch-slider"></span>
           </div>
-        </label>
+        </div>
 
-        <label style="font-weight:normal;">Mark Deceased
+        <div class="checkbox-item">
+          <span>Mark Deceased</span>
           <div class="switch">
             <input type="checkbox" class="switch-input">
             <span class="switch-slider"></span>
           </div>
-        </label>
+        </div>
 
       </div>
     </div>
@@ -1128,19 +1135,21 @@ textarea {
       <label style="font-weight:bold; font-size:16px; margin-bottom:8px; display:block;">Regulatory Declarations</label>
       <div class="checkbox-grid">
 
-        <label style="font-weight:normal;">FATCA
+        <div class="checkbox-item">
+          <span>FATCA</span>
           <div class="switch">
             <input type="checkbox" class="switch-input">
             <span class="switch-slider"></span>
           </div>
-        </label>
+        </div>
 
-        <label style="font-weight:normal;">CRS
+        <div class="checkbox-item">
+          <span>CRS</span>
           <div class="switch">
             <input type="checkbox" class="switch-input">
             <span class="switch-slider"></span>
           </div>
-        </label>
+        </div>
 
       </div>
     </div>
@@ -1162,18 +1171,16 @@ h2 {
   margin-bottom: 10px;
 }
 
-.form-group label {
-  font-weight: normal;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .checkbox-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 14px;
+  align-items: center;
+}
+
+.checkbox-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -1222,6 +1229,7 @@ h2 {
   transform: translateX(26px);
 }
 </style>
+
 <!-- SECTION 8: STAFF CERTIFICATION -->
 <div class="section-box">
   <h2>8. Staff Certification & Finalization (Audit Trail)</h2>
