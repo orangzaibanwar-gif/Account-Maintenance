@@ -1460,12 +1460,12 @@ fileInputs.forEach(id => {
   <div class="form-grid">
 
     <!-- Print CIF Form Button -->
-    <div class="form-group full-row" style="justify-content:center;">
+    <div class="form-group full-row">
       <button type="button" class="green-btn" onclick="printCIF()">Print CIF Form</button>
     </div>
 
     <!-- Submit for OTAC/OTP Button -->
-    <div class="form-group full-row" style="justify-content:center;">
+    <div class="form-group full-row">
       <button type="button" class="green-btn" onclick="submitForOTP()">Submit For OTAC/OTP</button>
     </div>
 
@@ -1476,7 +1476,7 @@ fileInputs.forEach(id => {
     </div>
 
     <!-- Submit for Compliance Screening & Save/Submit -->
-    <div class="form-group full-row action-buttons" style="justify-content:flex-end;">
+    <div class="form-group full-row action-buttons">
       <button type="button" class="green-btn" onclick="submitForScreening()">Submit For Compliance Screening</button>
       <button type="submit" class="green-btn">Save & Submit</button>
     </div>
@@ -1484,18 +1484,97 @@ fileInputs.forEach(id => {
   </div>
 </div>
 
+<script>
+function printCIF() {
+  const formContent = document.body.innerHTML;
+
+  const printWindow = window.open('', '', 'height=800,width=1000');
+  printWindow.document.write('<html><head><title>CIF Form</title>');
+  printWindow.document.write('<style>');
+  printWindow.document.write('body{font-family:Arial,sans-serif; padding:20px;}');
+  printWindow.document.write('h2{color:green;}');
+  printWindow.document.write('label{font-weight:bold;}');
+  printWindow.document.write('input, select, textarea{width:100%; padding:5px; margin-bottom:10px; border:1px solid #888; border-radius:4px;}');
+  printWindow.document.write('</style>');
+  printWindow.document.write('</head><body>');
+  printWindow.document.write(formContent);
+  printWindow.document.write('</body></html>');
+
+  printWindow.document.close();
+  printWindow.focus();
+  printWindow.print();
+}
+</script>
+
 <style>
+.section-box {
+  border: 2px solid #4CAF50;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background: #f4fff4;
+}
+
+.section-box h2 {
+  color: #4CAF50;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #888;
+  font-size: 14px;
+}
+
+textarea {
+  height: 70px;
+}
+
+.full-row {
+  grid-column: span 3;
+}
+
 .action-buttons {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  justify-content: flex-start; /* Buttons aligned to left, can use center or flex-end */
 }
-.form-group.full-row {
-  display: flex;
-  flex-direction: column;
+
+.green-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, background-color 0.2s;
 }
-.form-group.full-row button {
-  width: auto;
-  min-width: 200px;
+
+/* Hover effect for buttons */
+.green-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
 }
 </style>
