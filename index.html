@@ -822,6 +822,77 @@ textarea {
   </div>
 </div>
 
+      <!-- Dormancy Removal Section -->
+      <h2>5. Dormancy Removal Section</h2>
+<div class="section" style="border: 1px solid #4CAF50; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #e8f5e9;">
+  <h2 style="color: #2e7d32; margin-bottom: 15px;">Dormancy Removal</h2>
+
+  <!-- Dormant Accounts Table -->
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">
+    <thead>
+      <tr style="background-color: #a5d6a7; color: #1b5e20;">
+        <th style="padding: 10px; border: 1px solid #4CAF50;">Account Number</th>
+        <th style="padding: 10px; border: 1px solid #4CAF50;">Account Title</th>
+        <th style="padding: 10px; border: 1px solid #4CAF50;">Product Type</th>
+        <th style="padding: 10px; border: 1px solid #4CAF50;">Branch</th>
+        <th style="padding: 10px; border: 1px solid #4CAF50;">Status</th>
+        <th style="padding: 10px; border: 1px solid #4CAF50;">Remove Dormancy</th>
+      </tr>
+    </thead>
+    <tbody id="dormantAccountsBody">
+      <!-- Example row; rows will be populated dynamically based on CNIC -->
+      <tr>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">1234567890</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">John Doe</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Savings</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Karachi Main</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50;">Dormant</td>
+        <td style="padding: 10px; border: 1px solid #4CAF50; text-align: center;">
+          <input type="checkbox" checked />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Submit Button -->
+  <button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"
+          onclick="submitDormancyRemoval()">
+    Submit
+  </button>
+</div>
+
+<script>
+  // Function to submit dormancy removal
+  function submitDormancyRemoval() {
+    const table = document.getElementById('dormantAccountsBody');
+    const rows = table.querySelectorAll('tr');
+    const removalList = [];
+
+    rows.forEach(row => {
+      const checkbox = row.querySelector('input[type="checkbox"]');
+      if (checkbox.checked) {
+        const accountNumber = row.cells[0].innerText;
+        removalList.push(accountNumber);
+      }
+    });
+
+    if(removalList.length === 0){
+      alert('No accounts selected for dormancy removal.');
+      return;
+    }
+
+    // Simulate submission (replace with API call in real implementation)
+    console.log('Dormancy removal submitted for accounts:', removalList);
+    alert('Dormancy removal submitted successfully!');
+  }
+
+  // Function to dynamically populate dormant accounts based on CNIC
+  function fetchDormantAccountsByCNIC(cnic) {
+    // Example: Fetch accounts via API and populate table
+    // This is a placeholder for actual API call
+  }
+</script>
+
 <!-- SECTION 5: KNOW YOUR CUSTOMER (KYC) - REVISED WITHOUT GREEN HEADER LINE -->
 <style>
   .section-box {
@@ -869,7 +940,7 @@ textarea {
 </style>
 
 <div class="section-box">
-  <h2>5. Know Your Customer (KYC)</h2>
+  <h2>6. Know Your Customer (KYC)</h2>
 
   <!-- TOP RISK FIELDS -->
   <div class="form-grid">
@@ -1016,7 +1087,7 @@ textarea {
 
 <!-- SECTION 6: NEXT OF KIN -->
 <div class="section-box">
-  <h2>6. Next of Kin / Nominee Details</h2>
+  <h2>7. Next of Kin / Nominee Details</h2>
   <div class="form-grid">
 
     <div class="form-group half-row">
@@ -1059,9 +1130,9 @@ textarea {
 </div>
 
 
-<!-- SECTION 7: OTHER REGULATORY -->
+<!-- SECTION 8: OTHER REGULATORY -->
 <div class="section-box">
-  <h2>7. Other Regulatory Items / Special Conditions</h2>
+  <h2>8. Other Regulatory Items / Special Conditions</h2>
 
   <!-- SPECIAL CONDITIONS SECTION -->
   <div style="margin-bottom:20px;">
@@ -1229,9 +1300,9 @@ h2 {
   transform: translateX(26px);
 }
 </style>
-<!-- SECTION 8: STAFF CERTIFICATION & FINALIZATION (AUDIT TRAIL) -->
+<!-- SECTION 9: STAFF CERTIFICATION & FINALIZATION (AUDIT TRAIL) -->
 <div class="section-box">
-  <h2>8. Staff Certification & Finalization (Audit Trail)</h2>
+  <h2>9. Staff Certification & Finalization (Audit Trail)</h2>
 
   <div style="margin-bottom:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
     <div class="form-group" style="flex:1; min-width:150px;">
@@ -1315,9 +1386,9 @@ h2 {
 }
 </style>
 
-<!-- SECTION 9: DOCUMENT UPLOAD -->
+<!-- SECTION 10: DOCUMENT UPLOAD -->
 <div class="section-box">
-  <h2>9. Document Upload (Based on Record Changes)</h2>
+  <h2>10. Document Upload (Based on Record Changes)</h2>
 
   <div class="form-grid">
 
@@ -1453,9 +1524,9 @@ fileInputs.forEach(id => {
 
 
 
-<!-- SECTION 10: SUBMISSION & FINAL ACTIONS -->
+<!-- SECTION 11: SUBMISSION & FINAL ACTIONS -->
 <div class="section-box" id="submissionSection">
-  <h2>10. Submission & Final Actions</h2>
+  <h2>11. Submission & Final Actions</h2>
 
   <div class="form-grid">
 
