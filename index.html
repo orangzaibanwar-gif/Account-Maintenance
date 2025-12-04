@@ -43,12 +43,9 @@
 
     <form id="custForm" onsubmit="return handleSubmit(event)">
 
-<!-- ============================================================
-   SECTION 1 – ID INFORMATION (UPDATED & CORRECTED)
-===============================================================-->
 
 <!-- ============================================================
-   SECTION 1 – ID INFORMATION (FINAL UPDATED VERSION)
+   SECTION 1 – ID INFORMATION (FINAL REVISED VERSION)
 ===============================================================-->
 
 <section class="section-box">
@@ -61,21 +58,21 @@
             <label>Customer Type *</label>
 
             <div style="
-                display:flex; 
-                justify-content:space-between; 
+                display:flex;
+                justify-content:center;
                 align-items:center;
-                margin-top:5px; 
-                padding:5px 5px;
+                gap:120px;
+                margin-top:5px;
             ">
-                <!-- New Customer - Left -->
+                <!-- New Customer -->
                 <label style="font-weight:bold; display:flex; align-items:center; gap:6px;">
-                    <input type="radio" name="customerType" value="New" checked onclick="toggleReasonBox()">
+                    <input type="radio" name="customerType" value="New" checked onclick="toggleReasonSection()">
                     New Customer
                 </label>
 
-                <!-- Existing Customer - Right -->
+                <!-- Existing Customer -->
                 <label style="font-weight:bold; display:flex; align-items:center; gap:6px;">
-                    <input type="radio" name="customerType" value="Existing" onclick="toggleReasonBox()">
+                    <input type="radio" name="customerType" value="Existing" onclick="toggleReasonSection()">
                     Existing Customer
                 </label>
             </div>
@@ -93,7 +90,7 @@
             </select>
         </div>
 
-        <!-- ID Document Number -->
+        <!-- ID Number -->
         <div class="form-group">
             <label>ID Document Number *</label>
             <input type="text" id="idDoc1" maxlength="15" oninput="maskID1()" placeholder="Enter ID No">
@@ -110,22 +107,25 @@
             <input type="text" id="cifNumber1" placeholder="Enter CIF Number">
         </div>
 
-        <!-- Reason for Updation / Review -->
-        <div id="reasonBox" class="form-group" style="grid-column: span 4; display:none;">
-            <label>Reason for Updation / Review *</label>
-            <select required>
-                <option value="">-- Select Reason --</option>
-                <option>1. ID Information Update</option>
-                <option>2. Customer Personal Information Update</option>
-                <option>3. Contact Information Update</option>
-                <option>4. Employment Information Update</option>
-                <option>5. Address Update</option>
-                <option>6. FATCA / CRS Update</option>
-                <option>7. KYC Information Update</option>
-                <option>8. Account Related Change</option>
-                <option>9. Document Upload / Review Update</option>
-            </select>
+        <!-- Reason CheckBox Section -->
+        <div id="reasonContainer" class="form-group" style="grid-column: span 4; display:none;">
+            <label><b>Select Reason for Updation / Review *</b></label>
+
+            <div class="reason-list">
+                <label><input type="checkbox" value="idSection" onchange="toggleSection(this)"> ID Information Update</label>
+                <label><input type="checkbox" value="personalSection" onchange="toggleSection(this)"> Customer Personal Information Update</label>
+                <label><input type="checkbox" value="contactSection" onchange="toggleSection(this)"> Contact Information Update</label>
+                <label><input type="checkbox" value="employmentSection" onchange="toggleSection(this)"> Employment Information Update</label>
+                <label><input type="checkbox" value="addressSection" onchange="toggleSection(this)"> Address Update</label>
+                <label><input type="checkbox" value="fatcaSection" onchange="toggleSection(this)"> FATCA / CRS Update</label>
+                <label><input type="checkbox" value="kycSection" onchange="toggleSection(this)"> KYC Information Update</label>
+                <label><input type="checkbox" value="accountSection" onchange="toggleSection(this)"> Account Related Change</label>
+                <label><input type="checkbox" value="documentSection" onchange="toggleSection(this)"> Document Upload / Review Update</label>
+            </div>
         </div>
+
+        <!-- Placeholder Dynamic Sections -->
+        <div id="dynamicSections" style="grid-column: span 4;"></div>
 
         <!-- Biometric Button -->
         <div class="form-group">
@@ -136,28 +136,18 @@
         <div class="form-group">
             <button type="button" class="green-btn" onclick="toggleVerysis()">Verisys Check</button>
         </div>
-
-        <div class="form-group"></div>
-        <div class="form-group"></div>
-
     </div>
 
-    <!-- ======================================================
-       BIOMETRIC TOGGLE BOX
-    =======================================================-->
+    <!-- BIOMETRIC BOX -->
     <div id="bioBox" class="drawer">
         <h4>Biometric Verification</h4>
-
         <label><input type="checkbox"> New CIF Creation</label><br>
         <label><input type="checkbox"> Record Updation</label><br>
         <label><input type="checkbox"> Dormancy Removal</label>
-
         <div class="bio-space">Fingerprint Capture Area</div>
     </div>
 
-    <!-- ======================================================
-       VERISYS TOGGLE BOX
-    =======================================================-->
+    <!-- VERISYS BOX -->
     <div id="verysisBox" class="drawer">
         <h4>Verisys Verification</h4>
 
@@ -180,7 +170,7 @@
 </section>
 
 <!-- ============================================================
-   STYLING (GREEN THEME)
+   STYLING
 ===============================================================-->
 <style>
 .section-box {
@@ -198,7 +188,7 @@ h2 {
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
 
@@ -210,8 +200,17 @@ h2 {
 .form-group select {
     width: 100%;
     padding: 7px;
-    border: 1px solid #888;
     border-radius: 6px;
+    border: 1px solid #888;
+}
+
+/* Reason checkbox styling */
+.reason-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 14px;
 }
 
 /* OR Box */
@@ -221,9 +220,9 @@ h2 {
     justify-content: center;
 }
 .or-label {
+    color: green;
     font-size: 18px;
     font-weight: bold;
-    color: green;
 }
 
 .green-btn {
@@ -231,8 +230,8 @@ h2 {
     color: white;
     padding: 8px 14px;
     border: none;
-    cursor: pointer;
     border-radius: 6px;
+    cursor: pointer;
     font-weight: bold;
 }
 .green-btn:hover {
@@ -243,8 +242,8 @@ h2 {
     display: none;
     margin-top: 15px;
     padding: 15px;
-    border-left: 4px solid green;
     background: #eaffea;
+    border-left: 4px solid green;
     border-radius: 8px;
 }
 
@@ -255,57 +254,72 @@ h2 {
     border: 2px dashed green;
     border-radius: 6px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     font-weight: bold;
 }
 
 .form-grid-3 {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 </style>
-
 
 <!-- ============================================================
    SCRIPT
 ===============================================================-->
 <script>
-/* Toggle Reason for Updation */
-function toggleReasonBox() {
-    let selected = document.querySelector('input[name="customerType"]:checked').value;
-    document.getElementById("reasonBox").style.display =
-        selected === "Existing" ? "block" : "none";
-}
+/* Show Reason Checkboxes only for Existing Customer */
+function toggleReasonSection() {
+    let type = document.querySelector('input[name="customerType"]:checked').value;
+    let reasonBox = document.getElementById("reasonContainer");
 
-/* Apply Mask based on selection */
-function applyMask1() {
-    document.getElementById("idDoc1").value = "";
-}
-
-/* masking logic */
-function maskID1() {
-    let input = document.getElementById("idDoc1");
-    let type = document.getElementById("idType1").value;
-
-    if (type === "CNIC" || type === "NICOP" || type === "POC") {
-        input.value = input.value.replace(/\D/g, "").substring(0, 15);
+    if (type === "Existing") {
+        reasonBox.style.display = "block";
+    } else {
+        reasonBox.style.display = "none";
+        document.getElementById("dynamicSections").innerHTML = "";
+        document.querySelectorAll('#reasonContainer input[type="checkbox"]').forEach(c => c.checked = false);
     }
 }
 
-/* Toggle Biometric */
-function toggleBio() {
-    let box = document.getElementById("bioBox");
-    box.style.display = (box.style.display === "block") ? "none" : "block";
+/* Dynamic section display */
+function toggleSection(checkbox) {
+    let container = document.getElementById("dynamicSections");
+
+    if (checkbox.checked) {
+        let div = document.createElement("div");
+        div.className = "dynBox";
+        div.id = checkbox.value;
+        div.style = "padding:10px; margin-top:10px; border-left:4px solid green; background:#eaffea; border-radius:6px;";
+        div.innerHTML = `<b>${checkbox.parentElement.innerText}</b> - Section Appears Here`;
+        container.appendChild(div);
+    } else {
+        document.getElementById(checkbox.value)?.remove();
+    }
 }
 
-/* Toggle Verisys */
-function toggleVerysis() {
-    let box = document.getElementById("verysisBox");
-    box.style.display = (box.style.display === "block") ? "none" : "block";
+/* Masking Logic */
+function applyMask1(){ document.getElementById("idDoc1").value = ""; }
+function maskID1(){
+    let input=document.getElementById("idDoc1");
+    if(["CNIC","NICOP","POC"].includes(document.getElementById("idType1").value)){
+        input.value=input.value.replace(/\D/g,"").substring(0,15);
+    }
+}
+
+/* Toggles */
+function toggleBio(){
+    let b=document.getElementById("bioBox");
+    b.style.display=b.style.display==="block"?"none":"block";
+}
+function toggleVerysis(){
+    let b=document.getElementById("verysisBox");
+    b.style.display=b.style.display==="block"?"none":"block";
 }
 </script>
+
 
 <!-- SECTION 2 – CUSTOMER PERSONAL INFORMATION & IDENTITY (Green Theme, Optimized Alignment) -->
 <style>
