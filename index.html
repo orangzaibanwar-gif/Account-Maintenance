@@ -43,281 +43,198 @@
 
     <form id="custForm" onsubmit="return handleSubmit(event)">
 
-
 <!-- ============================================================
-   SECTION 1 – ID INFORMATION (FINAL REVISED VERSION)
+   SECTION 1 – ID INFORMATION (FULLY REVISED)
 ===============================================================-->
 
 <section class="section-box">
-    <h2>1. ID Information</h2>
+  <h2>1. ID Information</h2>
 
-    <div class="form-grid">
+  <!-- CUSTOMER TYPE -->
+  <div style="display:flex; justify-content:center; gap:40px; margin-bottom:20px; align-items:center;">
+    <label style="font-weight:bold; font-size:16px; white-space:nowrap;">
+      <input type="radio" name="customerType" value="new" checked onclick="toggleReasonBox()"> New Customer
+    </label>
+    <label style="font-weight:bold; font-size:16px; white-space:nowrap;">
+      <input type="radio" name="customerType" value="existing" onclick="toggleReasonBox()"> Existing Customer
+    </label>
+  </div>
 
-        <!-- Customer Type -->
-        <div class="form-group" style="grid-column: span 4;">
-            <label>Customer Type *</label>
-
-            <div style="
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                gap:120px;
-                margin-top:5px;
-            ">
-                <!-- New Customer -->
-                <label style="font-weight:bold; display:flex; align-items:center; gap:6px;">
-                    <input type="radio" name="customerType" value="New" checked onclick="toggleReasonSection()">
-                    New Customer
-                </label>
-
-                <!-- Existing Customer -->
-                <label style="font-weight:bold; display:flex; align-items:center; gap:6px;">
-                    <input type="radio" name="customerType" value="Existing" onclick="toggleReasonSection()">
-                    Existing Customer
-                </label>
-            </div>
-        </div>
-
-        <!-- ID Type -->
-        <div class="form-group">
-            <label>ID Type *</label>
-            <select id="idType1" onchange="applyMask1()" required>
-                <option value="">Select</option>
-                <option value="CNIC">CNIC</option>
-                <option value="NICOP">NICOP</option>
-                <option value="POC">POC</option>
-                <option value="Passport">Passport</option>
-            </select>
-        </div>
-
-        <!-- ID Number -->
-        <div class="form-group">
-            <label>ID Document Number *</label>
-            <input type="text" id="idDoc1" maxlength="15" oninput="maskID1()" placeholder="Enter ID No">
-        </div>
-
-        <!-- OR -->
-        <div class="form-group or-box">
-            <span class="or-label">OR</span>
-        </div>
-
-        <!-- CIF Number -->
-        <div class="form-group">
-            <label>CIF Number *</label>
-            <input type="text" id="cifNumber1" placeholder="Enter CIF Number">
-        </div>
-
-        <!-- Reason CheckBox Section -->
-        <div id="reasonContainer" class="form-group" style="grid-column: span 4; display:none;">
-            <label><b>Select Reason for Updation / Review *</b></label>
-
-            <div class="reason-list">
-                <label><input type="checkbox" value="idSection" onchange="toggleSection(this)"> ID Information Update</label>
-                <label><input type="checkbox" value="personalSection" onchange="toggleSection(this)"> Customer Personal Information Update</label>
-                <label><input type="checkbox" value="contactSection" onchange="toggleSection(this)"> Contact Information Update</label>
-                <label><input type="checkbox" value="employmentSection" onchange="toggleSection(this)"> Employment Information Update</label>
-                <label><input type="checkbox" value="addressSection" onchange="toggleSection(this)"> Address Update</label>
-                <label><input type="checkbox" value="fatcaSection" onchange="toggleSection(this)"> FATCA / CRS Update</label>
-                <label><input type="checkbox" value="kycSection" onchange="toggleSection(this)"> KYC Information Update</label>
-                <label><input type="checkbox" value="accountSection" onchange="toggleSection(this)"> Account Related Change</label>
-                <label><input type="checkbox" value="documentSection" onchange="toggleSection(this)"> Document Upload / Review Update</label>
-            </div>
-        </div>
-
-        <!-- Placeholder Dynamic Sections -->
-        <div id="dynamicSections" style="grid-column: span 4;"></div>
-
-        <!-- Biometric Button -->
-        <div class="form-group">
-            <button type="button" class="green-btn" onclick="toggleBio()">Biometric Verification</button>
-        </div>
-
-        <!-- Verisys Button -->
-        <div class="form-group">
-            <button type="button" class="green-btn" onclick="toggleVerysis()">Verisys Check</button>
-        </div>
+  <!-- CNIC + CIF ROW -->
+  <div style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:20px;">
+    <div class="form-group" style="flex:1; min-width:240px;">
+      <label><b>CNIC / ID Number *</b></label>
+      <input type="text" id="idDoc1" maxlength="15" oninput="maskID1()" placeholder="Enter ID Number" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;">
     </div>
 
-    <!-- BIOMETRIC BOX -->
-    <div id="bioBox" class="drawer">
-        <h4>Biometric Verification</h4>
-        <label><input type="checkbox"> New CIF Creation</label><br>
-        <label><input type="checkbox"> Record Updation</label><br>
-        <label><input type="checkbox"> Dormancy Removal</label>
-        <div class="bio-space">Fingerprint Capture Area</div>
+    <div class="form-group" style="flex:1; min-width:200px;">
+      <label><b>CIF Number *</b></label>
+      <input type="text" id="cifNumber1" placeholder="Enter CIF Number" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;">
     </div>
+  </div>
 
-    <!-- VERISYS BOX -->
-    <div id="verysisBox" class="drawer">
-        <h4>Verisys Verification</h4>
+  <!-- REASON SELECTION -->
+  <div id="reasonBox" class="reason-box" style="display:none;">
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="personalInfo"> Personal Information Update</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="address"> Address Change</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="contact"> Contact Details Update</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="nextOfKin"> Next of Kin Update</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="riskProfile"> Risk Profile Update</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="signature"> Signature Update</label>
+  </div>
 
-        <div class="form-grid-3">
-            <div class="form-group">
-                <label>ID Issuance Date *</label>
-                <input type="date">
-            </div>
+  <!-- BIOMETRIC & VERYSIS BUTTONS -->
+  <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap;">
+    <button type="button" class="green-btn" onclick="toggleBio()">Biometric Verification</button>
+    <button type="button" class="green-btn" onclick="toggleVerisys()">Verisys Check</button>
+  </div>
 
-            <div class="form-group">
-                <label>OTP *</label>
-                <input type="text" maxlength="6" placeholder="Enter OTP">
-            </div>
+  <!-- ======================================================
+       BIOMETRIC TOGGLE BOX
+  =======================================================-->
+  <div id="bioBox" class="drawer">
+    <h4>Biometric Verification</h4>
+    <label><input type="checkbox"> New CIF Creation</label><br>
+    <label><input type="checkbox"> Record Updation</label><br>
+    <label><input type="checkbox"> Dormancy Removal</label>
+    <div class="bio-space">Fingerprint Capture Area</div>
+  </div>
 
-            <div class="form-group">
-                <button class="green-btn">Call Verisys</button>
-            </div>
-        </div>
+  <!-- ======================================================
+       VERISYS TOGGLE BOX
+  =======================================================-->
+  <div id="verisysBox" class="drawer">
+    <h4>Verisys Verification</h4>
+    <div class="form-grid-3">
+      <div class="form-group">
+        <label>ID Issuance Date *</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>OTP *</label>
+        <input type="text" maxlength="6" placeholder="Enter OTP">
+      </div>
+      <div class="form-group">
+        <button class="green-btn">Call Verisys</button>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- ============================================================
-   STYLING
+       CSS
 ===============================================================-->
 <style>
 .section-box {
-    border: 2px solid green;
-    padding: 18px;
-    margin-top: 20px;
-    border-radius: 10px;
-    background: #f4fff4;
+  border: 2px solid green;
+  padding: 18px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background: #f4fff4;
 }
 
 h2 {
-    color: green;
-    font-weight: bold;
+  color: green;
+  font-weight: bold;
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+.reason-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 12px;
+  background: #e9ffe9;
+  border: 1px solid green;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
-.form-group label {
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 7px;
-    border-radius: 6px;
-    border: 1px solid #888;
-}
-
-/* Reason checkbox styling */
-.reason-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 8px;
-    font-size: 14px;
-}
-
-/* OR Box */
-.or-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.or-label {
-    color: green;
-    font-size: 18px;
-    font-weight: bold;
+.reason-item {
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }
 
 .green-btn {
-    background: green;
-    color: white;
-    padding: 8px 14px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
+  background: green;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
 }
 .green-btn:hover {
-    opacity: 0.85;
+  opacity: 0.85;
 }
 
 .drawer {
-    display: none;
-    margin-top: 15px;
-    padding: 15px;
-    background: #eaffea;
-    border-left: 4px solid green;
-    border-radius: 8px;
+  display: none;
+  margin-top: 15px;
+  padding: 15px;
+  border-left: 4px solid green;
+  background: #eaffea;
+  border-radius: 8px;
 }
 
 .bio-space {
-    margin-top: 15px;
-    width: 200px;
-    height: 90px;
-    border: 2px dashed green;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+  margin-top: 15px;
+  width: 200px;
+  height: 90px;
+  border: 2px dashed green;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 .form-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
 }
 </style>
 
 <!-- ============================================================
-   SCRIPT
+       SCRIPT
 ===============================================================-->
 <script>
-/* Show Reason Checkboxes only for Existing Customer */
-function toggleReasonSection() {
-    let type = document.querySelector('input[name="customerType"]:checked').value;
-    let reasonBox = document.getElementById("reasonContainer");
-
-    if (type === "Existing") {
-        reasonBox.style.display = "block";
-    } else {
-        reasonBox.style.display = "none";
-        document.getElementById("dynamicSections").innerHTML = "";
-        document.querySelectorAll('#reasonContainer input[type="checkbox"]').forEach(c => c.checked = false);
-    }
+function toggleReasonBox() {
+  let selected = document.querySelector('input[name="customerType"]:checked').value;
+  document.getElementById("reasonBox").style.display = (selected === "existing") ? "flex" : "none";
 }
 
-/* Dynamic section display */
-function toggleSection(checkbox) {
-    let container = document.getElementById("dynamicSections");
-
-    if (checkbox.checked) {
-        let div = document.createElement("div");
-        div.className = "dynBox";
-        div.id = checkbox.value;
-        div.style = "padding:10px; margin-top:10px; border-left:4px solid green; background:#eaffea; border-radius:6px;";
-        div.innerHTML = `<b>${checkbox.parentElement.innerText}</b> - Section Appears Here`;
-        container.appendChild(div);
-    } else {
-        document.getElementById(checkbox.value)?.remove();
-    }
+function maskID1() {
+  let input = document.getElementById("idDoc1");
+  input.value = input.value.replace(/\D/g, "").substring(0, 15);
 }
 
-/* Masking Logic */
-function applyMask1(){ document.getElementById("idDoc1").value = ""; }
-function maskID1(){
-    let input=document.getElementById("idDoc1");
-    if(["CNIC","NICOP","POC"].includes(document.getElementById("idType1").value)){
-        input.value=input.value.replace(/\D/g,"").substring(0,15);
-    }
+function toggleBio() {
+  let box = document.getElementById("bioBox");
+  box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
-/* Toggles */
-function toggleBio(){
-    let b=document.getElementById("bioBox");
-    b.style.display=b.style.display==="block"?"none":"block";
+function toggleVerisys() {
+  let box = document.getElementById("verisysBox");
+  box.style.display = box.style.display === "block" ? "none" : "block";
 }
-function toggleVerysis(){
-    let b=document.getElementById("verysisBox");
-    b.style.display=b.style.display==="block"?"none":"block";
-}
+
+// Reason checkboxes example logic
+document.querySelectorAll(".reasonCheck").forEach(item => {
+  item.addEventListener("change", function() {
+    const sectionID = "section_" + this.value; // target section id example
+    const sec = document.getElementById(sectionID);
+    if (sec) sec.style.display = this.checked ? "block" : "none";
+  });
+});
 </script>
 
 
