@@ -44,7 +44,7 @@
     <form id="custForm" onsubmit="return handleSubmit(event)">
 
 <!-- ============================================================
-   SECTION 1 – ID INFORMATION (REVISED)
+   SECTION 1 – ID INFORMATION (REVISED WITH UPDATED REASON LABELS)
 ===============================================================-->
 
 <section class="section-box">
@@ -95,12 +95,13 @@
 
   <!-- REASON SELECTION -->
   <div id="reasonBox" class="reason-box" style="display:none; margin-bottom:20px;">
-    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="personalInfo"> Personal Information Update</label>
-    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="address"> Address Change</label>
-    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="contact"> Contact Details Update</label>
-    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="nextOfKin"> Next of Kin Update</label>
-    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="riskProfile"> Risk Profile Update</label>
-    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="signature"> Signature Update</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="personalInfo"> Customer Personal Information & Identity</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="contactAddress"> Customer Contact & Address Information</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="occupationKYC"> Occupation and Financial Profile Update (KYC)</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="dormancyRemoval"> Dormancy Removal</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="knowYourCustomer"> Know Your Customer (KYC)</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="nextOfKin"> Next of Kin / Nominee</label>
+    <label class="reason-item"><input type="checkbox" class="reasonCheck" value="otherRegulatory"> Other Regulatory Items / Special Conditions</label>
   </div>
 
   <!-- BIOMETRIC & VERYSIS BUTTONS -->
@@ -256,9 +257,10 @@ function toggleVerisys() {
   box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
+/* Dynamic section display on checkbox selection */
 document.querySelectorAll(".reasonCheck").forEach(item => {
   item.addEventListener("change", function() {
-    const sectionID = "section_" + this.value;
+    const sectionID = "section_" + this.value; // Add corresponding divs with these IDs
     const sec = document.getElementById(sectionID);
     if (sec) sec.style.display = this.checked ? "block" : "none";
   });
