@@ -1,47 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Customer Record Updation & Periodic Review</title>
-  <style>
-    :root{--brand:#0b4da2;--muted:#6b7280;--card:#ffffff}
-    *{box-sizing:border-box}
-    body{font-family:Inter,Segoe UI,Arial,sans-serif;background:#f3f6fb;margin:0;padding:28px}
-    .container{max-width:1100px;margin:0 auto}
-    header{background:linear-gradient(90deg,var(--brand),#0859c6);color:#fff;padding:18px;border-radius:10px}
-    header h1{margin:0;font-size:20px}
-    form{background:var(--card);padding:20px;margin-top:18px;border-radius:10px;box-shadow:0 6px 18px rgba(12,30,64,0.06)}
-    .section{border-left:4px solid var(--brand);padding:14px 18px;margin-bottom:16px;border-radius:6px;background:#fbfdff}
-    .section h2{margin:0 0 8px 0;color:var(--brand);font-size:16px}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
-    .col-12{grid-column:span 12}
-    .col-6{grid-column:span 6}
-    .col-4{grid-column:span 4}
-    .col-3{grid-column:span 3}
-    label{display:block;font-weight:600;font-size:13px;color:#0f1724;margin-bottom:6px}
-    input[type=text],input[type=date],input[type=number],input[type=file],select,textarea{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:6px;font-size:14px}
-    textarea{min-height:80px}
-    .actions{display:flex;gap:10px;align-items:center}
-    .btn{background:var(--brand);color:#fff;padding:10px 14px;border-radius:8px;border:none;cursor:pointer}
-    .btn.secondary{background:#6b7280}
-    .small{font-size:13px;color:var(--muted)}
-    .inline{display:flex;gap:8px;align-items:center}
-    .file-row{display:flex;gap:10px;align-items:center}
-    .note{font-size:13px;color:var(--muted)}
-    .required{color:#d01818;margin-left:6px}
-    .two-col{display:flex;gap:12px}
-    @media (max-width:900px){.col-6,.col-4,.col-3{grid-column:span 12}}
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <h1>Customer Record Updation & Periodic Review</h1>
-      <div class="small">BANK AL-HABIB</div>
-    </header>
+<header style="
+    background:linear-gradient(90deg,#0f6d00,#0b8a00);
+    color:#fff;
+    padding:18px 22px;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+">
+    <!-- LEFT TEXT -->
+    <div>
+        <h1 style="margin:0;font-size:22px;font-weight:700;">
+            Customer Record Updation & Periodic Review
+        </h1>
+        <div style="font-size:14px;margin-top:4px;letter-spacing:1px;">
+            BANK AL-HABIB
+        </div>
+    </div>
 
-    <form id="custForm" onsubmit="return handleSubmit(event)">
+    <!-- RIGHT SIDE LOGO -->
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/0e/Bank_AL_Habib_logo.png"
+             alt="Bank AL Habib Logo"
+             style="height:70px;width:auto;">
+    </div>
+</header>
+
 
 <!-- ============================================================
    SECTION 1 – ID INFORMATION (REVISED WITH UPDATED REASON LABELS)
